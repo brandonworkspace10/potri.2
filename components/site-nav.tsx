@@ -63,24 +63,30 @@ function TeamMenu() {
               href={`#${a.id}`}
               // --dd-accent colours this row's growing line with the agent's own hue
               style={{ "--dd-accent": `var(${a.accentVar})` } as CSSProperties}
-              className="dd-row dd-item flex items-center gap-3.5 rounded-xl px-3 pb-3.5 pt-3 hover:bg-raised focus-visible:bg-raised focus-visible:outline-none"
+              className="dd-row dd-item flex items-center gap-3.5 rounded-xl px-3 pb-3.5 pt-3 focus-visible:outline-none"
             >
               <span
-                className={`flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[10px] text-[16px] font-semibold text-base ${a.tile}`}
+                className={`dd-tile flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[10px] text-[16px] font-semibold text-base ${a.tile}`}
                 aria-hidden
               >
                 {a.mono}
               </span>
-              <span className="flex min-w-0 flex-col gap-1">
-                <span className="text-[13.5px] font-semibold leading-none tracking-[-0.01em] text-ink">
+
+              <span className="flex min-w-0 flex-col gap-1.5">
+                {/* the name is the least useful part — demote it to a kicker */}
+                <span className="font-mono text-[9px] font-medium uppercase leading-none tracking-[0.22em] text-dim">
                   {a.name}
                 </span>
                 <span
-                  className={`font-mono text-[9px] font-medium uppercase leading-none tracking-[0.22em] ${a.accent}`}
+                  className={`text-[15px] font-semibold leading-none tracking-[-0.02em] ${a.accent}`}
                 >
                   {a.role}
                 </span>
-                <span className="text-[11.5px] leading-[1.35] text-dim">{a.blurb}</span>
+                <span className="text-[12px] leading-[1.35] text-muted">{a.blurb}</span>
+              </span>
+
+              <span className="dd-arrow ml-auto shrink-0 self-center pl-2 text-[13px] text-dim" aria-hidden>
+                →
               </span>
             </Link>
           ))}
