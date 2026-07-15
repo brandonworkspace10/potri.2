@@ -135,7 +135,7 @@ export function RoiCalculator() {
   const same = r.deltaMonthly === 0;
 
   return (
-    <section id="calculator" className="scroll-mt-20 border-y border-subtle bg-elevated py-24 lg:py-28">
+    <section id="calculator" className="scroll-mt-20 border-y border-subtle bg-elevated py-16 sm:py-20 lg:py-28">
       <Container>
         <SectionHeading
           eyebrow="Run the numbers"
@@ -143,9 +143,9 @@ export function RoiCalculator() {
           sub="Move the sliders to match your operation. Everything below is arithmetic on the numbers you enter — not a projection of results."
         />
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-[440px_1fr]">
+        <div className="mt-10 grid sm:mt-14 gap-5 lg:grid-cols-[440px_1fr]">
           {/* inputs */}
-          <div className="flex flex-col gap-7 rounded-2xl border border-subtle bg-card p-8">
+          <div className="flex flex-col gap-7 rounded-2xl border border-subtle bg-card p-6 sm:p-8">
             <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-dim">
               Your operation
             </p>
@@ -223,7 +223,7 @@ export function RoiCalculator() {
           <div className="flex flex-col overflow-hidden rounded-2xl border border-subtle bg-card">
             {/* headline comparison */}
             <div className="grid grid-cols-1 sm:grid-cols-2">
-              <div className="border-b border-subtle p-8 sm:border-b-0 sm:border-r">
+              <div className="border-b border-subtle p-6 sm:border-b-0 sm:border-r sm:p-8">
                 <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-dim">
                   Your cost today
                 </p>
@@ -236,7 +236,7 @@ export function RoiCalculator() {
                     : `${r.humanHours} hrs/week · outbound only`}
                 </p>
               </div>
-              <div className="p-8">
+              <div className="p-6 sm:p-8">
                 <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-brand">
                   With the Potri team
                 </p>
@@ -250,7 +250,7 @@ export function RoiCalculator() {
             </div>
 
             {/* delta banner */}
-            <div className="border-y border-subtle bg-raised px-8 py-7">
+            <div className="border-y border-subtle bg-raised px-6 py-6 sm:px-8 sm:py-7">
               <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-dim">
                 Difference
               </p>
@@ -292,7 +292,7 @@ export function RoiCalculator() {
             </div>
 
             {/* upside — computed entirely from the visitor's own assumptions */}
-            <div className="border-b border-subtle px-8 py-7">
+            <div className="border-b border-subtle px-6 py-6 sm:px-8 sm:py-7">
               <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-dim">
                 If Potri answers what you currently miss
               </p>
@@ -363,7 +363,7 @@ export function RoiCalculator() {
               </div>
             </div>
 
-            <div className="mt-auto flex flex-col items-start gap-4 border-t border-subtle p-8 sm:flex-row sm:items-center sm:justify-between">
+            <div className="mt-auto flex flex-col items-start gap-4 border-t border-subtle p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
               <p className="max-w-[420px] text-[13px] leading-[1.5] text-dim">
                 Bring these numbers to the call and we&apos;ll scope the exact build
                 against them.

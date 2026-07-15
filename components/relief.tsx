@@ -10,7 +10,7 @@ const OUTCOMES = [
 
 export function Relief() {
   return (
-    <section className="relative overflow-hidden py-24 lg:py-28">
+    <section className="relative overflow-hidden py-16 sm:py-20 lg:py-28">
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[1100px] max-w-none -translate-x-1/2 -translate-y-1/2 blur-[80px]"
@@ -31,11 +31,11 @@ export function Relief() {
           </p>
         </div>
 
-        <ol className="mx-auto mt-14 grid max-w-[1100px] gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <ol className="mx-auto mt-10 grid sm:mt-14 max-w-[1100px] gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {OUTCOMES.map((o) => (
             <li
               key={o.step}
-              className="flex flex-col gap-2.5 rounded-2xl border border-subtle bg-card p-6"
+              className="flex flex-col gap-2.5 rounded-2xl border border-subtle bg-card p-5 sm:p-6"
             >
               <span className={`h-[7px] w-[7px] rounded-full ${o.dot}`} aria-hidden />
               <h3 className="text-[17px] font-semibold tracking-[-0.015em] text-ink">

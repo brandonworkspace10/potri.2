@@ -10,11 +10,11 @@ const ROWS: [string, string, string][] = [
 
 export function MathSection() {
   return (
-    <section id="math" className="scroll-mt-20 border-y border-subtle bg-elevated py-24 lg:py-28">
+    <section id="math" className="scroll-mt-20 border-y border-subtle bg-elevated py-16 sm:py-20 lg:py-28">
       <Container>
         <SectionHeading eyebrow="The math" title="One human vs. the Potri team" />
 
-        <div className="mt-13 overflow-x-auto">
+        <div className="mt-10 hidden overflow-x-auto sm:mt-13 sm:block">
           <table className="w-full min-w-[720px] border-separate border-spacing-0 text-left">
             <thead>
               <tr>
@@ -60,6 +60,31 @@ export function MathSection() {
               })}
             </tbody>
           </table>
+        </div>
+
+        {/* mobile: one card per row instead of a clipped 3-column table */}
+        <div className="mt-10 flex flex-col gap-3 sm:hidden">
+          {ROWS.map(([metric, human, potri]) => (
+            <div key={metric} className="rounded-2xl border border-subtle bg-card p-5">
+              <p className="text-[13px] font-medium text-muted">{metric}</p>
+              <div className="mt-3.5 grid grid-cols-2 gap-4">
+                <div>
+                  <p className="font-mono text-[9px] font-medium uppercase tracking-[0.2em] text-dim">
+                    One human
+                  </p>
+                  <p className="mt-2 text-[13.5px] leading-[1.4] text-dim">{human}</p>
+                </div>
+                <div className="border-l border-subtle pl-4">
+                  <p className="font-mono text-[9px] font-medium uppercase tracking-[0.2em] text-brand">
+                    Potri team
+                  </p>
+                  <p className="mt-2 text-[13.5px] font-semibold leading-[1.4] text-ink">
+                    {potri}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </Container>
     </section>

@@ -25,7 +25,7 @@ const PROBLEMS = [
 
 export function Problem() {
   return (
-    <section className="py-24 lg:py-30">
+    <section className="py-16 sm:py-20 lg:py-30">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[400px_1fr] lg:gap-28">
           <div className="flex flex-col gap-5">

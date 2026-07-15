@@ -27,7 +27,7 @@ export function Deployment() {
   return (
     <section
       id="deployment"
-      className="scroll-mt-20 border-y border-subtle bg-elevated py-24 lg:py-28"
+      className="scroll-mt-20 border-y border-subtle bg-elevated py-16 sm:py-20 lg:py-28"
     >
       <Container>
         <SectionHeading
@@ -36,7 +36,7 @@ export function Deployment() {
           sub="No six-week onboarding. No implementation retainer."
         />
 
-        <ol className="relative mt-14 grid gap-5 lg:grid-cols-4">
+        <ol className="relative mt-10 grid sm:mt-14 gap-5 lg:grid-cols-4">
           {/* connecting rail */}
           <div
             aria-hidden
@@ -44,13 +44,11 @@ export function Deployment() {
           />
 
           {STEPS.map((s, i) => (
-            <li key={s.day} className="relative flex flex-col gap-4">
-              <div className="flex items-center gap-4 lg:block">
-                <span className="relative z-10 flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full border border-strong bg-raised font-mono text-[11px] font-medium tabular-nums text-brand">
-                  {i + 1}
-                </span>
-              </div>
-              <div className="flex-1 rounded-2xl border border-subtle bg-card p-7">
+            <li key={s.day} className="relative flex gap-4 lg:flex-col">
+              <span className="relative z-10 flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full border border-strong bg-raised font-mono text-[11px] font-medium tabular-nums text-brand">
+                {i + 1}
+              </span>
+              <div className="flex-1 rounded-2xl border border-subtle bg-card p-6 sm:p-7">
                 <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-brand">
                   {s.day}
                 </p>

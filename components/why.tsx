@@ -35,7 +35,7 @@ const ITEMS = [
 
 export function Why() {
   return (
-    <section className="py-24 lg:py-30">
+    <section className="py-16 sm:py-20 lg:py-30">
       <Container>
         <SectionHeading
           eyebrow="Why Potri wins"
@@ -47,13 +47,13 @@ export function Why() {
           }
         />
 
-        <div className="mt-13 overflow-hidden rounded-2xl border border-subtle bg-elevated">
+        <div className="mt-10 sm:mt-13 overflow-hidden rounded-2xl border border-subtle bg-elevated">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {ITEMS.map((it, i) => (
               <div
                 key={it.title}
                 className={[
-                  "flex flex-col gap-3 p-9",
+                  "flex flex-col gap-3 p-7 sm:p-9",
                   // horizontal rules
                   i >= 1 ? "border-t border-subtle" : "",
                   i >= 2 ? "sm:border-t" : "",

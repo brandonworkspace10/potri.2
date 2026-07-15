@@ -3,7 +3,7 @@ import { Container, PrimaryButton, SecondaryButton } from "./ui";
 
 export function FinalCta() {
   return (
-    <section className="relative overflow-hidden py-28 lg:py-36">
+    <section className="relative overflow-hidden py-20 sm:py-24 lg:py-36">
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[1200px] max-w-none -translate-x-1/2 -translate-y-1/2 blur-[70px]"
