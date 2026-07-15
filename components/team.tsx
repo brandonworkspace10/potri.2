@@ -1,65 +1,5 @@
+import { AGENTS } from "@/lib/agents";
 import { Container, SectionHeading } from "./ui";
-
-type Agent = {
-  mono: string;
-  name: string;
-  role: string;
-  tile: string;
-  accent: string;
-  desc: string;
-  features: string[];
-  live: string;
-  price: string;
-};
-
-const AGENTS: Agent[] = [
-  {
-    mono: "A",
-    name: "Andy",
-    role: "Outbound · Acquisitions",
-    tile: "bg-andy",
-    accent: "text-andy",
-    desc: "Works your seller lead list all day. Qualifies every prospect on the five pillars — motivation, urgency, condition, price, and reason for selling — then books qualified sellers straight into your calendar.",
-    features: [
-      "Five-pillar qualification on every call",
-      "Fluent English & Spanish",
-      "Pushes clean data into your CRM",
-      "Handles objections without hesitation",
-    ],
-    live: "Live in 2–4 days",
-    price: "From $1,600/mo",
-  },
-  {
-    mono: "R",
-    name: "Randy",
-    role: "Inbound · Reception",
-    tile: "bg-randy",
-    accent: "text-randy",
-    desc: "Answers every call that comes in — including the 11pm one you would have missed. Answers property questions, captures seller details, and runs the same qualification framework as Andy while you sleep.",
-    features: [
-      "24/7 — never a voicemail",
-      "Consistent and professional every time",
-      "Fluent English & Spanish",
-    ],
-    live: "Live in 1–3 days",
-    price: "From $1,200/mo",
-  },
-  {
-    mono: "A",
-    name: "Alyssa",
-    role: "Back office · Follow-up & ops",
-    tile: "bg-alyssa",
-    accent: "text-alyssa",
-    desc: "The one your competitors don’t have. Alyssa works behind the scenes — follow-up sequences, inbox organization, CRM hygiene — custom-built around how your operation actually runs.",
-    features: [
-      "Email & SMS follow-up sequences",
-      "Custom workflows for your business",
-      "Keeps the pipeline organized while you close",
-    ],
-    live: "Live in <7 days",
-    price: "From $1,500/mo",
-  },
-];
 
 export function Team() {
   return (
@@ -75,7 +15,8 @@ export function Team() {
           {AGENTS.map((a) => (
             <article
               key={a.name}
-              className="flex flex-col rounded-2xl border border-subtle bg-card p-8"
+              id={a.id}
+              className="flex scroll-mt-28 flex-col rounded-2xl border border-subtle bg-card p-8"
             >
               <div className="flex items-center gap-3.5">
                 <div
