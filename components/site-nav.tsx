@@ -18,7 +18,8 @@ function Chevron() {
       viewBox="0 0 10 10"
       fill="none"
       aria-hidden
-      className="mt-px transition-transform duration-200 ease-out group-hover:rotate-180 group-focus-within:rotate-180"
+      // Tailwind v4 maps rotate-* to the CSS `rotate` property, not `transform`
+      className="mt-px transition-[rotate] duration-200 ease-out group-hover:rotate-180 group-focus-within:rotate-180"
     >
       <path
         d="M2 3.75 5 6.75 8 3.75"
@@ -44,9 +45,11 @@ function TeamMenu() {
 
       {/* pt-3 bridges the gap so the pointer never leaves the group on its way down */}
       <div
+        // Tailwind v4 maps translate-* to the CSS `translate` property, so the
+        // transition must name `translate` — transitioning `transform` animates nothing.
         className={[
-          "invisible absolute left-1/2 top-full z-50 -translate-x-1/2 translate-y-1 pt-3 opacity-0",
-          "transition-[opacity,transform,visibility] duration-200 ease-out",
+          "invisible absolute left-1/2 top-full z-50 -translate-x-1/2 translate-y-2 pt-3 opacity-0",
+          "transition-[opacity,translate,visibility] duration-200 ease-out",
           "group-hover:visible group-hover:translate-y-0 group-hover:opacity-100",
           "group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100",
         ].join(" ")}
