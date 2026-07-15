@@ -56,7 +56,7 @@ function TeamMenu() {
           "group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100",
         ].join(" ")}
       >
-        <div className="w-[336px] rounded-2xl border border-subtle bg-card p-2.5 shadow-2xl shadow-black/70">
+        <div className="w-[348px] rounded-2xl border border-subtle bg-card p-2.5 shadow-2xl shadow-black/70">
           {AGENTS.map((a) => (
             <Link
               key={a.id}
@@ -71,9 +71,14 @@ function TeamMenu() {
               >
                 {a.mono}
               </span>
-              <span className="flex min-w-0 flex-col gap-0.5">
-                <span className="text-[13.5px] font-semibold tracking-[-0.01em] text-ink">
+              <span className="flex min-w-0 flex-col gap-1">
+                <span className="text-[13.5px] font-semibold leading-none tracking-[-0.01em] text-ink">
                   {a.name}
+                </span>
+                <span
+                  className={`font-mono text-[9px] font-medium uppercase leading-none tracking-[0.22em] ${a.accent}`}
+                >
+                  {a.role}
                 </span>
                 <span className="text-[11.5px] leading-[1.35] text-dim">{a.blurb}</span>
               </span>
