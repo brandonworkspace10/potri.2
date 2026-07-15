@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  /* surfaces */
+  --color-base: #0a0b0d;
+  --color-elevated: #121316;
+  --color-card: #16181c;
+  --color-raised: #1c1f24;
+
+  /* borders */
+  --color-subtle: #24262b;
+  --color-strong: #2e3238;
+
+  /* text */
+  --color-ink: #f5f6f7;
+  --color-muted: #9ba1a9;
+  --color-dim: #6b7280;
+
+  /* brand + agent identity */
+  --color-brand: #ff8a34;
+  --color-andy: #ff8a34;
+  --color-randy: #4d8dff;
+  --color-alyssa: #35c88a;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-base);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Range slider — styled consistently across engines */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--track-fill, var(--color-strong));
+}
+
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--track-fill, var(--color-strong));
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -7px;
+  height: 18px;
+  width: 18px;
+  border-radius: 999px;
+  background: var(--color-ink);
+  border: 3px solid var(--color-base);
+  box-shadow: 0 0 0 1px var(--color-strong);
+  transition: transform 0.12s ease;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 999px;
+  background: var(--color-ink);
+  border: 3px solid var(--color-base);
+  box-shadow: 0 0 0 1px var(--color-strong);
+  border-color: var(--color-base);
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  transform: scale(1.12);
+}
+
+input[type="range"]:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 2px var(--color-brand);
+}
+
+input[type="range"]:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 2px var(--color-brand);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
