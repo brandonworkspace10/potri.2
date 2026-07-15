@@ -92,6 +92,49 @@ input[type="range"]:focus-visible::-moz-range-thumb {
   box-shadow: 0 0 0 2px var(--color-brand);
 }
 
+/* ---- Nav tab underline ----
+   Two halves that grow inward from the outer edges and meet in the middle.
+   Distinct from the dropdown rows below, whose line grows outward from the
+   cursor — the tabs converge, the rows diverge. */
+
+.nav-tab {
+  position: relative;
+}
+
+.nav-tab::before,
+.nav-tab::after {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  height: 1px;
+  width: 50%;
+  background: var(--color-brand);
+  transform: scaleX(0);
+  transition: transform 0.32s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.nav-tab::before {
+  left: 0;
+  transform-origin: left;
+}
+
+.nav-tab::after {
+  right: 0;
+  transform-origin: right;
+}
+
+.nav-tab:hover::before,
+.nav-tab:hover::after,
+.nav-tab:focus-visible::before,
+.nav-tab:focus-visible::after,
+/* keep the trigger underlined for as long as its menu is open */
+.team-dd:hover .nav-tab::before,
+.team-dd:hover .nav-tab::after,
+.team-dd:focus-within .nav-tab::before,
+.team-dd:focus-within .nav-tab::after {
+  transform: scaleX(1);
+}
+
 /* ---- Team nav dropdown ----
    Rows stagger in, and each row draws a 1px accent line that grows outward
    from wherever the cursor entered it (--mx, set by NavDropdownFx).

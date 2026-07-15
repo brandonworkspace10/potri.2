@@ -39,7 +39,7 @@ function TeamMenu() {
     <li className="team-dd group relative">
       <Link
         href="#team"
-        className="flex items-center gap-1.5 py-2 text-sm font-medium text-muted transition-colors hover:text-ink group-hover:text-ink group-focus-within:text-ink"
+        className="nav-tab flex items-center gap-1.5 py-2 text-sm font-medium text-muted transition-colors hover:text-ink group-hover:text-ink group-focus-within:text-ink"
       >
         The team
         <Chevron />
@@ -111,7 +111,7 @@ export function SiteNav() {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="text-sm font-medium text-muted transition-colors hover:text-ink"
+                  className="nav-tab block py-2 text-sm font-medium text-muted transition-colors hover:text-ink"
                 >
                   {l.label}
                 </Link>
