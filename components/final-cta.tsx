@@ -14,18 +14,23 @@ export function FinalCta() {
       />
       <Container className="relative">
         <div className="flex flex-col items-center text-center">
-          <h2 className="max-w-[820px] text-[38px] font-bold leading-[1.03] tracking-[-0.04em] text-ink sm:text-[52px] lg:text-[60px]">
-            Your competitors are still
-            <br className="hidden sm:block" /> leaving voicemails.
+          <h2 className="max-w-[900px] text-[36px] font-bold leading-[1.05] tracking-[-0.04em] text-ink sm:text-[48px] lg:text-[58px]">
+            Every unanswered call is a deal
+            <br className="hidden sm:block" /> for{" "}
+            <span className="text-brand">another investor</span>.
           </h2>
-          <p className="mt-6 max-w-[560px] text-[17px] leading-[1.6] text-muted">
-            One scoping call maps your lead sources, your CRM, and how you qualify a deal.
-            Six days later, Andy, Randy and Alyssa are working.
+          <p className="mt-7 max-w-[620px] text-[17px] leading-[1.6] text-muted">
+            While your competitors miss leads after hours, Potri answers every call,
+            qualifies every seller, follows up automatically, and books appointments
+            while you sleep.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <PrimaryButton href={BOOKING_URL}>Book a scoping call</PrimaryButton>
-            <SecondaryButton href="#calculator">Run the numbers first</SecondaryButton>
+            <PrimaryButton href={BOOKING_URL}>Book your scoping call</PrimaryButton>
+            <SecondaryButton href="#calculator">See what it&apos;s worth</SecondaryButton>
           </div>
+          <p className="mt-7 text-[13.5px] text-dim">
+            Live in six days · You approve every script before a real lead is dialed
+          </p>
         </div>
       </Container>
     </section>

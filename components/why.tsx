@@ -2,33 +2,33 @@ import { Container, SectionHeading } from "./ui";
 
 const ITEMS = [
   {
-    title: "Consistency",
-    desc: "The same quality on call 1 and call 1,000. No bad days, no attitude, no drift.",
+    title: "The same call, every time",
+    desc: "Every seller gets the same professional conversation on call one and call one thousand.",
     dot: "bg-andy",
   },
   {
-    title: "Emotional intelligence",
-    desc: "De-escalates and handles objections instantly — no shuffling through papers.",
+    title: "Objections handled live",
+    desc: "De-escalates and answers in the moment — no hesitation, no shuffling through notes.",
     dot: "bg-randy",
   },
   {
-    title: "24/7 coverage",
-    desc: "168 hours a week versus a human’s 40. The 11pm call gets answered.",
+    title: "The 9pm seller gets a person",
+    desc: "168 hours of coverage a week, so the after-hours call becomes a conversation, not a beep.",
     dot: "bg-alyssa",
   },
   {
-    title: "Cost",
-    desc: "The full three-agent team costs roughly what one human caller costs you today.",
+    title: "A team for one salary",
+    desc: "Outbound, inbound and follow-up together cost roughly what a single caller costs you today.",
     dot: "bg-andy",
   },
   {
-    title: "Speed",
-    desc: "Signed to fully live in under six days. Not six weeks.",
+    title: "Working inside a week",
+    desc: "Scoped Monday, dialing by Saturday. Six days from signature to live calls.",
     dot: "bg-randy",
   },
   {
-    title: "Bilingual",
-    desc: "Fluent English and Spanish on every single call. No deal lost to language.",
+    title: "Spanish-speaking sellers too",
+    desc: "The same qualification, the same quality, in either language — on every call.",
     dot: "bg-alyssa",
   },
 ];
@@ -41,8 +41,8 @@ export function Why() {
           eyebrow="Why Potri wins"
           title={
             <>
-              No bad days. No attitude.
-              <br className="hidden sm:block" /> No voicemail.
+              Every seller gets your
+              <br className="hidden sm:block" /> best call. Every time.
             </>
           }
         />

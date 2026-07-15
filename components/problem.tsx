@@ -29,7 +29,7 @@ export function Problem() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-[400px_1fr] lg:gap-28">
           <div className="flex flex-col gap-5">
-            <Eyebrow>The problem we solve</Eyebrow>
+            <Eyebrow>The cost of doing nothing</Eyebrow>
             <h2 className="text-[34px] font-bold leading-[1.06] tracking-[-0.035em] text-ink sm:text-[42px] lg:text-[46px]">
               Every deal you lose
               <br />
@@ -39,6 +39,18 @@ export function Problem() {
               You already know the symptoms. What they quietly cost you is the part
               nobody puts on a spreadsheet.
             </p>
+
+            <div className="mt-2 rounded-2xl border border-subtle bg-card p-6">
+              <p className="text-[15px] leading-[1.6] text-muted">
+                A wholesaler clears{" "}
+                <span className="font-semibold text-ink">$15,000–$60,000</span> on a deal.
+                An investor earns a multiple of that after renovation.
+              </p>
+              <p className="mt-3 text-[15px] leading-[1.6] text-muted">
+                One deal lost to a voicemail costs more than{" "}
+                <span className="font-semibold text-brand">a year of Potri</span>.
+              </p>
+            </div>
           </div>
 
           <ul className="flex flex-col">

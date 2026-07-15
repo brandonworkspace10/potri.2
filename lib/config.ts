@@ -4,6 +4,14 @@
  */
 export const BOOKING_URL = "#book";
 
+export const SITE_NAME = "Potri";
+
+/**
+ * Canonical origin. Drives metadataBase, sitemap, robots and JSON-LD @ids.
+ * Update once a custom domain is live.
+ */
+export const SITE_URL = "https://potri.vercel.app";
+
 /** Flat monthly price for the full three-agent team. */
 export const TEAM_PRICE = 5200;
 

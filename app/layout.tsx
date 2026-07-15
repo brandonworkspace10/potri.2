@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { JsonLd } from "@/components/json-ld";
+import { SITE_URL } from "@/lib/config";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,15 +14,47 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const TITLE = "AI Cold Caller & Receptionist for Real Estate Wholesalers | Potri";
+const DESCRIPTION =
+  "Potri is three AI employees for real estate investors and wholesalers. Andy dials and qualifies seller leads, Randy answers every inbound call 24/7, Alyssa runs follow-up. English and Spanish. Live in six days from $1,200/mo.";
+
 export const metadata: Metadata = {
-  title: "Potri — AI employees for real estate investors & wholesalers",
-  description:
-    "Three specialized AI agents — outbound, inbound, and back office — deployed in under six days, for roughly the cost of one human hire. Fluent English and Spanish on every call.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: "%s | Potri",
+  },
+  description: DESCRIPTION,
+  keywords: [
+    "AI cold caller for real estate",
+    "AI acquisitions caller",
+    "AI receptionist for real estate investors",
+    "real estate wholesaling automation",
+    "seller lead qualification",
+    "AI phone agent for wholesalers",
+    "bilingual AI caller",
+    "real estate follow-up automation",
+  ],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Potri — AI employees for real estate investors & wholesalers",
-    description:
-      "Andy dials and qualifies your seller leads. Randy answers every inbound call 24/7. Alyssa runs your follow-up. The full team for $5,200/mo.",
     type: "website",
+    url: SITE_URL,
+    siteName: "Potri",
+    title: TITLE,
+    description:
+      "Your next deal shouldn't go to voicemail. Three AI employees that answer, qualify and follow up 24/7 — live in six days, for roughly what one caller costs today.",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description:
+      "Three AI employees for real estate investors — outbound, inbound and follow-up. Live in six days.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
 };
 
@@ -35,6 +69,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-base text-ink">
+        <JsonLd />
         {children}
       </body>
     </html>

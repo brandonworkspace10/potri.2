@@ -10,6 +10,7 @@ const LINKS = [
   { label: "Pricing", href: "#pricing" },
   { label: "The math", href: "#math" },
   { label: "Deployment", href: "#deployment" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 function Chevron() {

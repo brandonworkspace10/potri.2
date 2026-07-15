@@ -99,6 +99,9 @@ export function RoiCalculator() {
   const [costPerCaller, setCostPerCaller] = useState(5000);
   const [dealProfit, setDealProfit] = useState(25000);
   const [leads, setLeads] = useState(400);
+  // visitor-supplied assumptions — deliberately theirs, not ours
+  const [missedCalls, setMissedCalls] = useState(25);
+  const [closeRate, setCloseRate] = useState(5);
 
   const r = useMemo(() => {
     const humanMonthly = callers * costPerCaller;
@@ -106,11 +109,19 @@ export function RoiCalculator() {
     const deltaAnnual = deltaMonthly * 12;
     const humanHours = callers * HUMAN_HOURS_PER_WEEK;
 
+    const potriAnnual = TEAM_PRICE * 12;
+    const dealsRecoveredPerYear = missedCalls * 12 * (closeRate / 100);
+    const upsideAnnual = dealsRecoveredPerYear * dealProfit;
+
     return {
       humanMonthly,
       deltaMonthly,
       deltaAnnual,
       humanHours,
+      potriAnnual,
+      dealsRecoveredPerYear,
+      upsideAnnual,
+      netAnnual: upsideAnnual - potriAnnual,
       costPerLeadHuman: leads > 0 ? humanMonthly / leads : 0,
       costPerLeadPotri: leads > 0 ? TEAM_PRICE / leads : 0,
       // how long one extra closed deal pays for the team
@@ -118,7 +129,7 @@ export function RoiCalculator() {
       // extra deals per year required for the team to pay for itself
       dealsPerYearToBreakEven: (TEAM_PRICE * 12) / dealProfit,
     };
-  }, [callers, costPerCaller, dealProfit, leads]);
+  }, [callers, costPerCaller, dealProfit, leads, missedCalls, closeRate]);
 
   const cheaper = r.deltaMonthly > 0;
   const same = r.deltaMonthly === 0;
@@ -174,6 +185,31 @@ export function RoiCalculator() {
               step={1000}
               display={money(dealProfit)}
               onChange={setDealProfit}
+            />
+
+            <div className="border-t border-subtle pt-6">
+              <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-dim">
+                Your assumptions
+              </p>
+            </div>
+
+            <Slider
+              label="Calls you miss each month"
+              value={missedCalls}
+              min={0}
+              max={200}
+              step={5}
+              display={`${missedCalls} calls`}
+              onChange={setMissedCalls}
+            />
+            <Slider
+              label="Your close rate on qualified sellers"
+              value={closeRate}
+              min={1}
+              max={25}
+              step={1}
+              display={`${closeRate}%`}
+              onChange={setCloseRate}
             />
 
             <p className="border-t border-subtle pt-5 text-[12.5px] leading-[1.55] text-dim">
@@ -252,6 +288,44 @@ export function RoiCalculator() {
                     inbound and follow-up, around the clock, in two languages.
                   </>
                 )}
+              </p>
+            </div>
+
+            {/* upside — computed entirely from the visitor's own assumptions */}
+            <div className="border-b border-subtle px-8 py-7">
+              <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-dim">
+                If Potri answers what you currently miss
+              </p>
+              <div className="mt-3 flex flex-wrap items-end gap-x-8 gap-y-4">
+                <div>
+                  <p className="text-[34px] font-bold leading-none tracking-[-0.04em] tabular-nums text-ink">
+                    {r.dealsRecoveredPerYear.toFixed(1)}
+                  </p>
+                  <p className="mt-1.5 text-[12.5px] text-dim">deals recovered / year</p>
+                </div>
+                <div className="text-dim">→</div>
+                <div>
+                  <p className="text-[34px] font-bold leading-none tracking-[-0.04em] tabular-nums text-alyssa">
+                    {money(r.upsideAnnual)}
+                  </p>
+                  <p className="mt-1.5 text-[12.5px] text-dim">gross upside / year</p>
+                </div>
+                <div className="text-dim">−</div>
+                <div>
+                  <p className="text-[34px] font-bold leading-none tracking-[-0.04em] tabular-nums text-muted">
+                    {money(r.potriAnnual)}
+                  </p>
+                  <p className="mt-1.5 text-[12.5px] text-dim">Potri / year</p>
+                </div>
+              </div>
+
+              <p className="mt-5 max-w-[640px] text-[13px] leading-[1.55] text-dim">
+                <span className="font-medium text-muted">
+                  These are your assumptions, not our promises.
+                </span>{" "}
+                {missedCalls} missed calls a month closing at {closeRate}% is your number,
+                not ours. Potri answers, qualifies and follows up — it can&apos;t make a
+                seller sell.
               </p>
             </div>
 
