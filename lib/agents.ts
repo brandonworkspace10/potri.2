@@ -4,6 +4,10 @@ export type Agent = {
   mono: string;
   name: string;
   role: string;
+  /** one-line summary shown under the name in the nav dropdown */
+  blurb: string;
+  /** design token backing this agent's colour, for CSS custom properties */
+  accentVar: string;
   /** background utility for the monogram tile */
   tile: string;
   /** text utility for the agent's identity colour */
@@ -20,6 +24,8 @@ export const AGENTS: Agent[] = [
     mono: "A",
     name: "Andy",
     role: "Outbound · Acquisitions",
+    blurb: "Dials and qualifies your seller leads",
+    accentVar: "--color-andy",
     tile: "bg-andy",
     accent: "text-andy",
     desc: "Works your seller lead list all day. Qualifies every prospect on the five pillars — motivation, urgency, condition, price, and reason for selling — then books qualified sellers straight into your calendar.",
@@ -37,6 +43,8 @@ export const AGENTS: Agent[] = [
     mono: "R",
     name: "Randy",
     role: "Inbound · Reception",
+    blurb: "Answers every inbound call, 24/7",
+    accentVar: "--color-randy",
     tile: "bg-randy",
     accent: "text-randy",
     desc: "Answers every call that comes in — including the 11pm one you would have missed. Answers property questions, captures seller details, and runs the same qualification framework as Andy while you sleep.",
@@ -53,6 +61,8 @@ export const AGENTS: Agent[] = [
     mono: "A",
     name: "Alyssa",
     role: "Back office · Follow-up & ops",
+    blurb: "Runs follow-up so nothing slips",
+    accentVar: "--color-alyssa",
     tile: "bg-alyssa",
     accent: "text-alyssa",
     desc: "The one your competitors don’t have. Alyssa works behind the scenes — follow-up sequences, inbox organization, CRM hygiene — custom-built around how your operation actually runs.",

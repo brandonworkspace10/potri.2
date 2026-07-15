@@ -92,6 +92,80 @@ input[type="range"]:focus-visible::-moz-range-thumb {
   box-shadow: 0 0 0 2px var(--color-brand);
 }
 
+/* ---- Team nav dropdown ----
+   Rows stagger in, and each row draws a 1px accent line that grows outward
+   from wherever the cursor entered it (--mx, set by NavDropdownFx).
+   Note: Tailwind v4 maps its translate and rotate utilities to the standalone
+   `translate` / `rotate` CSS properties rather than `transform`, so the raw CSS
+   here animates `translate` to stay consistent with them. */
+
+.dd-row {
+  opacity: 0;
+  translate: 0 -5px;
+  transition:
+    opacity 0.22s ease,
+    translate 0.22s ease,
+    background-color 0.2s ease;
+}
+
+.team-dd:hover .dd-row,
+.team-dd:focus-within .dd-row {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* delays only on open — closing should collapse at once, not unwind */
+.team-dd:hover .dd-row:nth-child(1) {
+  transition-delay: 0.04s;
+}
+.team-dd:hover .dd-row:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.team-dd:hover .dd-row:nth-child(3) {
+  transition-delay: 0.16s;
+}
+.team-dd:hover .dd-row:nth-child(4) {
+  transition-delay: 0.22s;
+}
+
+.dd-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.dd-item::before,
+.dd-item::after {
+  content: "";
+  position: absolute;
+  bottom: 7px;
+  height: 1px;
+  background: var(--dd-accent, var(--color-brand));
+  transform: scaleX(0);
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+    left 0.18s ease-out,
+    right 0.18s ease-out;
+}
+
+.dd-item::before {
+  left: 12px;
+  right: calc(100% - var(--mx, 50%));
+  transform-origin: left;
+}
+
+.dd-item::after {
+  left: var(--mx, 50%);
+  right: 12px;
+  transform-origin: right;
+}
+
+.dd-item:hover::before,
+.dd-item:hover::after,
+.dd-item:focus-visible::before,
+.dd-item:focus-visible::after {
+  transform: scaleX(1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

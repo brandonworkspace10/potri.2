@@ -1,6 +1,8 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { AGENTS } from "@/lib/agents";
 import { BOOKING_URL } from "@/lib/config";
+import { NavDropdownFx } from "./nav-dropdown-fx";
 import { Container, Wordmark } from "./ui";
 
 const LINKS = [
@@ -34,7 +36,7 @@ function Chevron() {
 
 function TeamMenu() {
   return (
-    <li className="group relative">
+    <li className="team-dd group relative">
       <Link
         href="#team"
         className="flex items-center gap-1.5 py-2 text-sm font-medium text-muted transition-colors hover:text-ink group-hover:text-ink group-focus-within:text-ink"
@@ -54,12 +56,14 @@ function TeamMenu() {
           "group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100",
         ].join(" ")}
       >
-        <div className="w-[336px] rounded-2xl border border-subtle bg-card p-2 shadow-2xl shadow-black/70">
+        <div className="w-[336px] rounded-2xl border border-subtle bg-card p-2.5 shadow-2xl shadow-black/70">
           {AGENTS.map((a) => (
             <Link
               key={a.id}
               href={`#${a.id}`}
-              className="flex items-center gap-3.5 rounded-xl p-3 transition-colors hover:bg-raised focus-visible:bg-raised focus-visible:outline-none"
+              // --dd-accent colours this row's growing line with the agent's own hue
+              style={{ "--dd-accent": `var(${a.accentVar})` } as CSSProperties}
+              className="dd-row dd-item flex items-center gap-3.5 rounded-xl px-3 pb-3.5 pt-3 hover:bg-raised focus-visible:bg-raised focus-visible:outline-none"
             >
               <span
                 className={`flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[10px] text-[16px] font-semibold text-base ${a.tile}`}
@@ -67,23 +71,19 @@ function TeamMenu() {
               >
                 {a.mono}
               </span>
-              <span className="flex flex-col gap-1">
-                <span className="text-[14.5px] font-semibold tracking-[-0.01em] text-ink">
+              <span className="flex min-w-0 flex-col gap-0.5">
+                <span className="text-[13.5px] font-semibold tracking-[-0.01em] text-ink">
                   {a.name}
                 </span>
-                <span
-                  className={`font-mono text-[9px] font-medium uppercase tracking-[0.22em] ${a.accent}`}
-                >
-                  {a.role}
-                </span>
+                <span className="text-[11.5px] leading-[1.35] text-dim">{a.blurb}</span>
               </span>
             </Link>
           ))}
 
-          <div className="mt-1 border-t border-subtle px-3 pb-1 pt-3">
+          <div className="dd-row mt-1.5 border-t border-subtle px-3 pb-1 pt-3">
             <Link
               href="#team"
-              className="flex items-center gap-1.5 text-[12.5px] font-medium text-dim transition-colors hover:text-ink"
+              className="flex items-center gap-1.5 text-[12.5px] font-medium text-brand transition-colors hover:text-ink"
             >
               See the full team
               <span aria-hidden>→</span>
@@ -98,6 +98,7 @@ function TeamMenu() {
 export function SiteNav() {
   return (
     <header className="sticky top-0 z-50 border-b border-subtle bg-base/80 backdrop-blur-xl">
+      <NavDropdownFx />
       <Container>
         <nav className="flex h-[72px] items-center justify-between gap-6">
           <Link href="/" aria-label="Potri home" className="shrink-0">
