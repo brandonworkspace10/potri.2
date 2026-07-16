@@ -1,3 +1,4 @@
+import { JsonLd } from "@/components/json-ld";
 import { Deployment } from "@/components/deployment";
 import { Faq } from "@/components/faq";
 import { FinalCta } from "@/components/final-cta";
@@ -16,6 +17,7 @@ import { Why } from "@/components/why";
 export default function Home() {
   return (
     <>
+      <JsonLd />
       <SiteNav />
       <main className="flex-1">
         <Hero />

@@ -4,6 +4,9 @@ import { Container, Wordmark } from "./ui";
 
 const LINKS = [
   { label: "The team", href: "/#team" },
+  { label: "Andy — AI outbound caller", href: "/andy" },
+  { label: "Randy — 24/7 AI receptionist", href: "/randy" },
+  { label: "Alyssa — follow-up & ops", href: "/alyssa" },
   { label: "Calculator", href: "/#calculator" },
   { label: "Pricing", href: "/#pricing" },
   { label: "The math", href: "/#math" },

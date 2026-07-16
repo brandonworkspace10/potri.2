@@ -1,7 +1,13 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Dithering } from "@paper-design/shaders-react";
+
+// The shader lib is decoration — keep it out of the route bundle.
+const Dithering = dynamic(
+  () => import("@paper-design/shaders-react").then((m) => ({ default: m.Dithering })),
+  { ssr: false },
+);
 
 /** Linear RGB mix between two hex colours. */
 function mix(a: string, b: string, t: number): string {

@@ -34,6 +34,8 @@ export type Agent = {
       points: string[];
     };
     priceRange: string;
+    priceLow: number;
+    priceHigh: number;
     pricedBy: string;
   };
 };
@@ -111,6 +113,8 @@ export const AGENTS: Agent[] = [
         ],
       },
       priceRange: "$1,600 – $2,500 / month",
+      priceLow: 1600,
+      priceHigh: 2500,
       pricedBy: "Priced by call volume and script complexity",
     },
   },
@@ -174,6 +178,8 @@ export const AGENTS: Agent[] = [
         },
       ],
       priceRange: "$1,200 – $1,800 / month",
+      priceLow: 1200,
+      priceHigh: 1800,
       pricedBy: "Priced by inbound volume and integrations",
     },
   },
@@ -237,6 +243,8 @@ export const AGENTS: Agent[] = [
         },
       ],
       priceRange: "$1,500 – $6,000 / month",
+      priceLow: 1500,
+      priceHigh: 6000,
       pricedBy: "Scoped after consultation — fully custom",
     },
   },

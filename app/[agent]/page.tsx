@@ -14,6 +14,11 @@ export function generateStaticParams() {
   return AGENTS.map((a) => ({ agent: a.id }));
 }
 
+// Only the three real slugs match this segment. Without this, [agent] swallows
+// every unknown top-level path — including the /opengraph-image metadata route,
+// which it served with a 404 status.
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { agent } = await params;
   const a = getAgent(agent);
@@ -38,8 +43,45 @@ export default async function AgentPage({ params }: Params) {
 
   const others = AGENTS.filter((o) => o.id !== a.id);
 
+  // Mirrors the rendered page: the service, its price bounds, and the trail
+  // back to the team section. No claims beyond what the page shows.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": `${SITE_URL}/${a.id}#service`,
+        name: `${a.name} — ${a.role}`,
+        serviceType: a.page.title,
+        description: a.page.description,
+        provider: { "@id": `${SITE_URL}/#organization` },
+        areaServed: "US",
+        availableLanguage: ["English", "Spanish"],
+        offers: {
+          "@type": "AggregateOffer",
+          priceCurrency: "USD",
+          lowPrice: a.page.priceLow,
+          highPrice: a.page.priceHigh,
+          description: `${a.page.pricedBy}. Monthly price; final pricing confirmed after a scoping call.`,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Potri", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "The team", item: `${SITE_URL}/#team` },
+          { "@type": "ListItem", position: 3, name: a.name, item: `${SITE_URL}/${a.id}` },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SiteNav />
       <main className="flex-1">
         {/* hero */}
@@ -61,16 +103,16 @@ export default async function AgentPage({ params }: Params) {
                 >
                   {a.mono}
                 </span>
-                <div className="flex flex-col gap-1.5">
-                  <h1 className="text-[30px] font-bold tracking-[-0.03em] text-ink sm:text-[34px]">
+                <h1 className="flex flex-col gap-1.5">
+                  <span className="text-[30px] font-bold tracking-[-0.03em] text-ink sm:text-[34px]">
                     {a.name}
-                  </h1>
-                  <p
+                  </span>
+                  <span
                     className={`font-mono text-[9.5px] font-medium uppercase tracking-[0.24em] ${a.accent}`}
                   >
                     {a.role}
-                  </p>
-                </div>
+                  </span>
+                </h1>
               </div>
 
               <p className="mt-8 max-w-[760px] text-[30px] font-bold leading-[1.1] tracking-[-0.035em] text-ink sm:text-[38px]">

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import * as THREE from "three";
 
 const SEPARATION = 150;
 const AMOUNTX = 40;
@@ -51,6 +50,16 @@ export function DottedSurface({ className = "" }: { className?: string }) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    // three.js is ~170KB gzipped — load it after hydration instead of shipping
+    // it in the route bundle. A backdrop arriving a beat late costs nothing;
+    // main-thread weight on first load does.
+    let disposed = false;
+    let cleanup: (() => void) | undefined;
+
+    (async () => {
+    const THREE = await import("three");
+    if (disposed || !containerRef.current) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -212,7 +221,7 @@ export function DottedSurface({ className = "" }: { className?: string }) {
     });
     ro.observe(container);
 
-    return () => {
+    cleanup = () => {
       // cancel the live frame id, not one captured at setup — otherwise the
       // loop survives unmount and keeps rendering forever
       cancelAnimationFrame(frameId);
@@ -223,6 +232,12 @@ export function DottedSurface({ className = "" }: { className?: string }) {
       material.dispose();
       renderer.dispose();
       renderer.domElement.remove();
+    };
+    })();
+
+    return () => {
+      disposed = true;
+      cleanup?.();
     };
   }, []);
 

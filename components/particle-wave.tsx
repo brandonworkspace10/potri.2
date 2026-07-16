@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import * as THREE from "three";
 
 const GAP = 0.3;
 const AMOUNT_X = 160;
@@ -12,16 +11,12 @@ const WAVE_SPEED = 0.7;
 const MAX_DELTA = 1 / 30;
 
 /** three.js colour channels are 0–1, CSS tokens are hex. */
-function tokenColour(name: string, fallback: [number, number, number]) {
+function tokenColour(name: string, fallback: [number, number, number]): [number, number, number] {
   const raw = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   const m = /^#?([0-9a-f]{6})$/i.exec(raw);
-  if (!m) return new THREE.Vector3(...fallback);
+  if (!m) return fallback;
   const n = parseInt(m[1], 16);
-  return new THREE.Vector3(
-    ((n >> 16) & 0xff) / 255,
-    ((n >> 8) & 0xff) / 255,
-    (n & 0xff) / 255,
-  );
+  return [((n >> 16) & 0xff) / 255, ((n >> 8) & 0xff) / 255, (n & 0xff) / 255];
 }
 
 const VERTEX = /* glsl */ `
@@ -77,6 +72,15 @@ export function ParticleWave({ className = "" }: { className?: string }) {
     const container = containerRef.current;
     if (!container) return;
 
+    // Deferred for the same reason as the hero field: the wave is decoration,
+    // three.js is the heaviest dependency on the page.
+    let disposed = false;
+    let cleanup: (() => void) | undefined;
+
+    (async () => {
+    const THREE = await import("three");
+    if (disposed || !containerRef.current) return;
+
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const width = container.clientWidth || 1;
     const height = container.clientHeight || 1;
@@ -125,9 +129,9 @@ export function ParticleWave({ className = "" }: { className?: string }) {
       uniforms: {
         uTime: { value: 0 },
         uOpacity: { value: 0.55 },
-        uColorA: { value: tokenColour("--color-andy", [1, 0.5412, 0.2039]) },
-        uColorB: { value: tokenColour("--color-randy", [0.302, 0.5529, 1]) },
-        uColorC: { value: tokenColour("--color-alyssa", [0.2078, 0.7843, 0.5412]) },
+        uColorA: { value: new THREE.Vector3(...tokenColour("--color-andy", [1, 0.5412, 0.2039])) },
+        uColorB: { value: new THREE.Vector3(...tokenColour("--color-randy", [0.302, 0.5529, 1])) },
+        uColorC: { value: new THREE.Vector3(...tokenColour("--color-alyssa", [0.2078, 0.7843, 0.5412])) },
       },
     });
 
@@ -180,7 +184,7 @@ export function ParticleWave({ className = "" }: { className?: string }) {
     });
     ro.observe(container);
 
-    return () => {
+    cleanup = () => {
       cancelAnimationFrame(frameId);
       io.disconnect();
       ro.disconnect();
@@ -189,6 +193,12 @@ export function ParticleWave({ className = "" }: { className?: string }) {
       material.dispose();
       renderer.dispose();
       renderer.domElement.remove();
+    };
+    })();
+
+    return () => {
+      disposed = true;
+      cleanup?.();
     };
   }, []);
 

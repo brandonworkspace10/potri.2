@@ -40,4 +40,20 @@ export const FAQS: { q: string; a: string }[] = [
     q: "What does Andy qualify sellers on?",
     a: "The five pillars: motivation, urgency, condition, price, and reason for selling. Randy runs the same qualification framework on inbound calls, so every seller is scored the same way regardless of who picks up.",
   },
+  {
+    q: "What is an AI acquisitions caller?",
+    a: "An AI acquisitions caller is a phone agent that dials seller leads, holds a real conversation, qualifies each prospect against your criteria, and books the qualified ones into your calendar — without a human on the line. Potri's is Andy: he works your lead list on the five pillars (motivation, urgency, condition, price, reason for selling), handles objections in the moment, and pushes clean call data into your CRM.",
+  },
+  {
+    q: "How much does an AI cold caller for real estate cost?",
+    a: "Potri's outbound caller Andy runs $1,600–$2,500 a month depending on call volume and script complexity. For comparison, a human cold caller typically costs $1,500–$5,000+ a month for 40 hours a week of outbound only. The full Potri team — outbound, inbound and follow-up — is a flat $5,200 a month.",
+  },
+  {
+    q: "Can Potri work my old or dead seller leads?",
+    a: "Yes — list reactivation is one of Andy's core jobs. Every lead you've already paid for sits in your CRM: the ones nobody called back, the ones that went quiet months ago. A human caller can rarely justify working a list that cold, but Andy's hours aren't the constraint. Old leads get the same five-pillar qualification as fresh ones.",
+  },
+  {
+    q: "Do I need to change my CRM or tools to use Potri?",
+    a: "No. Potri is built around the software you already run — your CRM, calendar, dialer and data tools, whether that's Podio, REsimpli, InvestorFuse, GoHighLevel, Follow Up Boss or something unusual. On the day-one scoping call we map your exact stack and configure the agents around it. Nothing to rip out, nothing to migrate.",
+  },
 ];
