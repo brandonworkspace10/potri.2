@@ -26,6 +26,13 @@ export type Agent = {
     lede: string;
     accomplishes: Detail[];
     helps: Detail[];
+    /** optional feature block specific to this agent */
+    callout?: {
+      eyebrow: string;
+      title: string;
+      body: string;
+      points: string[];
+    };
     priceRange: string;
     pricedBy: string;
   };
@@ -92,6 +99,17 @@ export const AGENTS: Agent[] = [
           desc: "Call one thousand sounds like call one. There is no bad day to manage around.",
         },
       ],
+      callout: {
+        eyebrow: "List reactivation",
+        title: "Your old leads aren’t dead. They’re just unworked.",
+        body: "Every lead you have ever paid for is still sitting in your CRM. The ones nobody called back. The ones that went quiet eight months ago. The ones somebody marked “not interested” before the seller had a reason to be interested. No human caller can justify working a list that cold — there are always warmer names in front of them. Andy has no such constraint. He works the old list because his hours aren’t the thing you’re rationing.",
+        points: [
+          "The dead list gets dialed, not archived",
+          "A “no” from last year isn’t a “no” today — circumstances are exactly what change",
+          "A two-year-old lead gets the same five-pillar qualification as a fresh one",
+          "You already paid to acquire these names — working them again costs you nothing new",
+        ],
+      },
       priceRange: "$1,600 – $2,500 / month",
       pricedBy: "Priced by call volume and script complexity",
     },

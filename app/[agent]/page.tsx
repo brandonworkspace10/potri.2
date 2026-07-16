@@ -128,6 +128,49 @@ export default async function AgentPage({ params }: Params) {
           </Container>
         </section>
 
+        {/* agent-specific feature block */}
+        {a.page.callout ? (
+          <section className="border-y border-subtle bg-elevated py-16 sm:py-20 lg:py-24">
+            <Container>
+              <div className="relative overflow-hidden rounded-2xl border border-subtle bg-card p-8 sm:p-11">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -right-24 -top-32 h-[360px] w-[520px] blur-[70px]"
+                  style={{
+                    background: `radial-gradient(closest-side, color-mix(in srgb, var(${a.accentVar}) 14%, transparent), transparent 100%)`,
+                  }}
+                />
+                <div className="relative grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
+                  <div>
+                    <p
+                      className={`font-mono text-[10px] font-medium uppercase tracking-[0.28em] ${a.accent}`}
+                    >
+                      {a.page.callout.eyebrow}
+                    </p>
+                    <h2 className="mt-4 max-w-[440px] text-[26px] font-bold leading-[1.12] tracking-[-0.03em] text-ink sm:text-[32px]">
+                      {a.page.callout.title}
+                    </h2>
+                  </div>
+                  <div>
+                    <p className="text-[15px] leading-[1.7] text-muted">{a.page.callout.body}</p>
+                    <ul className="mt-7 flex flex-col gap-3.5 border-t border-subtle pt-7">
+                      {a.page.callout.points.map((pt) => (
+                        <li key={pt} className="flex gap-3">
+                          <span
+                            className={`mt-[7px] block h-[5px] w-[5px] shrink-0 rounded-full ${a.tile}`}
+                            aria-hidden
+                          />
+                          <span className="text-[14.5px] leading-[1.55] text-dim">{pt}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </Container>
+          </section>
+        ) : null}
+
         {/* how it helps you */}
         <section className="border-y border-subtle bg-elevated py-16 sm:py-20 lg:py-24">
           <Container>
