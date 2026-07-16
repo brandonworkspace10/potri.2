@@ -1,9 +1,13 @@
 import { BOOKING_URL } from "@/lib/config";
+import { DottedSurface } from "./dotted-surface";
 import { Container, PrimaryButton, SecondaryButton } from "./ui";
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
+      {/* animated dot field, then the glow over it, then content on top */}
+      <DottedSurface />
+
       {/* radial brand glow behind the headline */}
       <div
         aria-hidden
