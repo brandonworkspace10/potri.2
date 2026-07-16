@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AGENTS } from "@/lib/agents";
 import { Container, SectionHeading } from "./ui";
 
@@ -58,6 +59,13 @@ export function Team() {
                       {a.price}
                     </span>
                   </div>
+                  <Link
+                    href={`/${a.id}`}
+                    className={`mt-4 flex items-center gap-1.5 text-[13px] font-medium transition-colors hover:text-ink ${a.accent}`}
+                  >
+                    Meet {a.name}
+                    <span aria-hidden>→</span>
+                  </Link>
                 </div>
               </div>
             </article>

@@ -3,13 +3,13 @@ import { BOOKING_URL } from "@/lib/config";
 import { Container, Wordmark } from "./ui";
 
 const LINKS = [
-  { label: "The team", href: "#team" },
-  { label: "Calculator", href: "#calculator" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "The math", href: "#math" },
-  { label: "Integrations", href: "#integrations" },
-  { label: "Deployment", href: "#deployment" },
-  { label: "FAQ", href: "#faq" },
+  { label: "The team", href: "/#team" },
+  { label: "Calculator", href: "/#calculator" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "The math", href: "/#math" },
+  { label: "Integrations", href: "/#integrations" },
+  { label: "Deployment", href: "/#deployment" },
+  { label: "FAQ", href: "/#faq" },
   { label: "Book a call", href: BOOKING_URL },
 ];
 

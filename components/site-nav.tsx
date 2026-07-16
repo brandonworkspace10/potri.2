@@ -7,11 +7,11 @@ import { NavDropdownFx } from "./nav-dropdown-fx";
 import { Container, Wordmark } from "./ui";
 
 const LINKS = [
-  { label: "Calculator", href: "#calculator" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "The math", href: "#math" },
-  { label: "Deployment", href: "#deployment" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Calculator", href: "/#calculator" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "The math", href: "/#math" },
+  { label: "Deployment", href: "/#deployment" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 function Chevron() {
@@ -40,7 +40,7 @@ function TeamMenu() {
   return (
     <li className="team-dd group relative">
       <Link
-        href="#team"
+        href="/#team"
         className="nav-tab flex items-center gap-1.5 py-2 text-sm font-medium text-muted transition-colors hover:text-ink group-hover:text-ink group-focus-within:text-ink"
       >
         The team
@@ -62,7 +62,7 @@ function TeamMenu() {
           {AGENTS.map((a) => (
             <Link
               key={a.id}
-              href={`#${a.id}`}
+              href={`/${a.id}`}
               // --dd-accent colours this row's growing line with the agent's own hue
               style={{ "--dd-accent": `var(${a.accentVar})` } as CSSProperties}
               className="dd-row dd-item flex items-center gap-3 rounded-lg px-2.5 pb-3 pt-2.5 focus-visible:outline-none"
@@ -90,7 +90,7 @@ function TeamMenu() {
 
           <div className="dd-row mt-1.5 border-t border-subtle px-3 pb-1 pt-3">
             <Link
-              href="#team"
+              href="/#team"
               className="flex items-center gap-1.5 text-[12.5px] font-medium text-brand transition-colors hover:text-ink"
             >
               See the full team

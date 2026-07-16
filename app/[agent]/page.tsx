@@ -1,0 +1,255 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteNav } from "@/components/site-nav";
+import { Container, PrimaryButton, SecondaryButton } from "@/components/ui";
+import { AGENTS, getAgent } from "@/lib/agents";
+import { BOOKING_URL, SITE_URL, TEAM_PRICE } from "@/lib/config";
+
+type Params = { params: Promise<{ agent: string }> };
+
+export function generateStaticParams() {
+  return AGENTS.map((a) => ({ agent: a.id }));
+}
+
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { agent } = await params;
+  const a = getAgent(agent);
+  if (!a) return {};
+  return {
+    title: a.page.title,
+    description: a.page.description,
+    alternates: { canonical: `/${a.id}` },
+    openGraph: {
+      title: a.page.title,
+      description: a.page.description,
+      url: `${SITE_URL}/${a.id}`,
+      type: "website",
+    },
+  };
+}
+
+export default async function AgentPage({ params }: Params) {
+  const { agent } = await params;
+  const a = getAgent(agent);
+  if (!a) notFound();
+
+  const others = AGENTS.filter((o) => o.id !== a.id);
+
+  return (
+    <>
+      <SiteNav />
+      <main className="flex-1">
+        {/* hero */}
+        <section className="relative overflow-hidden border-b border-subtle">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-1/2 top-[-320px] h-[560px] w-[900px] max-w-none -translate-x-1/2 blur-[70px]"
+            style={{
+              background: `radial-gradient(closest-side, color-mix(in srgb, var(${a.accentVar}) 18%, transparent), transparent 100%)`,
+            }}
+          />
+          <Container className="relative">
+            <div className="flex flex-col items-start py-16 sm:py-20 lg:py-24">
+              <Link
+                href="/#team"
+                className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-dim transition-colors hover:text-ink"
+              >
+                ← The team
+              </Link>
+
+              <div className="mt-7 flex items-center gap-4">
+                <span
+                  className={`flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-xl text-[22px] font-semibold text-base ${a.tile}`}
+                  aria-hidden
+                >
+                  {a.mono}
+                </span>
+                <div className="flex flex-col gap-1.5">
+                  <h1 className="text-[30px] font-bold tracking-[-0.03em] text-ink sm:text-[34px]">
+                    {a.name}
+                  </h1>
+                  <p
+                    className={`font-mono text-[9.5px] font-medium uppercase tracking-[0.24em] ${a.accent}`}
+                  >
+                    {a.role}
+                  </p>
+                </div>
+              </div>
+
+              <p className="mt-8 max-w-[760px] text-[30px] font-bold leading-[1.1] tracking-[-0.035em] text-ink sm:text-[38px]">
+                {a.page.headline}
+              </p>
+              <p className="mt-5 max-w-[640px] text-[16px] leading-[1.65] text-muted sm:text-[17px]">
+                {a.page.lede}
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <PrimaryButton href={BOOKING_URL}>Book a scoping call</PrimaryButton>
+                <SecondaryButton href="/#calculator">See what it&apos;s worth</SecondaryButton>
+              </div>
+
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-dim">
+                <span>{a.live}</span>
+                <span aria-hidden>·</span>
+                <span>{a.page.priceRange}</span>
+                <span aria-hidden>·</span>
+                <span>English + Spanish</span>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* what they accomplish */}
+        <section className="py-16 sm:py-20 lg:py-24">
+          <Container>
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.5em] text-brand">
+              What {a.name} does
+            </p>
+            <h2 className="mt-4 max-w-[720px] text-[28px] font-bold leading-[1.12] tracking-[-0.03em] text-ink sm:text-[34px]">
+              {a.desc}
+            </h2>
+
+            <div className="mt-10 grid gap-3 sm:grid-cols-2">
+              {a.page.accomplishes.map((d) => (
+                <div key={d.title} className="rounded-2xl border border-subtle bg-card p-6">
+                  <span
+                    className={`block h-[7px] w-[7px] rounded-full ${a.tile}`}
+                    aria-hidden
+                  />
+                  <h3 className="mt-3 text-[17px] font-semibold tracking-[-0.015em] text-ink">
+                    {d.title}
+                  </h3>
+                  <p className="mt-2 text-[14.5px] leading-[1.6] text-dim">{d.desc}</p>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        {/* how it helps you */}
+        <section className="border-y border-subtle bg-elevated py-16 sm:py-20 lg:py-24">
+          <Container>
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.5em] text-brand">
+              How {a.name} helps you
+            </p>
+            <h2 className="mt-4 max-w-[720px] text-[28px] font-bold leading-[1.12] tracking-[-0.03em] text-ink sm:text-[34px]">
+              What it actually changes about your week.
+            </h2>
+
+            <ul className="mt-10 flex flex-col">
+              {a.page.helps.map((d, i) => (
+                <li
+                  key={d.title}
+                  className={`flex flex-col gap-2 py-6 sm:flex-row sm:gap-10 ${
+                    i > 0 ? "border-t border-subtle" : ""
+                  }`}
+                >
+                  <h3 className="w-full max-w-[320px] shrink-0 text-[17px] font-semibold tracking-[-0.015em] text-ink">
+                    {d.title}
+                  </h3>
+                  <p className="text-[14.5px] leading-[1.65] text-dim">{d.desc}</p>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </section>
+
+        {/* capability list + price */}
+        <section className="py-16 sm:py-20 lg:py-24">
+          <Container>
+            <div className="grid gap-5 lg:grid-cols-[1fr_380px]">
+              <div className="rounded-2xl border border-subtle bg-card p-8">
+                <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-dim">
+                  On every call
+                </p>
+                <ul className="mt-6 flex flex-col gap-4">
+                  {a.features.map((f) => (
+                    <li key={f} className="flex gap-3">
+                      <span className={`shrink-0 text-[13px] leading-[1.6] ${a.accent}`} aria-hidden>
+                        →
+                      </span>
+                      <span className="text-[15px] leading-[1.55] text-muted">{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="flex flex-col rounded-2xl border border-subtle bg-card p-8">
+                <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-dim">
+                  Hire {a.name}
+                </p>
+                <p className="mt-4 text-[28px] font-bold tracking-[-0.035em] tabular-nums text-ink">
+                  {a.page.priceRange}
+                </p>
+                <p className="mt-2 text-[13.5px] leading-[1.5] text-dim">{a.page.pricedBy}</p>
+                <p className="mt-5 border-t border-subtle pt-5 text-[13.5px] leading-[1.6] text-dim">
+                  Single hires pay full price — bundle pricing applies only to the full
+                  three-agent team, which is a flat ${TEAM_PRICE.toLocaleString("en-US")}/mo.
+                </p>
+                <div className="mt-6">
+                  <PrimaryButton href={BOOKING_URL} className="w-full">
+                    Book a scoping call
+                  </PrimaryButton>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* the other two */}
+        <section className="border-t border-subtle bg-elevated py-16 sm:py-20">
+          <Container>
+            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.5em] text-brand">
+              The rest of the team
+            </p>
+            <h2 className="mt-4 text-[26px] font-bold tracking-[-0.03em] text-ink sm:text-[30px]">
+              {a.name} works best with the other two.
+            </h2>
+
+            <div className="mt-9 grid gap-3 sm:grid-cols-2">
+              {others.map((o) => (
+                <Link
+                  key={o.id}
+                  href={`/${o.id}`}
+                  className="flex items-center gap-4 rounded-2xl border border-subtle bg-card p-6 transition-colors hover:bg-raised"
+                >
+                  <span
+                    className={`flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-xl text-[17px] font-semibold text-base ${o.tile}`}
+                    aria-hidden
+                  >
+                    {o.mono}
+                  </span>
+                  <span className="flex min-w-0 flex-col gap-1">
+                    <span className="text-[16px] font-semibold tracking-[-0.02em] text-ink">
+                      {o.name}
+                    </span>
+                    <span
+                      className={`font-mono text-[8.5px] font-medium uppercase tracking-[0.2em] ${o.accent}`}
+                    >
+                      {o.role}
+                    </span>
+                    <span className="mt-0.5 text-[13px] leading-[1.4] text-dim">{o.blurb}</span>
+                  </span>
+                  <span className="ml-auto shrink-0 pl-2 text-dim" aria-hidden>
+                    →
+                  </span>
+                </Link>
+              ))}
+            </div>
+
+            <p className="mt-8 text-[14px] leading-[1.6] text-dim">
+              All three together run ${TEAM_PRICE.toLocaleString("en-US")}/mo — roughly what
+              one human caller costs you today.{" "}
+              <Link href="/#pricing" className="font-medium text-brand hover:text-ink">
+                See full pricing →
+              </Link>
+            </p>
+          </Container>
+        </section>
+      </main>
+      <SiteFooter />
+    </>
+  );
+}

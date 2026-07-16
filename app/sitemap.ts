@@ -1,13 +1,16 @@
 import type { MetadataRoute } from "next";
+import { AGENTS } from "@/lib/agents";
 import { SITE_URL } from "@/lib/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
   return [
-    {
-      url: SITE_URL,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
+    { url: SITE_URL, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    ...AGENTS.map((a) => ({
+      url: `${SITE_URL}/${a.id}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
   ];
 }

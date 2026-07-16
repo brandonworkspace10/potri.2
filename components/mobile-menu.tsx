@@ -8,12 +8,12 @@ import { BOOKING_URL } from "@/lib/config";
 import { Wordmark } from "./ui";
 
 const LINKS = [
-  { label: "Calculator", href: "#calculator" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "The math", href: "#math" },
-  { label: "Integrations", href: "#integrations" },
-  { label: "Deployment", href: "#deployment" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Calculator", href: "/#calculator" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "The math", href: "/#math" },
+  { label: "Integrations", href: "/#integrations" },
+  { label: "Deployment", href: "/#deployment" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 export function MobileMenu() {
@@ -148,7 +148,7 @@ export function MobileMenu() {
                 {AGENTS.map((a) => (
                   <li key={a.id}>
                     <Link
-                      href={`#${a.id}`}
+                      href={`/${a.id}`}
                       onClick={close}
                       className="flex items-center gap-3.5 rounded-2xl border border-subtle bg-card p-4"
                     >
