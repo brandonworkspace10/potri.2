@@ -166,6 +166,8 @@ export function ParticleWave({ className = "" }: { className?: string }) {
 
     if (reduced) render();
     else start();
+    // first frame exists now — ease the field in rather than popping
+    container.style.opacity = "1";
 
     // 25k particles is not something to run while the section is off screen
     const io = new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop()), {
@@ -206,6 +208,7 @@ export function ParticleWave({ className = "" }: { className?: string }) {
     <div
       ref={containerRef}
       aria-hidden
+      style={{ opacity: 0, transition: "opacity 0.9s ease" }}
       className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
     />
   );

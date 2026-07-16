@@ -1,4 +1,13 @@
 import type { Metadata } from "next";
+import * as React from "react";
+
+// At runtime `react` resolves to Next's vendored canary, which exports
+// ViewTransition; stable @types/react doesn't declare it yet.
+const ViewTransition = (
+  React as unknown as {
+    ViewTransition: React.ComponentType<{ children: React.ReactNode }>;
+  }
+).ViewTransition;
 import { Geist, Geist_Mono } from "next/font/google";
 import { SITE_URL } from "@/lib/config";
 import "./globals.css";
@@ -15,7 +24,7 @@ const geistMono = Geist_Mono({
 
 const TITLE = "AI Cold Caller for Real Estate Investors & Wholesalers";
 const DESCRIPTION =
-  "Three AI employees for real estate investors: Andy dials and qualifies seller leads, Randy answers every call 24/7, Alyssa runs follow-up. Live in six days.";
+  "Three AI employees for real estate investors: Andy dials and qualifies seller leads, Randy answers every call 24/7, Alyssa runs follow-up. Live in under six days.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -48,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description:
-      "Three AI employees for real estate investors — outbound, inbound and follow-up. Live in six days.",
+      "Three AI employees for real estate investors — outbound, inbound and follow-up. Live in under six days.",
   },
   robots: {
     index: true,
@@ -68,7 +77,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-base text-ink">
-        {children}
+        <ViewTransition>{children}</ViewTransition>
       </body>
     </html>
   );

@@ -5,7 +5,7 @@ import { Container, SectionHeading } from "./ui";
 
 export function Team() {
   return (
-    <section id="team" className="relative scroll-mt-20 overflow-hidden border-y border-subtle bg-elevated py-16 sm:py-20 lg:py-28">
+    <section id="team" className="relative scroll-mt-20 overflow-hidden border-y border-subtle bg-elevated py-12 sm:py-20 lg:py-28">
       <ParticleWave />
       {/* keep the copy off the field */}
       <div
@@ -28,7 +28,7 @@ export function Team() {
             <article
               key={a.name}
               id={a.id}
-              className="flex scroll-mt-28 flex-col rounded-2xl border border-subtle bg-card p-6 sm:p-8"
+              className="flex scroll-mt-28 flex-col rounded-2xl border border-subtle bg-card p-5 sm:p-8"
             >
               <div className="flex items-center gap-3.5">
                 <div

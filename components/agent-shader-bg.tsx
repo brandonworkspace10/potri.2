@@ -43,6 +43,10 @@ export function AgentShaderBg({
   // Fall back to brand amber until the token resolves on the client.
   const [accent, setAccent] = useState("#ff8a34");
   const [reduced, setReduced] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  // ease the backdrop in on mount rather than popping when the lazy chunk lands
+  useEffect(() => setReady(true), []);
 
   useEffect(() => {
     const token = getComputedStyle(document.documentElement)
@@ -80,7 +84,12 @@ export function AgentShaderBg({
   }, [parallax, reduced]);
 
   return (
-    <div ref={ref} aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+    <div
+      ref={ref}
+      aria-hidden
+      style={{ opacity: ready ? 1 : 0, transition: "opacity 0.9s ease" }}
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+    >
       <div
         className="absolute inset-0 opacity-55"
         style={{

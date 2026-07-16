@@ -71,9 +71,9 @@ export default function ComparePage() {
             }}
           />
           <Container className="relative">
-            <div className="flex flex-col items-start py-16 sm:py-20 lg:py-24">
+            <div className="flex flex-col items-start py-12 sm:py-20 lg:py-24">
               <Eyebrow>The comparison</Eyebrow>
-              <h1 className="mt-5 max-w-[820px] text-[34px] font-bold leading-[1.04] tracking-[-0.04em] text-ink sm:text-[46px] lg:text-[54px]">
+              <h1 className="mt-5 max-w-[820px] text-[29px] font-bold leading-[1.08] tracking-[-0.035em] text-ink sm:text-[46px] lg:text-[54px]">
                 AI cold caller vs hiring a human:{" "}
                 <span className="text-brand">the real math</span>
               </h1>
@@ -91,10 +91,10 @@ export default function ComparePage() {
         </section>
 
         {/* the honest cost */}
-        <section className="py-16 sm:py-20 lg:py-24">
+        <section className="py-12 sm:py-20 lg:py-24">
           <Container>
             <Eyebrow>What a human caller costs</Eyebrow>
-            <h2 className="mt-4 max-w-[760px] text-[28px] font-bold leading-[1.12] tracking-[-0.03em] text-ink sm:text-[34px]">
+            <h2 className="mt-4 max-w-[760px] text-[23px] font-bold leading-[1.16] tracking-[-0.025em] text-ink sm:text-[34px]">
               The salary is the cheapest part of a human cold caller.
             </h2>
             <p className="mt-5 max-w-[660px] text-[15.5px] leading-[1.7] text-dim">
@@ -122,10 +122,10 @@ export default function ComparePage() {
         </section>
 
         {/* table */}
-        <section className="border-y border-subtle bg-elevated py-16 sm:py-20 lg:py-24">
+        <section className="border-y border-subtle bg-elevated py-12 sm:py-20 lg:py-24">
           <Container>
             <Eyebrow>Side by side</Eyebrow>
-            <h2 className="mt-4 text-[28px] font-bold leading-[1.12] tracking-[-0.03em] text-ink sm:text-[34px]">
+            <h2 className="mt-4 text-[23px] font-bold leading-[1.16] tracking-[-0.025em] text-ink sm:text-[34px]">
               One human caller vs the Potri team
             </h2>
 
@@ -205,10 +205,10 @@ export default function ComparePage() {
         </section>
 
         {/* where a human wins — the part most comparison pages leave out */}
-        <section className="py-16 sm:py-20 lg:py-24">
+        <section className="py-12 sm:py-20 lg:py-24">
           <Container>
             <Eyebrow>Where a human still wins</Eyebrow>
-            <h2 className="mt-4 max-w-[760px] text-[28px] font-bold leading-[1.12] tracking-[-0.03em] text-ink sm:text-[34px]">
+            <h2 className="mt-4 max-w-[760px] text-[23px] font-bold leading-[1.16] tracking-[-0.025em] text-ink sm:text-[34px]">
               Four things you should not hire an AI caller for.
             </h2>
             <p className="mt-5 max-w-[660px] text-[15.5px] leading-[1.7] text-dim">
@@ -232,11 +232,11 @@ export default function ComparePage() {
         </section>
 
         {/* verdict */}
-        <section className="border-y border-subtle bg-elevated py-16 sm:py-20 lg:py-24">
+        <section className="border-y border-subtle bg-elevated py-12 sm:py-20 lg:py-24">
           <Container>
             <div className="mx-auto max-w-[760px]">
               <Eyebrow>The verdict</Eyebrow>
-              <h2 className="mt-4 text-[28px] font-bold leading-[1.12] tracking-[-0.03em] text-ink sm:text-[34px]">
+              <h2 className="mt-4 text-[23px] font-bold leading-[1.16] tracking-[-0.025em] text-ink sm:text-[34px]">
                 Hire the AI for the funnel. Keep the human for the close.
               </h2>
               <div className="mt-6 flex flex-col gap-4 text-[15.5px] leading-[1.75] text-dim">
@@ -272,10 +272,10 @@ export default function ComparePage() {
         </section>
 
         {/* faq */}
-        <section className="py-16 sm:py-20 lg:py-24">
+        <section className="py-12 sm:py-20 lg:py-24">
           <Container>
             <Eyebrow>Questions</Eyebrow>
-            <h2 className="mt-4 text-[28px] font-bold leading-[1.12] tracking-[-0.03em] text-ink sm:text-[34px]">
+            <h2 className="mt-4 text-[23px] font-bold leading-[1.16] tracking-[-0.025em] text-ink sm:text-[34px]">
               AI vs human cold calling, answered
             </h2>
             <div className="mt-10 max-w-[860px] overflow-hidden rounded-2xl border border-subtle bg-elevated">
@@ -306,7 +306,7 @@ export default function ComparePage() {
         </section>
 
         {/* into the cluster */}
-        <section className="border-t border-subtle bg-elevated py-16 sm:py-20">
+        <section className="border-t border-subtle bg-elevated py-12 sm:py-20">
           <Container>
             <Eyebrow>Meet the team</Eyebrow>
             <h2 className="mt-4 text-[26px] font-bold tracking-[-0.03em] text-ink sm:text-[30px]">

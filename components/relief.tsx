@@ -10,7 +10,7 @@ const OUTCOMES = [
 
 export function Relief() {
   return (
-    <section className="relative overflow-hidden py-16 sm:py-20 lg:py-28">
+    <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28">
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[1100px] max-w-none -translate-x-1/2 -translate-y-1/2 blur-[80px]"
@@ -22,7 +22,7 @@ export function Relief() {
       <Container className="relative">
         <div className="flex flex-col items-center text-center">
           <Eyebrow>What changes</Eyebrow>
-          <h2 className="mt-4 max-w-[900px] text-[30px] font-bold leading-[1.18] tracking-[-0.03em] text-ink sm:text-[38px] lg:text-[42px]">
+          <h2 className="mt-4 max-w-[900px] text-[24px] font-bold leading-[1.2] tracking-[-0.03em] text-ink sm:text-[38px] lg:text-[42px]">
             Imagine waking up knowing every seller who called overnight was already{" "}
             <span className="text-brand">answered, qualified, logged, and booked</span>.
           </h2>

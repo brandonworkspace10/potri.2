@@ -203,6 +203,8 @@ export function DottedSurface({ className = "" }: { className?: string }) {
     } else {
       start();
     }
+    // first frame exists now — ease the field in rather than popping
+    container.style.opacity = "1";
 
     // No reason to burn a rAF loop while the hero is scrolled off screen
     const io = new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop()), {
@@ -245,6 +247,7 @@ export function DottedSurface({ className = "" }: { className?: string }) {
     <div
       ref={containerRef}
       aria-hidden
+      style={{ opacity: 0, transition: "opacity 0.9s ease" }}
       className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
     />
   );

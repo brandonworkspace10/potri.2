@@ -25,12 +25,12 @@ const PROBLEMS = [
 
 export function Problem() {
   return (
-    <section className="py-16 sm:py-20 lg:py-30">
+    <section className="py-12 sm:py-20 lg:py-30">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[400px_1fr] lg:gap-28">
           <div className="flex flex-col gap-5">
             <Eyebrow>The cost of doing nothing</Eyebrow>
-            <h2 className="text-[34px] font-bold leading-[1.06] tracking-[-0.035em] text-ink sm:text-[42px] lg:text-[46px]">
+            <h2 className="text-[27px] font-bold leading-[1.08] tracking-[-0.03em] text-ink sm:text-[42px] lg:text-[46px]">
               Every deal you lose
               <br />
               has a reason.

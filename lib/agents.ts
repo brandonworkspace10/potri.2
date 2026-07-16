@@ -60,11 +60,11 @@ export const AGENTS: Agent[] = [
     live: "Live in 2–4 days",
     price: "From $1,600/mo",
     page: {
-      title: "Andy — AI Outbound Caller for Real Estate",
+      title: "Andy — AI Cold Caller for Real Estate Investors",
       description:
         "Andy works your seller lead list all day, qualifies every prospect on the five pillars, and books qualified sellers into your calendar. From $1,600/mo.",
       headline: "Your lead list gets worked. All of it.",
-      lede: "Andy is the outbound half of your acquisitions team. He dials your seller leads, qualifies every one of them on the same five pillars, and puts the ones worth your time on your calendar — while you work the deals that are already live.",
+      lede: "Andy is the outbound half of your acquisitions team. He cold-calls your seller leads, qualifies every one of them on the same five pillars, and puts the ones worth your time on your calendar — while you work the deals that are already live.",
       accomplishes: [
         {
           title: "Every lead gets called",
@@ -140,7 +140,7 @@ export const AGENTS: Agent[] = [
       description:
         "Randy answers every inbound call around the clock — property questions answered, seller details captured, every caller qualified. From $1,200/mo.",
       headline: "The 11pm call gets answered.",
-      lede: "Randy is the inbound half of your acquisitions team. Every call that comes in gets a conversation instead of a beep — property questions answered, seller details captured, and the same qualification Andy runs, at any hour.",
+      lede: "Randy is your 24/7 AI receptionist — the inbound half of your acquisitions team. Every call that comes in gets a conversation instead of a beep — property questions answered, seller details captured, and the same qualification Andy runs, at any hour.",
       accomplishes: [
         {
           title: "Never a voicemail",

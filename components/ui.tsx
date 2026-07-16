@@ -84,11 +84,11 @@ export function SectionHeading({
   return (
     <div className={`flex flex-col gap-4 ${isCenter ? "items-center text-center" : "items-start"}`}>
       <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className="max-w-3xl text-[34px] font-bold leading-[1.06] tracking-[-0.035em] text-ink sm:text-[42px] lg:text-[48px]">
+      <h2 className="max-w-3xl text-[27px] font-bold leading-[1.08] tracking-[-0.03em] text-ink sm:text-[42px] lg:text-[48px]">
         {title}
       </h2>
       {sub ? (
-        <p className={`max-w-[660px] text-[17px] leading-[1.6] text-dim ${isCenter ? "" : "max-w-[440px]"}`}>
+        <p className={`max-w-[660px] text-[15px] leading-[1.6] text-dim sm:text-[17px] ${isCenter ? "" : "max-w-[440px]"}`}>
           {sub}
         </p>
       ) : null}

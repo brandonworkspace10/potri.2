@@ -35,7 +35,7 @@ const ITEMS = [
 
 export function Why() {
   return (
-    <section className="py-16 sm:py-20 lg:py-30">
+    <section className="py-12 sm:py-20 lg:py-30">
       <Container>
         <SectionHeading
           eyebrow="Why Potri wins"
@@ -53,7 +53,7 @@ export function Why() {
               <div
                 key={it.title}
                 className={[
-                  "flex flex-col gap-3 p-7 sm:p-9",
+                  "flex flex-col gap-3 p-5 sm:p-9",
                   // horizontal rules
                   i >= 1 ? "border-t border-subtle" : "",
                   i >= 2 ? "sm:border-t" : "",

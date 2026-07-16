@@ -45,7 +45,7 @@ export default function OgImage() {
             Your next deal shouldn&apos;t go to voicemail.
           </div>
           <div style={{ fontSize: 30, color: "#9ba1a9", lineHeight: 1.4 }}>
-            Three AI employees for real estate investors — live in six days.
+            Three AI employees for real estate investors — live in under six days.
           </div>
         </div>
 

@@ -3,7 +3,7 @@ import { Container, SectionHeading } from "./ui";
 
 export function Faq() {
   return (
-    <section id="faq" className="scroll-mt-20 py-16 sm:py-20 lg:py-28">
+    <section id="faq" className="scroll-mt-20 py-12 sm:py-20 lg:py-28">
       <Container>
         <SectionHeading
           eyebrow="Questions"

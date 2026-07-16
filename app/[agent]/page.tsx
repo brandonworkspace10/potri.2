@@ -88,7 +88,7 @@ export default async function AgentPage({ params }: Params) {
         <section className="relative overflow-hidden border-b border-subtle">
           <AgentShaderBg accentVar={a.accentVar} />
           <Container className="relative">
-            <div className="flex flex-col items-start py-16 sm:py-20 lg:py-24">
+            <div className="flex flex-col items-start py-12 sm:py-20 lg:py-24">
               <Link
                 href="/#team"
                 className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-dim transition-colors hover:text-ink"
@@ -115,7 +115,7 @@ export default async function AgentPage({ params }: Params) {
                 </h1>
               </div>
 
-              <p className="mt-8 max-w-[760px] text-[30px] font-bold leading-[1.1] tracking-[-0.035em] text-ink sm:text-[38px]">
+              <p className="mt-7 max-w-[760px] text-[25px] font-bold leading-[1.14] tracking-[-0.03em] text-ink sm:text-[38px]">
                 {a.page.headline}
               </p>
               <p className="mt-5 max-w-[640px] text-[16px] leading-[1.65] text-muted sm:text-[17px]">
@@ -139,12 +139,12 @@ export default async function AgentPage({ params }: Params) {
         </section>
 
         {/* what they accomplish */}
-        <section className="py-16 sm:py-20 lg:py-24">
+        <section className="py-12 sm:py-20 lg:py-24">
           <Container>
             <p className="font-mono text-[11px] font-medium uppercase tracking-[0.5em] text-brand">
               What {a.name} does
             </p>
-            <h2 className="mt-4 max-w-[720px] text-[28px] font-bold leading-[1.12] tracking-[-0.03em] text-ink sm:text-[34px]">
+            <h2 className="mt-4 max-w-[720px] text-[23px] font-bold leading-[1.16] tracking-[-0.025em] text-ink sm:text-[34px]">
               {a.desc}
             </h2>
 
@@ -167,7 +167,7 @@ export default async function AgentPage({ params }: Params) {
 
         {/* agent-specific feature block */}
         {a.page.callout ? (
-          <section className="border-y border-subtle bg-elevated py-16 sm:py-20 lg:py-24">
+          <section className="border-y border-subtle bg-elevated py-12 sm:py-20 lg:py-24">
             <Container>
               <div className="relative overflow-hidden rounded-2xl border border-subtle bg-card p-8 sm:p-11">
                 <div
@@ -209,12 +209,12 @@ export default async function AgentPage({ params }: Params) {
         ) : null}
 
         {/* how it helps you */}
-        <section className="border-y border-subtle bg-elevated py-16 sm:py-20 lg:py-24">
+        <section className="border-y border-subtle bg-elevated py-12 sm:py-20 lg:py-24">
           <Container>
             <p className="font-mono text-[11px] font-medium uppercase tracking-[0.5em] text-brand">
               How {a.name} helps you
             </p>
-            <h2 className="mt-4 max-w-[720px] text-[28px] font-bold leading-[1.12] tracking-[-0.03em] text-ink sm:text-[34px]">
+            <h2 className="mt-4 max-w-[720px] text-[23px] font-bold leading-[1.16] tracking-[-0.025em] text-ink sm:text-[34px]">
               What it actually changes about your week.
             </h2>
 
@@ -237,7 +237,7 @@ export default async function AgentPage({ params }: Params) {
         </section>
 
         {/* capability list + price */}
-        <section className="py-16 sm:py-20 lg:py-24">
+        <section className="py-12 sm:py-20 lg:py-24">
           <Container>
             <div className="grid gap-5 lg:grid-cols-[1fr_380px]">
               <div className="rounded-2xl border border-subtle bg-card p-8">
@@ -279,12 +279,12 @@ export default async function AgentPage({ params }: Params) {
         </section>
 
         {/* the other two */}
-        <section className="border-t border-subtle bg-elevated py-16 sm:py-20">
+        <section className="border-t border-subtle bg-elevated py-12 sm:py-20">
           <Container>
             <p className="font-mono text-[11px] font-medium uppercase tracking-[0.5em] text-brand">
               The rest of the team
             </p>
-            <h2 className="mt-4 text-[26px] font-bold tracking-[-0.03em] text-ink sm:text-[30px]">
+            <h2 className="mt-4 text-[22px] font-bold tracking-[-0.025em] text-ink sm:text-[30px]">
               {a.name} works best with the other two.
             </h2>
 

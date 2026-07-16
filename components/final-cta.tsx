@@ -3,7 +3,7 @@ import { Container, PrimaryButton, SecondaryButton } from "./ui";
 
 export function FinalCta() {
   return (
-    <section className="relative overflow-hidden py-20 sm:py-24 lg:py-36">
+    <section className="relative overflow-hidden py-16 sm:py-24 lg:py-36">
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/2 h-[560px] w-[1200px] max-w-none -translate-x-1/2 -translate-y-1/2 blur-[70px]"
@@ -14,7 +14,7 @@ export function FinalCta() {
       />
       <Container className="relative">
         <div className="flex flex-col items-center text-center">
-          <h2 className="max-w-[900px] text-[36px] font-bold leading-[1.05] tracking-[-0.04em] text-ink sm:text-[48px] lg:text-[58px]">
+          <h2 className="max-w-[900px] text-[30px] font-bold leading-[1.06] tracking-[-0.04em] text-ink sm:text-[48px] lg:text-[58px]">
             Every unanswered call is a deal
             <br className="hidden sm:block" /> for{" "}
             <span className="text-brand">another investor</span>.
@@ -29,7 +29,7 @@ export function FinalCta() {
             <SecondaryButton href="#calculator">See what it&apos;s worth</SecondaryButton>
           </div>
           <p className="mt-7 text-[13.5px] text-dim">
-            Live in six days · You approve every script before a real lead is dialed
+            Live in under six days · You approve every script before a real lead is dialed
           </p>
         </div>
       </Container>
