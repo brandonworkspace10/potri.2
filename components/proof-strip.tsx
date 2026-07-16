@@ -3,11 +3,13 @@ import path from "node:path";
 import { CRM_TOOLS, OPS_TOOLS, type Tool } from "@/lib/tools";
 import { Container } from "./ui";
 
+// Labels are kept short enough to sit on one line — a wrapping label drags
+// every card in the row to its height and pads the short ones with dead space.
 const STATS = [
-  { big: "168 hrs", label: "Covered every week — vs 40 from a human", tone: "text-brand" },
-  { big: "6 days", label: "Signed Monday, working by Saturday", tone: "text-randy" },
-  { big: "EN + ES", label: "Fluent bilingual on every single call", tone: "text-alyssa" },
-  { big: "$5,200", label: "Flat per month for the full three-agent team", tone: "text-ink" },
+  { big: "168 hrs", label: "Covered weekly, vs a human's 40", tone: "text-brand" },
+  { big: "6 days", label: "Signed Monday, live Saturday", tone: "text-randy" },
+  { big: "EN + ES", label: "Fluent on every single call", tone: "text-alyssa" },
+  { big: "$5,200", label: "Flat monthly, all three agents", tone: "text-ink" },
 ];
 
 const EXT = ["svg", "png", "webp"] as const;
@@ -79,7 +81,7 @@ export function ProofStrip() {
       className="scroll-mt-20 border-y border-subtle bg-elevated py-8 sm:py-10"
     >
       <Container>
-        <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-2.5 sm:grid-cols-2 xl:grid-cols-4">
           {STATS.map((s) => (
             <div key={s.big} className="rounded-xl border border-subtle bg-card p-4 sm:p-5">
               <p
