@@ -8,7 +8,7 @@ const AMOUNT_X = 160;
 const AMOUNT_Y = 160;
 
 /** Wave phase per second — time-based so it matches on 60Hz and 120Hz. */
-const WAVE_SPEED = 1.1;
+const WAVE_SPEED = 0.7;
 const MAX_DELTA = 1 / 30;
 
 /** three.js colour channels are 0–1, CSS tokens are hex. */
