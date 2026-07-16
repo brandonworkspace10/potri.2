@@ -92,6 +92,64 @@ input[type="range"]:focus-visible::-moz-range-thumb {
   box-shadow: 0 0 0 2px var(--color-brand);
 }
 
+/* ---- Tool marquee ----
+   The list is rendered twice and travels exactly -50%, so the second copy
+   lands where the first began and the loop is seamless. Spacing lives on the
+   items rather than a flex gap — a gap would make the two copies unequal
+   widths and the loop would visibly drift. */
+
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 7%,
+    black 93%,
+    transparent
+  );
+  mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: translate;
+}
+
+.marquee-track > * {
+  margin-right: 12px;
+}
+
+.marquee-l {
+  animation: marquee-l 52s linear infinite;
+}
+
+.marquee-r {
+  animation: marquee-r 58s linear infinite;
+}
+
+@keyframes marquee-l {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: -50% 0;
+  }
+}
+
+@keyframes marquee-r {
+  from {
+    translate: -50% 0;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
 /* ---- Nav tab underline ----
    Two halves that grow inward from the outer edges and meet in the middle.
    Distinct from the dropdown rows below, whose line grows outward from the
@@ -253,5 +311,10 @@ input[type="range"]:focus-visible::-moz-range-thumb {
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+  /* the blanket rule above would fast-forward the marquee to its end frame —
+     stop it outright so the row simply sits still and stays readable */
+  .marquee-track {
+    animation: none !important;
   }
 }

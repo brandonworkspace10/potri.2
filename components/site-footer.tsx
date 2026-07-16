@@ -7,6 +7,7 @@ const LINKS = [
   { label: "Calculator", href: "#calculator" },
   { label: "Pricing", href: "#pricing" },
   { label: "The math", href: "#math" },
+  { label: "Integrations", href: "#integrations" },
   { label: "Deployment", href: "#deployment" },
   { label: "FAQ", href: "#faq" },
   { label: "Book a call", href: BOOKING_URL },
