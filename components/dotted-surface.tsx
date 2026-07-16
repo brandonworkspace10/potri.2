@@ -16,6 +16,31 @@ const WAVE_SPEED = 1.8;
 /** Cap the frame delta so resuming from a pause eases in instead of jumping. */
 const MAX_DELTA = 1 / 30;
 
+/** Resting dot colour. */
+const BASE_COLOUR: [number, number, number] = [0.5, 0.52, 0.56];
+
+/** Share of dots that flare in the brand colour. */
+const FLARE_RATIO = 0.3;
+
+/** Shapes the flare curve — higher is a briefer, sharper blink than a pulse. */
+const FLARE_SHARPNESS = 4;
+
+/**
+ * Peak brightness multiplier. Plain amber has roughly the same luminance as the
+ * resting grey, so a dot would change hue without ever looking like it lit up.
+ * Vertex colours may exceed 1 — the shader clamps after alpha — so overshooting
+ * is what actually makes it read as a flare.
+ */
+const FLARE_BOOST = 1.6;
+
+/** three.js colour channels are 0–1, CSS tokens are hex. */
+function hexToRgb01(hex: string): [number, number, number] | null {
+  const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
+  if (!m) return null;
+  const n = parseInt(m[1], 16);
+  return [((n >> 16) & 0xff) / 255, ((n >> 8) & 0xff) / 255, (n & 0xff) / 255];
+}
+
 /**
  * Animated dot-wave field for the hero backdrop.
  * Scoped to its positioned parent — it is not a page-wide fixed layer.
@@ -46,8 +71,27 @@ export function DottedSurface({ className = "" }: { className?: string }) {
     renderer.setClearColor(0x000000, 0);
     container.appendChild(renderer.domElement);
 
+    // Read the brand colour from the design token so the flare can't drift
+    // from the rest of the palette.
+    const flareColour =
+      hexToRgb01(
+        getComputedStyle(document.documentElement).getPropertyValue("--color-brand"),
+      ) ?? [1, 0.5412, 0.2039];
+    const peak: [number, number, number] = [
+      flareColour[0] * FLARE_BOOST,
+      flareColour[1] * FLARE_BOOST,
+      flareColour[2] * FLARE_BOOST,
+    ];
+
+    const total = AMOUNTX * AMOUNTY;
     const positions: number[] = [];
     const colors: number[] = [];
+    // Per-dot flare state. Each picked dot gets its own phase and speed so the
+    // field twinkles instead of pulsing in unison.
+    const flares = new Uint8Array(total);
+    const phase = new Float32Array(total);
+    const rate = new Float32Array(total);
+
     for (let ix = 0; ix < AMOUNTX; ix++) {
       for (let iy = 0; iy < AMOUNTY; iy++) {
         positions.push(
@@ -56,8 +100,15 @@ export function DottedSurface({ className = "" }: { className?: string }) {
           iy * SEPARATION - (AMOUNTY * SEPARATION) / 2,
         );
         // three.js colour channels are 0–1; 0–255 values clamp to pure white
-        colors.push(0.5, 0.52, 0.56);
+        colors.push(...BASE_COLOUR);
       }
+    }
+
+    for (let i = 0; i < total; i++) {
+      if (Math.random() >= FLARE_RATIO) continue;
+      flares[i] = 1;
+      phase[i] = Math.random() * Math.PI * 2;
+      rate[i] = 0.25 + Math.random() * 0.55;
     }
 
     const geometry = new THREE.BufferGeometry();
@@ -78,7 +129,11 @@ export function DottedSurface({ className = "" }: { className?: string }) {
     const positionAttribute = geometry.attributes.position;
     const array = positionAttribute.array as Float32Array;
 
+    const colourAttribute = geometry.attributes.color;
+    const colourArray = colourAttribute.array as Float32Array;
+
     let count = 0;
+    let elapsed = 0;
     let frameId = 0;
     let running = false;
     const clock = new THREE.Clock();
@@ -95,10 +150,27 @@ export function DottedSurface({ className = "" }: { className?: string }) {
       positionAttribute.needsUpdate = true;
     };
 
+    const flare = (t: number) => {
+      for (let i = 0; i < total; i++) {
+        if (!flares[i]) continue;
+        // sin raised to a power sits near zero most of the cycle and spikes
+        // briefly — a blink rather than a throb
+        const s = Math.pow(Math.max(0, Math.sin(t * rate[i] + phase[i])), FLARE_SHARPNESS);
+        const j = i * 3;
+        colourArray[j] = BASE_COLOUR[0] + (peak[0] - BASE_COLOUR[0]) * s;
+        colourArray[j + 1] = BASE_COLOUR[1] + (peak[1] - BASE_COLOUR[1]) * s;
+        colourArray[j + 2] = BASE_COLOUR[2] + (peak[2] - BASE_COLOUR[2]) * s;
+      }
+      colourAttribute.needsUpdate = true;
+    };
+
     const animate = () => {
       frameId = requestAnimationFrame(animate);
-      count += Math.min(clock.getDelta(), MAX_DELTA) * WAVE_SPEED;
+      const dt = Math.min(clock.getDelta(), MAX_DELTA);
+      elapsed += dt;
+      count += dt * WAVE_SPEED;
       wave();
+      flare(elapsed);
       renderer.render(scene, camera);
     };
 
@@ -117,6 +189,7 @@ export function DottedSurface({ className = "" }: { className?: string }) {
     if (reduced) {
       // honour the OS setting: draw the field once, hold it still
       wave();
+      flare(0);
       renderer.render(scene, camera);
     } else {
       start();
