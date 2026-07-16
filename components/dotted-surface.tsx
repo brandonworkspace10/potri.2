@@ -8,6 +8,15 @@ const AMOUNTX = 40;
 const AMOUNTY = 60;
 
 /**
+ * Wave phase advanced per second. Time-based rather than per-frame so the
+ * speed is identical on 60Hz and 120Hz displays.
+ */
+const WAVE_SPEED = 1.8;
+
+/** Cap the frame delta so resuming from a pause eases in instead of jumping. */
+const MAX_DELTA = 1 / 30;
+
+/**
  * Animated dot-wave field for the hero backdrop.
  * Scoped to its positioned parent — it is not a page-wide fixed layer.
  */
@@ -72,6 +81,7 @@ export function DottedSurface({ className = "" }: { className?: string }) {
     let count = 0;
     let frameId = 0;
     let running = false;
+    const clock = new THREE.Clock();
 
     const wave = () => {
       let i = 0;
@@ -87,14 +97,15 @@ export function DottedSurface({ className = "" }: { className?: string }) {
 
     const animate = () => {
       frameId = requestAnimationFrame(animate);
+      count += Math.min(clock.getDelta(), MAX_DELTA) * WAVE_SPEED;
       wave();
       renderer.render(scene, camera);
-      count += 0.1;
     };
 
     const start = () => {
       if (running || reduced) return;
       running = true;
+      clock.getDelta(); // drop the idle time so the wave resumes where it paused
       animate();
     };
     const stop = () => {
