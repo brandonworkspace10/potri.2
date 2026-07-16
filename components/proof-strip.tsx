@@ -30,18 +30,21 @@ function resolveLogos(): Map<string, string> {
 
 function Chip({ tool, logo }: { tool: Tool; logo?: string }) {
   return (
-    <span className="flex h-[54px] shrink-0 items-center justify-center whitespace-nowrap rounded-xl border border-subtle bg-card px-5">
+    <span className="flex h-[54px] shrink-0 items-center gap-2.5 whitespace-nowrap rounded-xl border border-subtle bg-card px-4">
       {logo ? (
-        // eslint-disable-next-line @next/next/no-img-element -- static marquee art, no layout shift to solve
+        // eslint-disable-next-line @next/next/no-img-element -- fixed-size marquee art; next/image buys nothing here
         <img
           src={logo}
-          alt={tool.name}
+          alt=""
+          width={22}
           height={22}
-          className="h-[22px] w-auto opacity-70 grayscale transition duration-200 hover:opacity-100 hover:grayscale-0"
+          decoding="async"
+          // several of these marks ship on a white plate — rounding reads as an
+          // app icon rather than a white box punched into the card
+          className="h-[22px] w-[22px] shrink-0 rounded-[5px] object-contain"
         />
-      ) : (
-        <span className="text-[14px] font-medium text-muted">{tool.name}</span>
-      )}
+      ) : null}
+      <span className="text-[14px] font-medium text-muted">{tool.name}</span>
     </span>
   );
 }
@@ -73,24 +76,24 @@ export function ProofStrip() {
   return (
     <section
       id="integrations"
-      className="scroll-mt-20 border-y border-subtle bg-elevated py-10 sm:py-12"
+      className="scroll-mt-20 border-y border-subtle bg-elevated py-8 sm:py-10"
     >
       <Container>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((s) => (
-            <div key={s.big} className="rounded-2xl border border-subtle bg-card p-6 sm:p-7">
+            <div key={s.big} className="rounded-xl border border-subtle bg-card p-4 sm:p-5">
               <p
-                className={`text-[30px] font-semibold tracking-[-0.035em] sm:text-[34px] ${s.tone}`}
+                className={`text-[21px] font-semibold tracking-[-0.03em] sm:text-[23px] ${s.tone}`}
               >
                 {s.big}
               </p>
-              <p className="mt-2 text-sm leading-[1.45] text-dim">{s.label}</p>
+              <p className="mt-1 text-[12.5px] leading-[1.4] text-dim">{s.label}</p>
             </div>
           ))}
         </div>
       </Container>
 
-      <div className="mt-10 sm:mt-12">
+      <div className="mt-8 sm:mt-10">
         <Container>
           <p className="text-center font-mono text-[10px] font-medium uppercase tracking-[0.32em] text-dim">
             Connects with the tools you already run

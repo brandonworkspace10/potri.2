@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { AGENTS } from "@/lib/agents";
 import { BOOKING_URL } from "@/lib/config";
+import { MobileMenu } from "./mobile-menu";
 import { NavDropdownFx } from "./nav-dropdown-fx";
 import { Container, Wordmark } from "./ui";
 
@@ -131,12 +132,15 @@ export function SiteNav() {
             ))}
           </ul>
 
-          <Link
-            href={BOOKING_URL}
-            className="shrink-0 rounded-lg bg-ink px-4 py-2.5 text-sm font-semibold tracking-[-0.01em] text-base transition-colors hover:bg-white"
-          >
-            Book a scoping call
-          </Link>
+          <div className="flex shrink-0 items-center gap-2">
+            <Link
+              href={BOOKING_URL}
+              className="hidden rounded-lg bg-ink px-4 py-2.5 text-sm font-semibold tracking-[-0.01em] text-base transition-colors hover:bg-white sm:block"
+            >
+              Book a scoping call
+            </Link>
+            <MobileMenu />
+          </div>
         </nav>
       </Container>
     </header>
