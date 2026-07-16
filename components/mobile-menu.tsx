@@ -14,6 +14,7 @@ const LINKS = [
   { label: "Integrations", href: "/#integrations" },
   { label: "Deployment", href: "/#deployment" },
   { label: "FAQ", href: "/#faq" },
+  { label: "AI vs human", href: "/ai-vs-human-cold-caller" },
 ];
 
 export function MobileMenu() {

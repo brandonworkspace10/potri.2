@@ -92,6 +92,7 @@ ${faq}
 ## Pages
 
 - [Home](${SITE_URL}/) — positioning, ROI calculator, pricing, FAQ
+- [AI cold caller vs hiring a human](${SITE_URL}/ai-vs-human-cold-caller) — cost comparison, and where a human is still better
 - [Andy — AI outbound acquisitions caller](${SITE_URL}/andy)
 - [Randy — 24/7 AI inbound receptionist](${SITE_URL}/randy)
 - [Alyssa — AI follow-up and back office](${SITE_URL}/alyssa)
