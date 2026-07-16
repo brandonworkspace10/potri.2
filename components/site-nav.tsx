@@ -58,37 +58,32 @@ function TeamMenu() {
           "group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100",
         ].join(" ")}
       >
-        <div className="w-[348px] rounded-2xl border border-subtle bg-card p-2.5 shadow-2xl shadow-black/70">
+        <div className="w-[312px] rounded-2xl border border-subtle bg-card p-2 shadow-2xl shadow-black/70">
           {AGENTS.map((a) => (
             <Link
               key={a.id}
               href={`#${a.id}`}
               // --dd-accent colours this row's growing line with the agent's own hue
               style={{ "--dd-accent": `var(${a.accentVar})` } as CSSProperties}
-              className="dd-row dd-item flex items-center gap-3.5 rounded-xl px-3 pb-3.5 pt-3 focus-visible:outline-none"
+              className="dd-row dd-item flex items-center gap-3 rounded-lg px-2.5 pb-3 pt-2.5 focus-visible:outline-none"
             >
               <span
-                className={`dd-tile flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[10px] text-[16px] font-semibold text-base ${a.tile}`}
+                className={`flex h-[32px] w-[32px] shrink-0 items-center justify-center rounded-lg text-[13px] font-semibold text-base ${a.tile}`}
                 aria-hidden
               >
                 {a.mono}
               </span>
 
-              <span className="flex min-w-0 flex-col gap-1.5">
-                {/* the name is the least useful part — demote it to a kicker */}
-                <span className="font-mono text-[9px] font-medium uppercase leading-none tracking-[0.22em] text-dim">
+              <span className="flex min-w-0 flex-col gap-[3px]">
+                <span className="text-[13px] font-semibold leading-none tracking-[-0.01em] text-ink">
                   {a.name}
                 </span>
                 <span
-                  className={`text-[15px] font-semibold leading-none tracking-[-0.02em] ${a.accent}`}
+                  className={`font-mono text-[8.5px] font-medium uppercase leading-none tracking-[0.2em] ${a.accent}`}
                 >
                   {a.role}
                 </span>
-                <span className="text-[12px] leading-[1.35] text-muted">{a.blurb}</span>
-              </span>
-
-              <span className="dd-arrow ml-auto shrink-0 self-center pl-2 text-[13px] text-dim" aria-hidden>
-                →
+                <span className="text-[11.5px] leading-[1.3] text-dim">{a.blurb}</span>
               </span>
             </Link>
           ))}
