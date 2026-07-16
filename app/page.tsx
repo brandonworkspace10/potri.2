@@ -2,7 +2,6 @@ import { Deployment } from "@/components/deployment";
 import { Faq } from "@/components/faq";
 import { FinalCta } from "@/components/final-cta";
 import { Hero } from "@/components/hero";
-import { Integrations } from "@/components/integrations";
 import { MathSection } from "@/components/math";
 import { Pricing } from "@/components/pricing";
 import { Problem } from "@/components/problem";
@@ -24,7 +23,6 @@ export default function Home() {
         <Problem />
         <Relief />
         <Team />
-        <Integrations />
         <Why />
         <RoiCalculator />
         <MathSection />
