@@ -31,15 +31,12 @@ business decision before code can help.
 
 ## Blocked on business decisions — code can't fix these
 
-1. **Two live sites both branded Potri at 3.5× different prices.**
-   real-lead-in.vercel.app answers "How much does Potri cost?" with $697–$1,497
-   in its FAQ schema; this site says $5,200. Search engines and AI assistants
-   will see both, and the higher price reads as the wrong one. Decide which
-   site owns the brand before spending on either's SEO.
-2. **`SITE_URL` is a guess** (`https://potri.vercel.app` in `lib/config.ts`).
-   Canonicals, sitemap, OG URLs and JSON-LD `@id`s all derive from it. If the
-   real deploy lands on another domain, every canonical points at a URL that
-   isn't ours. One-line fix once the domain exists.
+1. ~~Two live sites both branded Potri~~ **Resolved 2026-07-16**:
+   real-lead-in.vercel.app was a test production; this repo is the real one
+   and `potri.com` connects to it. Once DNS is live, take the test deployment
+   offline (or noindex it) so its $697–$1,497 FAQ schema stops answering
+   "how much does Potri cost".
+2. ~~`SITE_URL` is a guess~~ **Resolved**: set to `https://potri.com`.
 3. **Two FAQ answers not written because the policy doesn't exist yet:**
    "Will sellers know they're talking to AI?" and "Is this TCPA compliant?"
    Both are top objections and strong AEO queries. Need Brandon's actual
