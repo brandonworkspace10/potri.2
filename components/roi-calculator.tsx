@@ -16,13 +16,6 @@ const money = (n: number) =>
     maximumFractionDigits: 0,
   }).format(n);
 
-const money2 = (n: number) =>
-  new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 2,
-  }).format(n);
-
 function Slider({
   label,
   value,
@@ -98,9 +91,11 @@ export function RoiCalculator() {
   const [callers, setCallers] = useState(1);
   const [costPerCaller, setCostPerCaller] = useState(5000);
   const [dealProfit, setDealProfit] = useState(25000);
-  const [leads, setLeads] = useState(400);
-  // visitor-supplied assumptions — deliberately theirs, not ours
-  const [missedCalls, setMissedCalls] = useState(25);
+  // Visitor-supplied assumptions — deliberately theirs, not ours.
+  // Asking what they ANSWER rather than what they miss: nobody can count the
+  // calls they never picked up, but everyone can estimate their own coverage.
+  const [inboundCalls, setInboundCalls] = useState(120);
+  const [answerRate, setAnswerRate] = useState(65);
   const [closeRate, setCloseRate] = useState(5);
 
   const r = useMemo(() => {
@@ -109,8 +104,8 @@ export function RoiCalculator() {
     const deltaAnnual = deltaMonthly * 12;
     const humanHours = callers * HUMAN_HOURS_PER_WEEK;
 
-    const potriAnnual = TEAM_PRICE * 12;
-    const dealsRecoveredPerYear = missedCalls * 12 * (closeRate / 100);
+    const missedPerMonth = inboundCalls * (1 - answerRate / 100);
+    const dealsRecoveredPerYear = missedPerMonth * 12 * (closeRate / 100);
     const upsideAnnual = dealsRecoveredPerYear * dealProfit;
 
     return {
@@ -118,18 +113,21 @@ export function RoiCalculator() {
       deltaMonthly,
       deltaAnnual,
       humanHours,
-      potriAnnual,
+      potriAnnual: TEAM_PRICE * 12,
+      missedPerMonth,
       dealsRecoveredPerYear,
       upsideAnnual,
-      netAnnual: upsideAnnual - potriAnnual,
-      costPerLeadHuman: leads > 0 ? humanMonthly / leads : 0,
-      costPerLeadPotri: leads > 0 ? TEAM_PRICE / leads : 0,
+      // The payroll delta already nets Potri's price against what they spend
+      // today, so adding the upside to it gives the whole picture. Subtracting
+      // Potri's full cost here instead would bill them for a team they were
+      // already paying for.
+      netAnnual: deltaAnnual + upsideAnnual,
       // how long one extra closed deal pays for the team
       monthsCoveredByOneDeal: dealProfit / TEAM_PRICE,
       // extra deals per year required for the team to pay for itself
       dealsPerYearToBreakEven: (TEAM_PRICE * 12) / dealProfit,
     };
-  }, [callers, costPerCaller, dealProfit, leads, missedCalls, closeRate]);
+  }, [callers, costPerCaller, dealProfit, inboundCalls, answerRate, closeRate]);
 
   const cheaper = r.deltaMonthly > 0;
   const same = r.deltaMonthly === 0;
@@ -169,15 +167,6 @@ export function RoiCalculator() {
               onChange={setCostPerCaller}
             />
             <Slider
-              label="Seller leads / month"
-              value={leads}
-              min={50}
-              max={2000}
-              step={50}
-              display={leads.toLocaleString("en-US")}
-              onChange={setLeads}
-            />
-            <Slider
               label="Average profit per closed deal"
               value={dealProfit}
               min={5000}
@@ -194,13 +183,22 @@ export function RoiCalculator() {
             </div>
 
             <Slider
-              label="Calls you miss each month"
-              value={missedCalls}
+              label="Inbound calls / month"
+              value={inboundCalls}
               min={0}
-              max={200}
+              max={600}
+              step={10}
+              display={`${inboundCalls} calls`}
+              onChange={setInboundCalls}
+            />
+            <Slider
+              label="Calls you answer today"
+              value={answerRate}
+              min={10}
+              max={100}
               step={5}
-              display={`${missedCalls} calls`}
-              onChange={setMissedCalls}
+              display={`${answerRate}%`}
+              onChange={setAnswerRate}
             />
             <Slider
               label="Your close rate on qualified sellers"
@@ -323,9 +321,30 @@ export function RoiCalculator() {
                 <span className="font-medium text-muted">
                   These are your assumptions, not our promises.
                 </span>{" "}
-                {missedCalls} missed calls a month closing at {closeRate}% is your number,
-                not ours. Potri answers, qualifies and follows up — it can&apos;t make a
-                seller sell.
+                Answering {answerRate}% of {inboundCalls} calls leaves{" "}
+                {Math.round(r.missedPerMonth)} missed a month; closing them at {closeRate}%
+                is your number, not ours. Potri answers, qualifies and follows up — it
+                can&apos;t make a seller sell.
+              </p>
+            </div>
+
+            {/* the whole picture: payroll change and recovered deals together */}
+            <div className="border-b border-subtle bg-raised px-6 py-7 sm:px-8">
+              <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-dim">
+                Net annual impact
+              </p>
+              <p
+                className={`mt-2 text-[44px] font-bold leading-none tracking-[-0.04em] tabular-nums ${
+                  r.netAnnual >= 0 ? "text-alyssa" : "text-brand"
+                }`}
+              >
+                {r.netAnnual >= 0 ? "+" : "−"}
+                {money(Math.abs(r.netAnnual))}
+              </p>
+              <p className="mt-2.5 max-w-[640px] text-[13.5px] leading-[1.5] text-muted">
+                Your payroll change ({cheaper ? "−" : "+"}
+                {money(Math.abs(r.deltaAnnual))}/yr) plus the deals above. Potri&apos;s
+                price is already inside that first figure.
               </p>
             </div>
 
@@ -340,9 +359,9 @@ export function RoiCalculator() {
               </div>
               <div className="sm:border-b sm:border-l sm:border-subtle lg:border-b-0">
                 <Metric
-                  label="Cost per lead"
-                  value={`${money2(r.costPerLeadHuman)} → ${money2(r.costPerLeadPotri)}`}
-                  hint={`Across ${leads.toLocaleString("en-US")} leads/mo`}
+                  label="Calls missed"
+                  value={`${Math.round(r.missedPerMonth)}/mo`}
+                  hint={`Of ${inboundCalls} inbound at ${answerRate}% answered`}
                 />
               </div>
               <div className="sm:border-subtle lg:border-l">
@@ -364,9 +383,12 @@ export function RoiCalculator() {
             </div>
 
             <div className="mt-auto flex flex-col items-start gap-4 border-t border-subtle p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-              <p className="max-w-[420px] text-[13px] leading-[1.5] text-dim">
-                Bring these numbers to the call and we&apos;ll scope the exact build
-                against them.
+              <p className="max-w-[440px] text-[13px] leading-[1.5] text-dim">
+                Bring these numbers to the call — we&apos;ll scope the exact build against{" "}
+                <span className="font-medium text-muted">
+                  {Math.round(r.missedPerMonth)} missed calls a month
+                </span>{" "}
+                and tell you honestly whether it clears.
               </p>
               <PrimaryButton href={BOOKING_URL}>Book a scoping call</PrimaryButton>
             </div>
