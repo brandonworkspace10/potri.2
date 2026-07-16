@@ -1,11 +1,22 @@
 import Link from "next/link";
 import { AGENTS } from "@/lib/agents";
+import { ParticleWave } from "./particle-wave";
 import { Container, SectionHeading } from "./ui";
 
 export function Team() {
   return (
-    <section id="team" className="scroll-mt-20 border-y border-subtle bg-elevated py-16 sm:py-20 lg:py-28">
-      <Container>
+    <section id="team" className="relative scroll-mt-20 overflow-hidden border-y border-subtle bg-elevated py-16 sm:py-20 lg:py-28">
+      <ParticleWave />
+      {/* keep the copy off the field */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, var(--color-elevated) 0%, color-mix(in srgb, var(--color-elevated) 62%, transparent) 20%, color-mix(in srgb, var(--color-elevated) 34%, transparent) 52%, color-mix(in srgb, var(--color-elevated) 62%, transparent) 84%, var(--color-elevated) 100%)",
+        }}
+      />
+      <Container className="relative">
         <SectionHeading
           eyebrow="The team"
           title="Three employees. Three jobs."
