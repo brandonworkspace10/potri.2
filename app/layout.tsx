@@ -13,14 +13,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const TITLE = "AI Cold Caller & Receptionist for Real Estate Wholesalers | Potri";
+const TITLE = "AI Cold Caller for Real Estate Investors & Wholesalers";
 const DESCRIPTION =
-  "Potri is three AI employees for real estate investors and wholesalers. Andy dials and qualifies seller leads, Randy answers every inbound call 24/7, Alyssa runs follow-up. English and Spanish. Live in six days from $1,200/mo.";
+  "Three AI employees for real estate investors: Andy dials and qualifies seller leads, Randy answers every call 24/7, Alyssa runs follow-up. Live in six days.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: TITLE,
+    default: `${TITLE} | Potri`,
     template: "%s | Potri",
   },
   description: DESCRIPTION,

@@ -60,9 +60,9 @@ export const AGENTS: Agent[] = [
     live: "Live in 2–4 days",
     price: "From $1,600/mo",
     page: {
-      title: "Andy — AI outbound acquisitions caller for real estate investors",
+      title: "Andy — AI Outbound Caller for Real Estate",
       description:
-        "Andy works your seller lead list all day, qualifies every prospect on the five pillars, and books qualified sellers straight into your calendar. English and Spanish. Live in 2–4 days from $1,600/mo.",
+        "Andy works your seller lead list all day, qualifies every prospect on the five pillars, and books qualified sellers into your calendar. From $1,600/mo.",
       headline: "Your lead list gets worked. All of it.",
       lede: "Andy is the outbound half of your acquisitions team. He dials your seller leads, qualifies every one of them on the same five pillars, and puts the ones worth your time on your calendar — while you work the deals that are already live.",
       accomplishes: [
@@ -136,9 +136,9 @@ export const AGENTS: Agent[] = [
     live: "Live in 1–3 days",
     price: "From $1,200/mo",
     page: {
-      title: "Randy — 24/7 AI inbound receptionist for real estate investors",
+      title: "Randy — 24/7 AI Receptionist for Real Estate",
       description:
-        "Randy answers every inbound call around the clock, answers property questions, captures seller details, and qualifies on the same five pillars as Andy. English and Spanish. Live in 1–3 days from $1,200/mo.",
+        "Randy answers every inbound call around the clock — property questions answered, seller details captured, every caller qualified. From $1,200/mo.",
       headline: "The 11pm call gets answered.",
       lede: "Randy is the inbound half of your acquisitions team. Every call that comes in gets a conversation instead of a beep — property questions answered, seller details captured, and the same qualification Andy runs, at any hour.",
       accomplishes: [
@@ -201,9 +201,9 @@ export const AGENTS: Agent[] = [
     live: "Live in <7 days",
     price: "From $1,500/mo",
     page: {
-      title: "Alyssa — AI back office and follow-up for real estate investors",
+      title: "Alyssa — AI Follow-Up & Back Office for Real Estate",
       description:
-        "Alyssa runs email and SMS follow-up sequences, inbox organization and CRM hygiene, custom-built around how your operation actually runs. Live in under 7 days from $1,500/mo.",
+        "Alyssa runs email and SMS follow-up, inbox organization and CRM hygiene, built around how your operation actually runs. From $1,500/mo.",
       headline: "The one your competitors don’t have.",
       lede: "Alyssa works behind the scenes. Follow-up sequences, inbox organization, CRM hygiene — the operational work that decides whether a warm lead closes or quietly goes cold, built around how your business actually runs.",
       accomplishes: [
