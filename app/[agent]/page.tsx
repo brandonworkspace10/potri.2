@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { AgentShaderBg } from "@/components/agent-shader-bg";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
 import { Container, PrimaryButton, SecondaryButton } from "@/components/ui";
@@ -43,13 +44,7 @@ export default async function AgentPage({ params }: Params) {
       <main className="flex-1">
         {/* hero */}
         <section className="relative overflow-hidden border-b border-subtle">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute left-1/2 top-[-320px] h-[560px] w-[900px] max-w-none -translate-x-1/2 blur-[70px]"
-            style={{
-              background: `radial-gradient(closest-side, color-mix(in srgb, var(${a.accentVar}) 18%, transparent), transparent 100%)`,
-            }}
-          />
+          <AgentShaderBg accentVar={a.accentVar} />
           <Container className="relative">
             <div className="flex flex-col items-start py-16 sm:py-20 lg:py-24">
               <Link
