@@ -2,6 +2,11 @@
 
 import { useEffect, useRef } from "react";
 
+// Kick the three.js chunk off at module evaluation so the download and parse
+// run in parallel with hydration. Waiting for the effect serialized them:
+// hydrate -> fetch -> parse -> first frame, which on a phone was ~2s of blank.
+const threeImport = import("@/lib/three-subset");
+
 const SEPARATION = 150;
 const AMOUNTX = 40;
 const AMOUNTY = 60;
@@ -44,8 +49,16 @@ function hexToRgb01(hex: string): [number, number, number] | null {
  * Animated dot-wave field for the hero backdrop.
  * Scoped to its positioned parent — it is not a page-wide fixed layer.
  */
-export function DottedSurface({ className = "" }: { className?: string }) {
+export function DottedSurface({
+  className = "",
+  placeholderSrc,
+}: {
+  className?: string;
+  /** static image of the field's first frame, painted by CSS before any JS runs */
+  placeholderSrc?: string;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const placeholderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -58,7 +71,7 @@ export function DottedSurface({ className = "" }: { className?: string }) {
     let cleanup: (() => void) | undefined;
 
     (async () => {
-    const THREE = await import("three");
+    const THREE = await threeImport;
     if (disposed || !containerRef.current) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -78,6 +91,8 @@ export function DottedSurface({ className = "" }: { className?: string }) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, height);
     renderer.setClearColor(0x000000, 0);
+    renderer.domElement.style.opacity = "0";
+    renderer.domElement.style.transition = "opacity 0.45s ease";
     container.appendChild(renderer.domElement);
 
     // Read the brand colour from the design token so the flare can't drift
@@ -203,8 +218,9 @@ export function DottedSurface({ className = "" }: { className?: string }) {
     } else {
       start();
     }
-    // first frame exists now — ease the field in rather than popping
-    container.style.opacity = "1";
+    // First frame exists — crossfade: live canvas in, static stand-in out.
+    renderer.domElement.style.opacity = "1";
+    if (placeholderRef.current) placeholderRef.current.style.opacity = "0";
 
     // No reason to burn a rAF loop while the hero is scrolled off screen
     const io = new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop()), {
@@ -247,8 +263,22 @@ export function DottedSurface({ className = "" }: { className?: string }) {
     <div
       ref={containerRef}
       aria-hidden
-      style={{ opacity: 0, transition: "opacity 0.9s ease" }}
       className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
-    />
+    >
+      {placeholderSrc ? (
+        // Slightly blurred so the swap to the live canvas (whose framing shifts
+        // with the viewport's aspect) reads as focus, not a jump.
+        <div
+          ref={placeholderRef}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${placeholderSrc})`,
+            filter: "blur(2px)",
+            scale: "1.03",
+            transition: "opacity 0.45s ease",
+          }}
+        />
+      ) : null}
+    </div>
   );
 }

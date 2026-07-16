@@ -87,7 +87,7 @@ export function AgentShaderBg({
     <div
       ref={ref}
       aria-hidden
-      style={{ opacity: ready ? 1 : 0, transition: "opacity 0.9s ease" }}
+      style={{ opacity: ready ? 1 : 0, transition: "opacity 0.45s ease" }}
       className="pointer-events-none absolute inset-0 overflow-hidden"
     >
       <div

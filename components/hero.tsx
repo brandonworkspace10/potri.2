@@ -6,7 +6,7 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden">
       {/* animated dot field, then the glow over it, then content on top */}
-      <DottedSurface />
+      <DottedSurface placeholderSrc="/hero-field.webp" />
 
       {/* radial brand glow behind the headline */}
       <div

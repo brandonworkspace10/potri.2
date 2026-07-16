@@ -2,6 +2,11 @@
 
 import { useEffect, useRef } from "react";
 
+// Kick the three.js chunk off at module evaluation so the download and parse
+// run in parallel with hydration. Waiting for the effect serialized them:
+// hydrate -> fetch -> parse -> first frame, which on a phone was ~2s of blank.
+const threeImport = import("@/lib/three-subset");
+
 const GAP = 0.3;
 const AMOUNT_X = 160;
 const AMOUNT_Y = 160;
@@ -78,7 +83,7 @@ export function ParticleWave({ className = "" }: { className?: string }) {
     let cleanup: (() => void) | undefined;
 
     (async () => {
-    const THREE = await import("three");
+    const THREE = await threeImport;
     if (disposed || !containerRef.current) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -208,7 +213,7 @@ export function ParticleWave({ className = "" }: { className?: string }) {
     <div
       ref={containerRef}
       aria-hidden
-      style={{ opacity: 0, transition: "opacity 0.9s ease" }}
+      style={{ opacity: 0, transition: "opacity 0.45s ease" }}
       className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
     />
   );
