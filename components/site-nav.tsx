@@ -105,7 +105,7 @@ function TeamMenu() {
 
 export function SiteNav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-subtle bg-base/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-subtle bg-base/90 backdrop-blur-sm sm:bg-base/80 sm:backdrop-blur-xl">
       <NavDropdownFx />
       <Container>
         <nav className="flex h-[72px] items-center justify-between gap-6">

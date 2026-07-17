@@ -27,7 +27,7 @@ export function Deployment() {
   return (
     <section
       id="deployment"
-      className="scroll-mt-20 border-y border-subtle bg-elevated py-12 sm:py-20 lg:py-28"
+      className="cv-auto scroll-mt-20 border-y border-subtle bg-elevated py-12 sm:py-20 lg:py-28"
     >
       <Container>
         <SectionHeading

@@ -10,7 +10,7 @@ const ROWS: [string, string, string][] = [
 
 export function MathSection() {
   return (
-    <section id="math" className="scroll-mt-20 border-y border-subtle bg-elevated py-12 sm:py-20 lg:py-28">
+    <section id="math" className="cv-auto scroll-mt-20 border-y border-subtle bg-elevated py-12 sm:py-20 lg:py-28">
       <Container>
         <SectionHeading eyebrow="The math" title="One human vs. the Potri team" />
 

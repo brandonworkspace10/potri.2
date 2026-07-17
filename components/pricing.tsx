@@ -27,7 +27,7 @@ const ROWS = [
 
 export function Pricing() {
   return (
-    <section id="pricing" className="scroll-mt-20 py-12 sm:py-20 lg:py-30">
+    <section id="pricing" className="cv-auto scroll-mt-20 py-12 sm:py-20 lg:py-30">
       <Container>
         <SectionHeading eyebrow="Pricing" title="Hire one. Or hire the team." />
 

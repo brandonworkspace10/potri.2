@@ -11,6 +11,9 @@ const SEPARATION = 150;
 const AMOUNTX = 40;
 const AMOUNTY = 60;
 
+/** Under this container width, run the phone profile: fewer dots, lower dpr. */
+const MOBILE_WIDTH = 640;
+
 /**
  * Wave phase advanced per second. Time-based rather than per-frame so the
  * speed is identical on 60Hz and 120Hz displays.
@@ -84,11 +87,18 @@ export function DottedSurface({
     const width = container.clientWidth || window.innerWidth;
     const height = container.clientHeight || window.innerHeight;
 
+    // Phones pay for every fragment and every per-frame sin(): halve the grid
+    // and cap dpr harder. The dots sit behind a fog fade — the difference is
+    // invisible, the fill cost is not.
+    const mobile = width < MOBILE_WIDTH;
+    const amountX = mobile ? 28 : AMOUNTX;
+    const amountY = mobile ? 42 : AMOUNTY;
+
     const camera = new THREE.PerspectiveCamera(60, width / height, 1, 10000);
     camera.position.set(0, 355, 1220);
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: !mobile });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobile ? 1.5 : 2));
     renderer.setSize(width, height);
     renderer.setClearColor(0x000000, 0);
     renderer.domElement.style.opacity = "0";
@@ -107,21 +117,21 @@ export function DottedSurface({
       flareColour[2] * FLARE_BOOST,
     ];
 
-    const total = AMOUNTX * AMOUNTY;
+    const total = amountX * amountY;
     const positions: number[] = [];
     const colors: number[] = [];
-    // Per-dot flare state. Each picked dot gets its own phase and speed so the
-    // field twinkles instead of pulsing in unison.
-    const flares = new Uint8Array(total);
-    const phase = new Float32Array(total);
-    const rate = new Float32Array(total);
+    // Per-dot flare state, stored compactly: only the chosen dots are visited
+    // per frame instead of scanning the whole grid for a flag.
+    const flareIdx: number[] = [];
+    const phase: number[] = [];
+    const rate: number[] = [];
 
-    for (let ix = 0; ix < AMOUNTX; ix++) {
-      for (let iy = 0; iy < AMOUNTY; iy++) {
+    for (let ix = 0; ix < amountX; ix++) {
+      for (let iy = 0; iy < amountY; iy++) {
         positions.push(
-          ix * SEPARATION - (AMOUNTX * SEPARATION) / 2,
+          ix * SEPARATION - (amountX * SEPARATION) / 2,
           0,
-          iy * SEPARATION - (AMOUNTY * SEPARATION) / 2,
+          iy * SEPARATION - (amountY * SEPARATION) / 2,
         );
         // three.js colour channels are 0–1; 0–255 values clamp to pure white
         colors.push(...BASE_COLOUR);
@@ -130,9 +140,9 @@ export function DottedSurface({
 
     for (let i = 0; i < total; i++) {
       if (Math.random() >= FLARE_RATIO) continue;
-      flares[i] = 1;
-      phase[i] = Math.random() * Math.PI * 2;
-      rate[i] = 0.25 + Math.random() * 0.55;
+      flareIdx.push(i);
+      phase.push(Math.random() * Math.PI * 2);
+      rate.push(0.25 + Math.random() * 0.55);
     }
 
     const geometry = new THREE.BufferGeometry();
@@ -164,8 +174,8 @@ export function DottedSurface({
 
     const wave = () => {
       let i = 0;
-      for (let ix = 0; ix < AMOUNTX; ix++) {
-        for (let iy = 0; iy < AMOUNTY; iy++) {
+      for (let ix = 0; ix < amountX; ix++) {
+        for (let iy = 0; iy < amountY; iy++) {
           array[i * 3 + 1] =
             Math.sin((ix + count) * 0.3) * 50 + Math.sin((iy + count) * 0.5) * 50;
           i++;
@@ -175,12 +185,11 @@ export function DottedSurface({
     };
 
     const flare = (t: number) => {
-      for (let i = 0; i < total; i++) {
-        if (!flares[i]) continue;
+      for (let k = 0; k < flareIdx.length; k++) {
         // sin raised to a power sits near zero most of the cycle and spikes
         // briefly — a blink rather than a throb
-        const s = Math.pow(Math.max(0, Math.sin(t * rate[i] + phase[i])), FLARE_SHARPNESS);
-        const j = i * 3;
+        const s = Math.pow(Math.max(0, Math.sin(t * rate[k] + phase[k])), FLARE_SHARPNESS);
+        const j = flareIdx[k] * 3;
         colourArray[j] = BASE_COLOUR[0] + (peak[0] - BASE_COLOUR[0]) * s;
         colourArray[j + 1] = BASE_COLOUR[1] + (peak[1] - BASE_COLOUR[1]) * s;
         colourArray[j + 2] = BASE_COLOUR[2] + (peak[2] - BASE_COLOUR[2]) * s;

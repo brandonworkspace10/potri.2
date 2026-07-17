@@ -133,7 +133,7 @@ export function RoiCalculator() {
   const same = r.deltaMonthly === 0;
 
   return (
-    <section id="calculator" className="scroll-mt-20 border-y border-subtle bg-elevated py-12 sm:py-20 lg:py-28">
+    <section id="calculator" className="cv-auto scroll-mt-20 border-y border-subtle bg-elevated py-12 sm:py-20 lg:py-28">
       <Container>
         <SectionHeading
           eyebrow="Run the numbers"

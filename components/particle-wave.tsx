@@ -89,6 +89,11 @@ export function ParticleWave({ className = "" }: { className?: string }) {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const width = container.clientWidth || 1;
     const height = container.clientHeight || 1;
+    const mobile = width < 640;
+    // 25.6k particles reads identically at 14.4k on a phone-sized viewport,
+    // and the fill+vertex cost drops with it
+    const amountX = mobile ? 120 : AMOUNT_X;
+    const amountY = mobile ? 120 : AMOUNT_Y;
 
     const camera = new THREE.PerspectiveCamera(75, width / height, 0.01, 1000);
     camera.position.set(0, 6, 5);
@@ -97,25 +102,25 @@ export function ParticleWave({ className = "" }: { className?: string }) {
 
     // alpha + a transparent clear colour: without these the canvas paints an
     // opaque plate over the section behind it
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const renderer = new THREE.WebGLRenderer({ antialias: !mobile, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobile ? 1.5 : 2));
     renderer.setSize(width, height);
     renderer.setClearColor(0x000000, 0);
     container.appendChild(renderer.domElement);
 
-    const count = AMOUNT_X * AMOUNT_Y;
+    const count = amountX * amountY;
     const positions = new Float32Array(count * 3);
     const scales = new Float32Array(count);
 
     let i = 0;
     let j = 0;
-    for (let ix = 0; ix < AMOUNT_X; ix++) {
-      for (let iy = 0; iy < AMOUNT_Y; iy++) {
-        positions[i] = ix * GAP - (AMOUNT_X * GAP) / 2;
+    for (let ix = 0; ix < amountX; ix++) {
+      for (let iy = 0; iy < amountY; iy++) {
+        positions[i] = ix * GAP - (amountX * GAP) / 2;
         positions[i + 1] = 0;
-        // centred on AMOUNT_Y — the original divided by amountX here, which
+        // centred on amountY — the original divided by the X count here, which
         // offsets the field the moment the two differ
-        positions[i + 2] = iy * GAP - (AMOUNT_Y * GAP) / 2;
+        positions[i + 2] = iy * GAP - (amountY * GAP) / 2;
         scales[j] = 1;
         i += 3;
         j++;

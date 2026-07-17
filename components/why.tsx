@@ -35,7 +35,7 @@ const ITEMS = [
 
 export function Why() {
   return (
-    <section className="py-12 sm:py-20 lg:py-30">
+    <section className="cv-auto py-12 sm:py-20 lg:py-30">
       <Container>
         <SectionHeading
           eyebrow="Why Potri wins"

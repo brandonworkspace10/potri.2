@@ -92,6 +92,21 @@ input[type="range"]:focus-visible::-moz-range-thumb {
   box-shadow: 0 0 0 2px var(--color-brand);
 }
 
+/* Below-fold sections skip layout+paint until scrolled near; `auto` keeps the
+   real size once known so the scrollbar doesn't jump. Anchor navigation forces
+   the target section to render, so /#pricing still lands correctly. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto var(--cv-size, 900px);
+}
+
+/* Estimates near each section's real height (measured at 1440px) keep anchor
+   maths close before first render; `auto` snaps to exact after it. */
+#team.cv-auto { --cv-size: 1450px; }
+#calculator.cv-auto { --cv-size: 1500px; }
+#pricing.cv-auto { --cv-size: 1300px; }
+#faq.cv-auto { --cv-size: 1300px; }
+
 /* ---- Tool marquee ----
    The list is rendered twice and travels exactly -50%, so the second copy
    lands where the first began and the loop is seamless. Spacing lives on the
