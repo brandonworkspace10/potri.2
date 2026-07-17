@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const TITLE = "AI Cold Caller for Real Estate Investors & Wholesalers";
+const TITLE = "3 AI Employees for Every Real Estate Business";
 const DESCRIPTION =
   "Three AI employees for real estate investors: Andy dials and qualifies seller leads, Randy answers every call 24/7, Alyssa runs follow-up. Live in under six days.";
 

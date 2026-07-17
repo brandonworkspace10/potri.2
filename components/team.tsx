@@ -19,7 +19,7 @@ export function Team() {
       <Container className="relative">
         <SectionHeading
           eyebrow="The team"
-          title="Three employees. Three jobs."
+          title="Three employees. One goal."
           sub="The names are job titles. Say “Andy” and you mean outbound. Say “Randy” and it’s inbound. Say “Alyssa” and it’s follow-up and operations."
         />
 

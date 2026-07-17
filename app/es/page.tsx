@@ -194,7 +194,7 @@ export default function EsPage() {
                 El equipo
               </p>
               <h2 className="max-w-3xl text-[27px] font-bold leading-[1.08] tracking-[-0.03em] text-ink sm:text-[42px]">
-                Tres empleados. Tres trabajos.
+                Tres empleados. Un objetivo.
               </h2>
               <p className="max-w-[660px] text-[15px] leading-[1.6] text-dim sm:text-[17px]">
                 Los nombres son puestos de trabajo. Di “Andy” y hablas de llamadas

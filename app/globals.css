@@ -291,47 +291,52 @@ input[type="range"]:focus-visible::-moz-range-thumb {
 }
 
 /* ---- Shimmer text ----
-   A light band sweeps across the text and pauses, then repeats. Uses
-   currentColor as the base so it's applied per-span — a white phrase and an
-   amber phrase each shimmer in their own colour with one shared class.
-   Pure CSS: the equivalent motion/react version pulls in a ~680KB animation
-   library to animate a single CSS property this site can animate natively.
+   One light front sweeps the whole headline, pauses, and repeats. Pure CSS:
+   the equivalent motion/react version pulls in a ~680KB animation library to
+   animate a single property this site animates natively.
 
-   --shimmer-highlight sets the sweeping band's colour, independent of the
-   base text colour. White text needs an orange highlight to read as a
-   shine at all — a white-on-white highlight is barely visible (that's the
-   bug this variable fixes). The amber "voicemail" word keeps the default
-   white highlight, which already reads clearly against its orange base. */
+   Sync: background-attachment: fixed anchors every span's gradient to the
+   viewport, so all spans sample the same travelling band — one continuous
+   front crossing both lines, aligned by geometry rather than by timing
+   hand-offs. Each span keeps its own colours: the base is currentColor and
+   the band colour comes from --shimmer-highlight, so the white phrase sweeps
+   amber while the amber word sweeps warm white, all from one shared class.
+
+   The band itself is layered — soft shoulders around a brighter core — so it
+   reads as light passing over the letters rather than a colour swap. */
 .shimmer-text {
-  display: inline-block;
   background:
     currentColor
     linear-gradient(
       100deg,
-      currentColor 35%,
-      var(--shimmer-highlight, rgba(255, 255, 255, 0.75)) 50%,
-      currentColor 65%
+      currentColor 38%,
+      var(--shimmer-highlight, rgba(255, 255, 255, 0.6)) 47%,
+      var(--shimmer-core, rgba(255, 244, 232, 0.95)) 50%,
+      var(--shimmer-highlight, rgba(255, 255, 255, 0.6)) 53%,
+      currentColor 62%
     );
   background-repeat: no-repeat;
-  background-size: 60% 100%;
+  background-attachment: fixed;
+  background-size: 70vw 200vh;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer-sweep var(--shimmer-cycle, 3.2s) linear infinite;
-  animation-delay: var(--shimmer-delay, 0s);
+  animation: shimmer-sweep var(--shimmer-cycle, 4.2s) infinite;
+  /* gentle in-out on the travelling keyframe segment, not a hard linear */
+  animation-timing-function: cubic-bezier(0.45, 0, 0.35, 1);
 }
 
 @keyframes shimmer-sweep {
   0% {
-    background-position: -60% 0;
+    background-position: -80vw 0;
   }
-  /* sweeps across during the first ~45% of the cycle, then holds off-text
-     for the rest — that hold is the pause between passes */
-  45% {
-    background-position: 160% 0;
+  /* crosses during the first half of the cycle, then holds off-screen —
+     the hold is the pause between passes */
+  50% {
+    background-position: 110vw 0;
   }
   100% {
-    background-position: 160% 0;
+    background-position: 110vw 0;
   }
 }
 
