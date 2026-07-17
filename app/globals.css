@@ -290,6 +290,52 @@ input[type="range"]:focus-visible::-moz-range-thumb {
   transform: scaleX(1);
 }
 
+/* ---- Shimmer text ----
+   A light band sweeps across the text and pauses, then repeats. Uses
+   currentColor as the base so it's applied per-span — a white phrase and an
+   amber phrase each shimmer in their own colour with one shared class.
+   Pure CSS: the equivalent motion/react version pulls in a ~680KB animation
+   library to animate a single CSS property this site can animate natively. */
+.shimmer-text {
+  display: inline-block;
+  background:
+    currentColor
+    linear-gradient(
+      100deg,
+      currentColor 35%,
+      rgba(255, 255, 255, 0.75) 50%,
+      currentColor 65%
+    );
+  background-repeat: no-repeat;
+  background-size: 60% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-sweep var(--shimmer-cycle, 3.2s) linear infinite;
+  animation-delay: var(--shimmer-delay, 0s);
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    background-position: -60% 0;
+  }
+  /* sweeps across during the first ~45% of the cycle, then holds off-text
+     for the rest — that hold is the pause between passes */
+  45% {
+    background-position: 160% 0;
+  }
+  100% {
+    background-position: 160% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-text {
+    animation: none;
+    -webkit-text-fill-color: currentColor;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

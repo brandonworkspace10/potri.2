@@ -29,9 +29,15 @@ export function Hero() {
           </div>
 
           <h1 className="mt-6 max-w-[1000px] text-[32px] sm:mt-7 font-bold leading-[1.02] tracking-[-0.04em] text-ink sm:text-[58px] sm:leading-[0.98] lg:text-[76px]">
-            Your next deal shouldn&apos;t
+            <span className="shimmer-text">Your next deal shouldn&apos;t</span>
             <br className="hidden sm:block" /> go to{" "}
-            <span className="text-brand">voicemail</span>.
+            <span
+              className="shimmer-text text-brand"
+              style={{ "--shimmer-delay": "0.5s" } as React.CSSProperties}
+            >
+              voicemail
+            </span>
+            .
           </h1>
 
           <p className="mt-5 max-w-[700px] text-[16px] sm:mt-7 sm:text-[17px] leading-[1.6] text-muted sm:text-[19px]">
