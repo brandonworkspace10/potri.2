@@ -295,7 +295,13 @@ input[type="range"]:focus-visible::-moz-range-thumb {
    currentColor as the base so it's applied per-span — a white phrase and an
    amber phrase each shimmer in their own colour with one shared class.
    Pure CSS: the equivalent motion/react version pulls in a ~680KB animation
-   library to animate a single CSS property this site can animate natively. */
+   library to animate a single CSS property this site can animate natively.
+
+   --shimmer-highlight sets the sweeping band's colour, independent of the
+   base text colour. White text needs an orange highlight to read as a
+   shine at all — a white-on-white highlight is barely visible (that's the
+   bug this variable fixes). The amber "voicemail" word keeps the default
+   white highlight, which already reads clearly against its orange base. */
 .shimmer-text {
   display: inline-block;
   background:
@@ -303,7 +309,7 @@ input[type="range"]:focus-visible::-moz-range-thumb {
     linear-gradient(
       100deg,
       currentColor 35%,
-      rgba(255, 255, 255, 0.75) 50%,
+      var(--shimmer-highlight, rgba(255, 255, 255, 0.75)) 50%,
       currentColor 65%
     );
   background-repeat: no-repeat;

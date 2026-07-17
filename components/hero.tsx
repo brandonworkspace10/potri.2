@@ -29,7 +29,12 @@ export function Hero() {
           </div>
 
           <h1 className="mt-6 max-w-[1000px] text-[32px] sm:mt-7 font-bold leading-[1.02] tracking-[-0.04em] text-ink sm:text-[58px] sm:leading-[0.98] lg:text-[76px]">
-            <span className="shimmer-text">Your next deal shouldn&apos;t</span>
+            <span
+              className="shimmer-text"
+              style={{ "--shimmer-highlight": "rgba(255, 138, 52, 0.92)" } as React.CSSProperties}
+            >
+              Your next deal shouldn&apos;t
+            </span>
             <br className="hidden sm:block" /> go to{" "}
             <span
               className="shimmer-text text-brand"
