@@ -29,7 +29,7 @@ export function Pricing() {
   return (
     <section id="pricing" className="cv-auto scroll-mt-20 py-12 sm:py-20 lg:py-30">
       <Container>
-        <SectionHeading eyebrow="Pricing" title="Hire one. Or hire the team." />
+        <SectionHeading eyebrow="The cost" title="Hire one. Or hire the team." />
 
         <div className="mt-10 hidden overflow-x-auto sm:mt-13 sm:block">
           <table className="w-full min-w-[720px] border-separate border-spacing-0 text-left">

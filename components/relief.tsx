@@ -21,7 +21,7 @@ export function Relief() {
       />
       <Container className="relative">
         <div className="flex flex-col items-center text-center">
-          <Eyebrow>What changes</Eyebrow>
+          <Eyebrow>The outcome</Eyebrow>
           <h2 className="mt-4 max-w-[900px] text-[24px] font-bold leading-[1.2] tracking-[-0.03em] text-ink sm:text-[38px] lg:text-[42px]">
             Imagine waking up knowing every seller who called overnight was already{" "}
             <span className="text-brand">answered, qualified, logged, and booked</span>.

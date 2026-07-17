@@ -321,7 +321,7 @@ input[type="range"]:focus-visible::-moz-range-thumb {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer-sweep var(--shimmer-cycle, 4.2s) infinite;
+  animation: shimmer-sweep var(--shimmer-cycle, 7s) infinite;
   /* gentle in-out on the travelling keyframe segment, not a hard linear */
   animation-timing-function: cubic-bezier(0.45, 0, 0.35, 1);
 }
