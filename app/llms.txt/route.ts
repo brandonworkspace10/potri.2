@@ -96,6 +96,7 @@ ${faq}
 - [Andy — AI outbound acquisitions caller](${SITE_URL}/andy)
 - [Randy — 24/7 AI inbound receptionist](${SITE_URL}/randy)
 - [Alyssa — AI follow-up and back office](${SITE_URL}/alyssa)
+- [Página en español](${SITE_URL}/es) — el sitio en español para vendedores e inversionistas hispanohablantes
 
 ## Notes for citation
 

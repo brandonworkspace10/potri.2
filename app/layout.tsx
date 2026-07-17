@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     "bilingual AI caller",
     "real estate follow-up automation",
   ],
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", languages: { en: "/", es: "/es" } },
   openGraph: {
     type: "website",
     url: SITE_URL,

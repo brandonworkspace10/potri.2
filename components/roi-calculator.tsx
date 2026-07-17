@@ -94,9 +94,9 @@ export function RoiCalculator() {
   // Visitor-supplied assumptions — deliberately theirs, not ours.
   // Asking what they ANSWER rather than what they miss: nobody can count the
   // calls they never picked up, but everyone can estimate their own coverage.
-  const [inboundCalls, setInboundCalls] = useState(120);
+  const [inboundCalls, setInboundCalls] = useState(60);
   const [answerRate, setAnswerRate] = useState(65);
-  const [closeRate, setCloseRate] = useState(5);
+  const [closeRate, setCloseRate] = useState(3);
 
   const r = useMemo(() => {
     const humanMonthly = callers * costPerCaller;
