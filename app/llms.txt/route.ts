@@ -3,6 +3,7 @@ import { FAQS } from "@/lib/faq";
 import {
   HUMAN_HOURS_PER_WEEK,
   POTRI_HOURS_PER_WEEK,
+  PROMO,
   SITE_URL,
   TEAM_PRICE,
 } from "@/lib/config";
@@ -59,6 +60,7 @@ ${AGENTS.map((a) => `| ${a.name} | ${a.role} | ${a.page.priceRange.replace(" / m
 **Full team (Andy + Randy + Alyssa): $${TEAM_PRICE.toLocaleString("en-US")}/month flat**, versus $4,300–$10,300 if bought separately.
 
 Pricing rules: no discounts on individual agents — single hires pay full price. Bundle pricing applies only to the full three-agent team. Final price is confirmed after a scoping call.
+${PROMO.active ? `\nCurrent promotion: ${PROMO.headline} ${PROMO.detail}\n` : ""}
 
 ## One human caller vs the Potri team
 

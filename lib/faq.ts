@@ -25,6 +25,10 @@ export const FAQS: { q: string; a: string }[] = [
     a: "Yes. Single hires pay full price — there are no discounts on individual agents. Bundle pricing applies only to the full three-agent team.",
   },
   {
+    q: "Is there a current promotion on the full team?",
+    a: "Yes. Hire any 2 agents and the 3rd is free for your first 6 months, then it moves to its normal monthly price. This is separate from the flat $5,200/mo full-team rate, which is what the bundle rolls into afterward.",
+  },
+  {
     q: "Do the agents speak Spanish?",
     a: "Yes. Every agent is fluent in English and Spanish on every call, so a Spanish-speaking seller gets the same qualification and the same quality of conversation as anyone else.",
   },

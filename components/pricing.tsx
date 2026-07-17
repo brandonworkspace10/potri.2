@@ -1,4 +1,4 @@
-import { BOOKING_URL, TEAM_PRICE } from "@/lib/config";
+import { BOOKING_URL, PROMO, TEAM_PRICE } from "@/lib/config";
 import { Container, PrimaryButton, SectionHeading } from "./ui";
 
 const ROWS = [
@@ -29,6 +29,18 @@ export function Pricing() {
   return (
     <section id="pricing" className="cv-auto scroll-mt-20 py-12 sm:py-20 lg:py-30">
       <Container>
+        {PROMO.active ? (
+          <div className="mb-8 flex justify-center">
+            <div className="inline-flex flex-col items-center gap-1.5 rounded-2xl border border-[#5c3a1e] bg-card px-6 py-4 text-center sm:flex-row sm:gap-3 sm:py-3">
+              <span className="font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-brand">
+                Limited-time offer
+              </span>
+              <span className="hidden text-dim sm:inline">·</span>
+              <span className="text-[14px] font-semibold text-ink">{PROMO.headline}</span>
+            </div>
+          </div>
+        ) : null}
+
         <SectionHeading eyebrow="The cost" title="Hire one. Or hire the team." />
 
         <div className="mt-10 hidden overflow-x-auto sm:mt-13 sm:block">
@@ -113,6 +125,12 @@ export function Pricing() {
                 Your entire calling and follow-up operation — outbound, inbound, and back
                 office — for roughly what one human caller costs you today.
               </p>
+              {PROMO.active ? (
+                <p className="mt-4 text-[14px] leading-[1.5] text-brand">
+                  Right now: hire any 2 agents and the 3rd is free for 6 months, then it
+                  rolls into the flat team rate below.
+                </p>
+              ) : null}
             </div>
 
             <div className="flex shrink-0 flex-col items-start gap-4 lg:items-end">
@@ -131,7 +149,15 @@ export function Pricing() {
         <p className="mt-6 max-w-[760px] text-[13px] leading-[1.6] text-dim">
           <span className="font-medium text-muted">Pricing rules:</span> no discounts on
           individual agents — single hires pay full price. Bundle pricing applies only to
-          the full three-agent team. Final price confirmed after a scoping call.
+          the full three-agent team.
+          {PROMO.active ? (
+            <>
+              {" "}
+              Current promo: hire 2 agents and the 3rd is free for 6 months, then it
+              moves to its normal monthly price.
+            </>
+          ) : null}{" "}
+          Final price confirmed after a scoping call.
         </p>
       </Container>
     </section>
