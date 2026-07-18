@@ -25,7 +25,7 @@ export default function AppleIcon() {
           paddingRight: 6,
         }}
       >
-        t<span style={{ color: "#ff8a34" }}>.</span>
+        T<span style={{ color: "#ff8a34" }}>.</span>
       </div>
     ),
     size,
