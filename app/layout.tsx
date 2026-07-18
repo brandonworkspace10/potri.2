@@ -1,13 +1,5 @@
 import type { Metadata } from "next";
-import * as React from "react";
-
-// At runtime `react` resolves to Next's vendored canary, which exports
-// ViewTransition; stable @types/react doesn't declare it yet.
-const ViewTransition = (
-  React as unknown as {
-    ViewTransition: React.ComponentType<{ children: React.ReactNode }>;
-  }
-).ViewTransition;
+import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import { AnchorSettle } from "@/components/anchor-settle";
 import { SITE_URL } from "@/lib/config";
@@ -70,7 +62,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html
@@ -79,7 +71,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-base text-ink">
         <AnchorSettle />
-        <ViewTransition>{children}</ViewTransition>
+        {children}
       </body>
     </html>
   );
