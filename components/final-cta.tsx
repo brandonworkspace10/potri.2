@@ -1,5 +1,5 @@
 import { BOOKING_URL } from "@/lib/config";
-import { Container, PrimaryButton, SecondaryButton } from "./ui";
+import { Container, Eyebrow, PrimaryButton, SecondaryButton } from "./ui";
 
 export function FinalCta() {
   return (
@@ -14,7 +14,8 @@ export function FinalCta() {
       />
       <Container className="relative">
         <div className="flex flex-col items-center text-center">
-          <h2 className="max-w-[900px] text-[30px] font-bold leading-[1.06] tracking-[-0.04em] text-ink sm:text-[48px] lg:text-[58px]">
+          <Eyebrow>The life you want to live</Eyebrow>
+          <h2 className="mt-4 max-w-[900px] text-[30px] font-bold leading-[1.06] tracking-[-0.04em] text-ink sm:text-[48px] lg:text-[58px]">
             Every unanswered call is a deal
             <br className="hidden sm:block" /> for{" "}
             <span className="text-brand">another investor</span>.

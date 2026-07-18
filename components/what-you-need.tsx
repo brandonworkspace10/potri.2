@@ -42,6 +42,23 @@ export function WhatYouNeed() {
               &quot;go.&quot; If you can take a booked appointment with a qualified
               seller, you are equipped for everything this does.
             </p>
+
+            <ul className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {[
+                ["CRM integration", "bg-andy"],
+                ["Calendar & booking", "bg-randy"],
+                ["Follow-up systems", "bg-alyssa"],
+                ["Help & escalations", "bg-andy"],
+              ].map(([label, dot]) => (
+                <li
+                  key={label}
+                  className="flex items-center gap-2 rounded-xl border border-subtle bg-card px-3.5 py-3 text-[13px] font-medium text-ink"
+                >
+                  <span className={`h-[6px] w-[6px] shrink-0 rounded-full ${dot}`} aria-hidden />
+                  {label}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </Container>

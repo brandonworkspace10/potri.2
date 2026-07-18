@@ -38,7 +38,7 @@ export function Why() {
     <section className="cv-auto py-12 sm:py-20 lg:py-30">
       <Container>
         <SectionHeading
-          eyebrow="Why Potri wins"
+          eyebrow="Streamline your success"
           title={
             <>
               Every seller gets your
