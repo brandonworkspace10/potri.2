@@ -40,6 +40,9 @@ export function Team() {
                 <div className="flex flex-col gap-1">
                   <h3 className="text-[23px] font-semibold tracking-[-0.025em] text-ink">
                     {a.name}
+                    <span className="ml-2 text-[13px] font-medium text-dim">
+                      {a.persona}
+                    </span>
                   </h3>
                   <p
                     className={`font-mono text-[9.5px] font-medium uppercase tracking-[0.28em] ${a.accent}`}

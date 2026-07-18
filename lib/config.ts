@@ -7,6 +7,15 @@ export const BOOKING_URL = "#book";
 export const SITE_NAME = "Topri";
 
 /**
+ * Lead-capture endpoint for the "Get My Custom ROI Report" form. Point this at
+ * a real handler (Formspree, a Next route handler, your CRM webhook, etc.) that
+ * accepts a POST of { email, context }. While it's empty, the form gracefully
+ * falls back to sending the visitor to BOOKING_URL instead of silently
+ * dropping the lead.
+ */
+export const LEAD_ENDPOINT = "";
+
+/**
  * Canonical origin. Drives metadataBase, sitemap, robots, OG/Twitter URLs and
  * JSON-LD @ids. topri.io is the live production domain — change this one line
  * if the canonical domain ever moves.

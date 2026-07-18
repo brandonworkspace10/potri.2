@@ -5,6 +5,8 @@ export type Agent = {
   id: string;
   mono: string;
   name: string;
+  /** persona tagline shown under the name (e.g. "The Relentless Dialer") */
+  persona: string;
   role: string;
   /** one-line summary shown under the name in the nav dropdown */
   blurb: string;
@@ -45,6 +47,7 @@ export const AGENTS: Agent[] = [
     id: "andy",
     mono: "A",
     name: "Andy",
+    persona: "The Relentless Dialer",
     role: "Outbound · Acquisitions",
     blurb: "Dials and qualifies your seller leads",
     accentVar: "--color-andy",
@@ -122,6 +125,7 @@ export const AGENTS: Agent[] = [
     id: "randy",
     mono: "R",
     name: "Randy",
+    persona: "The 24/7 Safety Net",
     role: "Inbound · Reception",
     blurb: "Answers every inbound call, 24/7",
     accentVar: "--color-randy",
@@ -198,6 +202,7 @@ export const AGENTS: Agent[] = [
     id: "alyssa",
     mono: "A",
     name: "Alyssa",
+    persona: "The Custom Architect",
     role: "Back office · Follow-up & ops",
     blurb: "Runs follow-up so nothing slips",
     accentVar: "--color-alyssa",

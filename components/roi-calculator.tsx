@@ -8,6 +8,7 @@ import {
   TEAM_PRICE,
 } from "@/lib/config";
 import { Container, PrimaryButton, SectionHeading } from "./ui";
+import { RoiLeadForm } from "./roi-lead-form";
 
 const money = (n: number) =>
   new Intl.NumberFormat("en-US", {
@@ -382,15 +383,21 @@ export function RoiCalculator() {
               </div>
             </div>
 
-            <div className="mt-auto flex flex-col items-start gap-4 border-t border-subtle p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-              <p className="max-w-[440px] text-[13px] leading-[1.5] text-dim">
-                Bring these numbers to the call — we&apos;ll scope the exact build against{" "}
-                <span className="font-medium text-muted">
-                  {Math.round(r.missedPerMonth)} missed calls a month
-                </span>{" "}
-                and tell you honestly whether it clears.
-              </p>
-              <PrimaryButton href={BOOKING_URL}>Book a scoping call</PrimaryButton>
+            <div className="border-t border-subtle p-6 sm:p-8">
+              <RoiLeadForm
+                context={`~${Math.round(r.missedPerMonth)} missed calls/month`}
+              />
+              <div className="mt-5 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <p className="max-w-[440px] text-[13px] leading-[1.5] text-dim">
+                  Or bring these numbers straight to your audit — we&apos;ll scope the
+                  exact build against{" "}
+                  <span className="font-medium text-muted">
+                    {Math.round(r.missedPerMonth)} missed calls a month
+                  </span>{" "}
+                  and tell you honestly whether it clears.
+                </p>
+                <PrimaryButton href={BOOKING_URL}>Book a Free Lead-Flow Audit</PrimaryButton>
+              </div>
             </div>
           </div>
         </div>

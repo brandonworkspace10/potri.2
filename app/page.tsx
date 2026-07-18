@@ -10,8 +10,10 @@ import { Problem } from "@/components/problem";
 import { Relief } from "@/components/relief";
 import { ProofStrip } from "@/components/proof-strip";
 import { RoiCalculator } from "@/components/roi-calculator";
+import { SampleCalls } from "@/components/sample-calls";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
+import { SyncOverlay } from "@/components/sync-overlay";
 import { Team } from "@/components/team";
 import { WhatYouNeed } from "@/components/what-you-need";
 import { Why } from "@/components/why";
@@ -19,6 +21,7 @@ import { Why } from "@/components/why";
 export default function Home() {
   return (
     <>
+      <SyncOverlay />
       <JsonLd />
       <SiteNav />
       {/* Narrative order: outcomes -> benefits -> cost -> what you need ->
@@ -29,6 +32,7 @@ export default function Home() {
         <Relief />
         <Team />
         <Why />
+        <SampleCalls />
         <Problem />
         <Pricing />
         <MathSection />

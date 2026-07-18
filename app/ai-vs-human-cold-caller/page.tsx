@@ -83,7 +83,7 @@ export default function ComparePage() {
                 genuinely does better, and when hiring a person is still the right call.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <PrimaryButton href={BOOKING_URL}>Book a scoping call</PrimaryButton>
+                <PrimaryButton href={BOOKING_URL}>Book a Free Lead-Flow Audit</PrimaryButton>
                 <SecondaryButton href="/#calculator">Run your own numbers</SecondaryButton>
               </div>
             </div>
@@ -264,7 +264,7 @@ export default function ComparePage() {
               </div>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <PrimaryButton href={BOOKING_URL}>Book a scoping call</PrimaryButton>
+                <PrimaryButton href={BOOKING_URL}>Book a Free Lead-Flow Audit</PrimaryButton>
                 <SecondaryButton href="/#calculator">Run your own numbers</SecondaryButton>
               </div>
             </div>

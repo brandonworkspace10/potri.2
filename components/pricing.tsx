@@ -43,7 +43,7 @@ export function Pricing() {
 
         <SectionHeading
           eyebrow="The cost"
-          title="Flat monthly pricing. Hire one, two, or the whole team."
+          title="Deploy one specialist, the front office, or the full engine."
         />
 
         <div className="mt-10 hidden overflow-x-auto sm:mt-13 sm:block">
@@ -109,80 +109,121 @@ export function Pricing() {
           ))}
         </div>
 
-        {/* two packages: outbound+inbound, then the full team */}
-        <div className="mt-6 grid gap-5 lg:grid-cols-2 lg:items-stretch">
-          {/* outbound + inbound bundle */}
+        {/* three tiers: specialist, front-office bundle (core), full engine */}
+        <div className="mt-6 grid gap-5 lg:grid-cols-3 lg:items-stretch">
+          {/* Tier 1 — The Specialist */}
           <div className="relative flex flex-col overflow-hidden rounded-2xl border border-subtle bg-card">
-            <div className="flex flex-1 flex-col gap-6 p-7 sm:p-9">
+            <div className="flex flex-1 flex-col gap-6 p-7 sm:p-8">
               <div>
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-andy" aria-hidden />
                   <span className="h-2 w-2 rounded-full bg-randy" aria-hidden />
-                  <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-muted">
-                    Outbound + Inbound — Andy + Randy
-                  </p>
                 </div>
-                <p className="mt-4 text-[16px] leading-[1.6] text-muted">
-                  Every seller lead worked and every call answered — dialing and
-                  reception together, without the back-office layer.
+                <p className="mt-3.5 text-[17px] font-semibold tracking-[-0.02em] text-ink">
+                  The Specialist
                 </p>
-                {PROMO.active ? (
-                  <p className="mt-4 text-[13.5px] leading-[1.5] text-brand">
-                    Pairs with the current promo — add Alyssa and she&apos;s free for
-                    your first 6 months.
-                  </p>
-                ) : null}
+                <p className="mt-1 font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-muted">
+                  Hire Andy or Randy
+                </p>
+                <p className="mt-4 text-[15px] leading-[1.6] text-muted">
+                  Start with the gap that hurts most — outbound or inbound. One
+                  pre-trained agent, deployed and working.
+                </p>
               </div>
 
-              <div className="mt-auto flex flex-col items-start gap-4">
-                <p className="text-[14px] tabular-nums text-dim line-through decoration-dim/60">
-                  $2,800 – $4,300 separately
+              <div className="mt-auto flex flex-col items-start gap-3.5">
+                <p className="text-[34px] font-bold leading-none tracking-[-0.04em] tabular-nums text-ink sm:text-[38px]">
+                  From $1,200
+                  <span className="text-[18px] font-semibold text-muted">/mo</span>
                 </p>
-                <p className="text-[38px] font-bold leading-none tracking-[-0.04em] tabular-nums text-ink sm:text-[42px]">
-                  ${OUTBOUND_INBOUND_PRICE.toLocaleString("en-US")}
-                  <span className="text-[19px] font-semibold text-muted">/mo</span>
-                </p>
-                <PrimaryButton href={BOOKING_URL}>Book a scoping call</PrimaryButton>
+                <p className="text-[13px] text-dim">Randy from $1,200 · Andy from $1,600</p>
+                <PrimaryButton href={BOOKING_URL}>Book a Free Lead-Flow Audit</PrimaryButton>
               </div>
             </div>
           </div>
 
-          {/* full team bundle */}
-          <div className="relative flex flex-col overflow-hidden rounded-2xl border border-[#5c3a1e] bg-card">
+          {/* Tier 2 — The Front Office Bundle (core offer) */}
+          <div className="relative flex flex-col overflow-hidden rounded-2xl border-2 border-brand bg-card lg:-mt-2 lg:mb-[-2px]">
             <div
               aria-hidden
               className="pointer-events-none absolute -right-32 -top-40 h-[420px] w-[620px] blur-[70px]"
               style={{
                 background:
-                  "radial-gradient(closest-side, rgba(255,138,52,0.16), rgba(255,138,52,0) 100%)",
+                  "radial-gradient(closest-side, rgba(255,138,52,0.18), rgba(255,138,52,0) 100%)",
               }}
             />
-            <div className="relative flex flex-1 flex-col gap-6 p-7 sm:p-9">
+            <div className="relative flex flex-1 flex-col gap-6 p-7 sm:p-8">
               <div>
-                <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-brand">
-                  Full team — Andy + Randy + Alyssa
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-andy" aria-hidden />
+                    <span className="h-2 w-2 rounded-full bg-randy" aria-hidden />
+                  </div>
+                  <span className="rounded-full bg-brand/15 px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.18em] text-brand">
+                    Most popular
+                  </span>
+                </div>
+                <p className="mt-3.5 text-[17px] font-semibold tracking-[-0.02em] text-ink">
+                  The Front Office Bundle
                 </p>
-                <p className="mt-4 text-[16px] leading-[1.6] text-muted">
-                  Your entire calling and follow-up operation — outbound, inbound, and
-                  back office — for roughly what one human caller costs you today.
+                <p className="mt-1 font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-muted">
+                  Andy + Randy
+                </p>
+                <p className="mt-4 text-[15px] leading-[1.6] text-muted">
+                  100% phone coverage. We handle every dial out and every call in — your
+                  entire front office, answered.
                 </p>
                 {PROMO.active ? (
-                  <p className="mt-4 text-[13.5px] leading-[1.5] text-brand">
-                    Right now: hire any 2 agents and the 3rd is free for 6 months, then
-                    it rolls into the flat team rate below.
+                  <p className="mt-4 text-[13px] leading-[1.5] text-brand">
+                    Add Alyssa now and she&apos;s free for your first 6 months.
                   </p>
                 ) : null}
               </div>
 
-              <div className="mt-auto flex flex-col items-start gap-4">
+              <div className="mt-auto flex flex-col items-start gap-3.5">
+                <p className="text-[14px] tabular-nums text-dim line-through decoration-dim/60">
+                  $2,800 – $4,300 separately
+                </p>
+                <p className="text-[34px] font-bold leading-none tracking-[-0.04em] tabular-nums text-brand sm:text-[38px]">
+                  ${OUTBOUND_INBOUND_PRICE.toLocaleString("en-US")}
+                  <span className="text-[18px] font-semibold text-muted">/mo</span>
+                </p>
+                <PrimaryButton href={BOOKING_URL}>Book a Free Lead-Flow Audit</PrimaryButton>
+              </div>
+            </div>
+          </div>
+
+          {/* Tier 3 — The Full Engine */}
+          <div className="relative flex flex-col overflow-hidden rounded-2xl border border-subtle bg-card">
+            <div className="flex flex-1 flex-col gap-6 p-7 sm:p-8">
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-andy" aria-hidden />
+                  <span className="h-2 w-2 rounded-full bg-randy" aria-hidden />
+                  <span className="h-2 w-2 rounded-full bg-alyssa" aria-hidden />
+                </div>
+                <p className="mt-3.5 text-[17px] font-semibold tracking-[-0.02em] text-ink">
+                  The Full Engine
+                </p>
+                <p className="mt-1 font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-muted">
+                  Andy + Randy + Alyssa
+                </p>
+                <p className="mt-4 text-[15px] leading-[1.6] text-muted">
+                  The total back-office takeover. Outbound, inbound and follow-up,
+                  custom-built for your specific scale.
+                </p>
+              </div>
+
+              <div className="mt-auto flex flex-col items-start gap-3.5">
                 <p className="text-[14px] tabular-nums text-dim line-through decoration-dim/60">
                   $4,300 – $10,300 separately
                 </p>
-                <p className="text-[38px] font-bold leading-none tracking-[-0.04em] tabular-nums text-brand sm:text-[42px]">
+                <p className="text-[34px] font-bold leading-none tracking-[-0.04em] tabular-nums text-ink sm:text-[38px]">
                   ${TEAM_PRICE.toLocaleString("en-US")}
-                  <span className="text-[19px] font-semibold text-muted">/mo</span>
+                  <span className="text-[18px] font-semibold text-muted">/mo</span>
                 </p>
-                <PrimaryButton href={BOOKING_URL}>Book a scoping call</PrimaryButton>
+                <p className="text-[13px] text-dim">Alyssa scoped to your operation</p>
+                <PrimaryButton href={BOOKING_URL}>Book a Free Lead-Flow Audit</PrimaryButton>
               </div>
             </div>
           </div>

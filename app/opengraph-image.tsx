@@ -42,10 +42,10 @@ export default function OgImage() {
               letterSpacing: -3,
             }}
           >
-            Your next deal shouldn&apos;t go to voicemail.
+            Stop building your own AI. Just deploy ours.
           </div>
           <div style={{ fontSize: 30, color: "#9ba1a9", lineHeight: 1.4 }}>
-            Three AI employees for real estate investors — live in under six days.
+            Pre-trained AI employees for real estate — live in under six days.
           </div>
         </div>
 

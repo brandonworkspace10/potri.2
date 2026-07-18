@@ -206,7 +206,7 @@ export function MobileMenu() {
                 onClick={close}
                 className="flex w-full items-center justify-center rounded-[10px] bg-ink px-6 py-4 text-[15px] font-semibold tracking-[-0.01em] text-base"
               >
-                Book a scoping call
+                Book a Free Lead-Flow Audit
               </Link>
               <p className="mt-3.5 text-center text-[12.5px] text-dim">
                 English + Spanish · Live in under six days

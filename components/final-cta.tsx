@@ -26,7 +26,7 @@ export function FinalCta() {
             while you sleep.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <PrimaryButton href={BOOKING_URL}>Book your scoping call</PrimaryButton>
+            <PrimaryButton href={BOOKING_URL}>Book a Free Lead-Flow Audit</PrimaryButton>
             <SecondaryButton href="#calculator">See what it&apos;s worth</SecondaryButton>
           </div>
           <p className="mt-7 text-[13.5px] text-dim">

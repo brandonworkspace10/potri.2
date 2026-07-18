@@ -123,7 +123,7 @@ export default async function AgentPage({ params }: Params) {
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <PrimaryButton href={BOOKING_URL}>Book a scoping call</PrimaryButton>
+                <PrimaryButton href={BOOKING_URL}>Book a Free Lead-Flow Audit</PrimaryButton>
                 <SecondaryButton href="/#calculator">See what it&apos;s worth</SecondaryButton>
               </div>
 
@@ -270,7 +270,7 @@ export default async function AgentPage({ params }: Params) {
                 </p>
                 <div className="mt-6">
                   <PrimaryButton href={BOOKING_URL} className="w-full">
-                    Book a scoping call
+                    Book a Free Lead-Flow Audit
                   </PrimaryButton>
                 </div>
               </div>

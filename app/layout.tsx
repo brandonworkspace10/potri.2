@@ -23,14 +23,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const TITLE = "3 AI Employees for Every Real Estate Business";
+const TITLE = "Stop Building AI, Start Deploying It";
 const DESCRIPTION =
-  "Three AI employees for real estate investors: Andy dials and qualifies seller leads, Randy answers every call 24/7, Alyssa runs follow-up. Live in under six days.";
+  "Get relief from operational gaps. Deploy pre-trained AI employees for cold calling, 24/7 reception, and custom follow-up. Live in 6 days. Book your free lead-flow audit.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${TITLE} | Topri`,
+    default: `${TITLE} | AI Employees for Real Estate | Topri`,
     template: "%s | Topri",
   },
   description: DESCRIPTION,
@@ -51,14 +51,14 @@ export const metadata: Metadata = {
     siteName: "Topri",
     title: TITLE,
     description:
-      "Your next deal shouldn't go to voicemail. Three AI employees that answer, qualify and follow up 24/7 — live in six days, for roughly what one caller costs today.",
+      "Stop fighting with complex tools and unreliable callers. Deploy pre-trained AI employees — cold calling, 24/7 reception and custom follow-up — into your business in under six days. You handle the contracts, we handle the rest.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description:
-      "Three AI employees for real estate investors — outbound, inbound and follow-up. Live in under six days.",
+      "Stop building your own AI. Deploy pre-trained AI employees for real estate — outbound, inbound and follow-up. Live in under six days.",
   },
   robots: {
     index: true,

@@ -132,7 +132,7 @@ export function SiteNav() {
               href={BOOKING_URL}
               className="hidden rounded-lg bg-ink px-4 py-2.5 text-sm font-semibold tracking-[-0.01em] text-base transition-colors hover:bg-white sm:block"
             >
-              Book a scoping call
+              Book a free audit
             </Link>
             <MobileMenu />
           </div>

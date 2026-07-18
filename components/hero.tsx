@@ -38,22 +38,21 @@ export function Hero() {
                 } as React.CSSProperties
               }
             >
-              Your next deal shouldn&apos;t
+              Stop trying to build your own AI.
             </span>
-            <br className="hidden sm:block" /> go to{" "}
-            <span className="shimmer-text text-brand">voicemail</span>
-            .
+            <br className="hidden sm:block" /> Just deploy{" "}
+            <span className="shimmer-text text-brand">ours</span>.
           </h1>
 
-          <p className="mt-5 max-w-[700px] text-[16px] sm:mt-7 sm:text-[17px] leading-[1.6] text-muted sm:text-[19px]">
-            Topri is three AI employees for real estate investors and wholesalers. Andy
-            cold-calls and qualifies your seller leads. Randy answers every inbound call, 24/7.
-            Alyssa runs the follow-up. Live in under six days, for roughly what one caller
-            costs you today.
+          <p className="mt-5 max-w-[720px] text-[16px] sm:mt-7 sm:text-[17px] leading-[1.6] text-muted sm:text-[19px]">
+            Stop fighting with complex tools and unreliable callers. Whether you need a
+            single agent or a full acquisitions team, we deploy pre-trained AI employees
+            into your business in under six days. You handle the contracts, we handle
+            the rest.
           </p>
 
           <div className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row">
-            <PrimaryButton href={BOOKING_URL}>Book a scoping call</PrimaryButton>
+            <PrimaryButton href={BOOKING_URL}>Book a Free Lead-Flow Audit</PrimaryButton>
             <SecondaryButton href="#calculator">See what it&apos;s worth</SecondaryButton>
           </div>
 
