@@ -8,9 +8,9 @@ import { BOOKING_URL } from "@/lib/config";
 import { Wordmark } from "./ui";
 
 const LINKS = [
-  { label: "Calculator", href: "/#calculator" },
   { label: "Pricing", href: "/#pricing" },
   { label: "The math", href: "/#math" },
+  { label: "Calculator", href: "/#calculator" },
   { label: "Integrations", href: "/#integrations" },
   { label: "Deployment", href: "/#deployment" },
   { label: "FAQ", href: "/#faq" },

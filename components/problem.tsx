@@ -31,9 +31,9 @@ export function Problem() {
           <div className="flex flex-col gap-5">
             <Eyebrow>The cost of doing nothing</Eyebrow>
             <h2 className="text-[27px] font-bold leading-[1.08] tracking-[-0.03em] text-ink sm:text-[42px] lg:text-[46px]">
-              Every deal you lose
+              Missed seller calls
               <br />
-              has a reason.
+              are costing you deals.
             </h2>
             <p className="text-base leading-[1.6] text-dim">
               You already know the symptoms. What they quietly cost you is the part

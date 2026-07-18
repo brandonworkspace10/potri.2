@@ -41,7 +41,10 @@ export function Pricing() {
           </div>
         ) : null}
 
-        <SectionHeading eyebrow="The cost" title="Hire one. A pair. Or the whole team." />
+        <SectionHeading
+          eyebrow="The cost"
+          title="Flat monthly pricing. Hire one, two, or the whole team."
+        />
 
         <div className="mt-10 hidden overflow-x-auto sm:mt-13 sm:block">
           <table className="w-full min-w-[720px] border-separate border-spacing-0 text-left">

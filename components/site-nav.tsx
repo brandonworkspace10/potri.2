@@ -7,9 +7,9 @@ import { NavDropdownFx } from "./nav-dropdown-fx";
 import { Container, Wordmark } from "./ui";
 
 const LINKS = [
-  { label: "Calculator", href: "/#calculator" },
   { label: "Pricing", href: "/#pricing" },
   { label: "The math", href: "/#math" },
+  { label: "Calculator", href: "/#calculator" },
   { label: "Deployment", href: "/#deployment" },
   { label: "FAQ", href: "/#faq" },
 ];

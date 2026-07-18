@@ -23,8 +23,9 @@ export function Relief() {
         <div className="flex flex-col items-center text-center">
           <Eyebrow>The outcome</Eyebrow>
           <h2 className="mt-4 max-w-[900px] text-[24px] font-bold leading-[1.2] tracking-[-0.03em] text-ink sm:text-[38px] lg:text-[42px]">
-            Imagine waking up knowing every seller who called overnight was already{" "}
-            <span className="text-brand">answered, qualified, logged, and booked</span>.
+            Every seller call{" "}
+            <span className="text-brand">answered, qualified, and booked</span>.
+            While you sleep.
           </h2>
           <p className="mt-6 max-w-[600px] text-[17px] leading-[1.6] text-muted">
             Not a list of missed calls to work through. A calendar with appointments on it.

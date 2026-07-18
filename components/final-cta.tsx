@@ -14,7 +14,7 @@ export function FinalCta() {
       />
       <Container className="relative">
         <div className="flex flex-col items-center text-center">
-          <Eyebrow>The life you want to live</Eyebrow>
+          <Eyebrow>Get started</Eyebrow>
           <h2 className="mt-4 max-w-[900px] text-[30px] font-bold leading-[1.06] tracking-[-0.04em] text-ink sm:text-[48px] lg:text-[58px]">
             Every unanswered call is a deal
             <br className="hidden sm:block" /> for{" "}

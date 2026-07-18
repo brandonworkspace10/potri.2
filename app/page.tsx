@@ -21,13 +21,15 @@ export default function Home() {
     <>
       <JsonLd />
       <SiteNav />
+      {/* Narrative order: outcomes -> benefits -> cost -> what you need ->
+          what happens -> what happens after -> close. */}
       <main className="flex-1">
         <Hero />
         <ProofStrip />
-        <Problem />
         <Relief />
         <Team />
         <Why />
+        <Problem />
         <Pricing />
         <MathSection />
         <RoiCalculator />

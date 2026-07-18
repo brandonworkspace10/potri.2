@@ -31,7 +31,7 @@ export function Deployment() {
     >
       <Container>
         <SectionHeading
-          eyebrow="Your first project"
+          eyebrow="What happens next"
           title="Signed Monday. Working by Saturday."
           sub="No six-week onboarding. No implementation retainer."
         />
