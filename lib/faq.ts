@@ -18,7 +18,7 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "What does Potri cost?",
-    a: "Andy runs $1,600–$2,500 a month depending on call volume and script complexity. Randy runs $1,200–$1,800 depending on inbound volume and integrations. Alyssa runs $1,500–$6,000 and is scoped to your operation. All three together are a flat $5,200 a month. Final pricing is confirmed after a scoping call.",
+    a: "Andy runs $1,600–$2,500 a month depending on call volume and script complexity. Randy runs $1,200–$1,800 depending on inbound volume and integrations. Alyssa runs $1,500–$6,000 and is scoped to your operation. Andy and Randy together as the Outbound + Inbound package are a flat $3,200 a month. All three together are a flat $5,200 a month. Final pricing is confirmed after a scoping call.",
   },
   {
     q: "Can I hire just one agent instead of the whole team?",

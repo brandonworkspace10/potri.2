@@ -19,6 +19,9 @@ export const SITE_URL = "https://potri.ai";
 /** Flat monthly price for the full three-agent team. */
 export const TEAM_PRICE = 5200;
 
+/** Flat monthly price for the two-agent Outbound + Inbound bundle (Andy + Randy). */
+export const OUTBOUND_INBOUND_PRICE = 3200;
+
 /**
  * Current promo: hire any 2 agents, the 3rd is free for the first 6 months,
  * then it moves to its normal listed price. Single source of truth — pricing

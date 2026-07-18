@@ -6,6 +6,7 @@ import {
   PROMO,
   SITE_URL,
   TEAM_PRICE,
+  OUTBOUND_INBOUND_PRICE,
 } from "@/lib/config";
 
 /**
@@ -57,9 +58,11 @@ ${agents}
 |---|---|---|---|
 ${AGENTS.map((a) => `| ${a.name} | ${a.role} | ${a.page.priceRange.replace(" / month", "")} | ${a.page.pricedBy} |`).join("\n")}
 
+**Outbound + Inbound (Andy + Randy): $${OUTBOUND_INBOUND_PRICE.toLocaleString("en-US")}/month flat**, versus $2,800–$4,300 if bought separately.
+
 **Full team (Andy + Randy + Alyssa): $${TEAM_PRICE.toLocaleString("en-US")}/month flat**, versus $4,300–$10,300 if bought separately.
 
-Pricing rules: no discounts on individual agents — single hires pay full price. Bundle pricing applies only to the full three-agent team. Final price is confirmed after a scoping call.
+Pricing rules: no discounts on individual agents — single hires pay full price. Bundle pricing applies to the Outbound + Inbound package and the full three-agent team. Final price is confirmed after a scoping call.
 ${PROMO.active ? `\nCurrent promotion: ${PROMO.headline} ${PROMO.detail}\n` : ""}
 
 ## One human caller vs the Potri team
