@@ -32,7 +32,7 @@ export const TRUE_COSTS: Detail[] = [
 export const HUMAN_WINS: Detail[] = [
   {
     title: "Closing the deal",
-    desc: "Potri qualifies and books. It does not negotiate a contract, walk a property, or sit at a kitchen table. The appointment lands on your calendar precisely so a human can do that part.",
+    desc: "Topri qualifies and books. It does not negotiate a contract, walk a property, or sit at a kitchen table. The appointment lands on your calendar precisely so a human can do that part.",
   },
   {
     title: "Genuinely unusual situations",
@@ -44,7 +44,7 @@ export const HUMAN_WINS: Detail[] = [
   },
   {
     title: "Judgment about your business",
-    desc: "Which markets to enter, which deals to walk from, what to pay. Potri executes a defined job well; it does not decide strategy.",
+    desc: "Which markets to enter, which deals to walk from, what to pay. Topri executes a defined job well; it does not decide strategy.",
   },
 ];
 
@@ -63,7 +63,7 @@ export const ROWS: [string, string, string][] = [
 export const FAQS: { q: string; a: string }[] = [
   {
     q: "Is an AI cold caller better than hiring a human cold caller?",
-    a: "For the top of the funnel — dialing a list, qualifying against fixed criteria, and booking appointments — an AI caller covers 168 hours a week instead of 40, applies the same framework to every seller, and costs about what one human costs. For closing the deal, negotiating a contract, or handling a genuinely unusual situation, a human is still better. Most investors use both: Potri qualifies and books, and a human takes the appointment.",
+    a: "For the top of the funnel — dialing a list, qualifying against fixed criteria, and booking appointments — an AI caller covers 168 hours a week instead of 40, applies the same framework to every seller, and costs about what one human costs. For closing the deal, negotiating a contract, or handling a genuinely unusual situation, a human is still better. Most investors use both: Topri qualifies and books, and a human takes the appointment.",
   },
   {
     q: "What does a human cold caller actually cost?",
@@ -71,14 +71,14 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Can AI replace my entire acquisitions team?",
-    a: "No, and Potri does not claim to. It replaces the calling, qualification and follow-up work — the outbound dialing, the inbound answering, and the sequences in between. It hands you a booked appointment with a qualified seller. Someone still has to run that appointment and close the deal.",
+    a: "No, and Topri does not claim to. It replaces the calling, qualification and follow-up work — the outbound dialing, the inbound answering, and the sequences in between. It hands you a booked appointment with a qualified seller. Someone still has to run that appointment and close the deal.",
   },
   {
     q: "Will sellers hang up on an AI caller?",
-    a: "Some will, exactly as some hang up on a human cold caller. What changes is the volume and consistency underneath: every lead on the list gets dialed rather than only the ones somebody reached before 5pm, and every seller who does engage is qualified on the same five pillars. Potri deliberately publishes no capture or conversion rate, because it has not earned one to publish.",
+    a: "Some will, exactly as some hang up on a human cold caller. What changes is the volume and consistency underneath: every lead on the list gets dialed rather than only the ones somebody reached before 5pm, and every seller who does engage is qualified on the same five pillars. Topri deliberately publishes no capture or conversion rate, because it has not earned one to publish.",
   },
   {
     q: "How long does it take to replace a cold caller with AI?",
-    a: "Under six days with Potri. Day one is a scoping call mapping your lead sources, CRM, calendar and qualification criteria. Days two and three are build and training. Days four and five are test calls that you listen to and approve. Day six it goes live. A human hire, by comparison, takes weeks of recruiting plus weeks of ramp.",
+    a: "Under six days with Topri. Day one is a scoping call mapping your lead sources, CRM, calendar and qualification criteria. Days two and three are build and training. Days four and five are test calls that you listen to and approve. Day six it goes live. A human hire, by comparison, takes weeks of recruiting plus weeks of ramp.",
   },
 ];

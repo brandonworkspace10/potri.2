@@ -46,7 +46,7 @@ export function Hero() {
           </h1>
 
           <p className="mt-5 max-w-[700px] text-[16px] sm:mt-7 sm:text-[17px] leading-[1.6] text-muted sm:text-[19px]">
-            Potri is three AI employees for real estate investors and wholesalers. Andy
+            Topri is three AI employees for real estate investors and wholesalers. Andy
             cold-calls and qualifies your seller leads. Randy answers every inbound call, 24/7.
             Alyssa runs the follow-up. Live in under six days, for roughly what one caller
             costs you today.

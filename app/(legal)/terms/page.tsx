@@ -5,9 +5,9 @@ import { Block, LegalPage } from "../legal-layout";
 export const metadata: Metadata = {
   title: "Terms of Use",
   description:
-    "Terms for using the Potri website: what the published pricing means, what we do and don't promise, and trademark notices.",
+    "Terms for using the Topri website: what the published pricing means, what we do and don't promise, and trademark notices.",
   alternates: { canonical: "/terms" },
-  openGraph: { url: `${SITE_URL}/terms`, title: "Terms of Use | Potri" },
+  openGraph: { url: `${SITE_URL}/terms`, title: "Terms of Use | Topri" },
 };
 
 export default function TermsPage() {
@@ -15,7 +15,7 @@ export default function TermsPage() {
     <LegalPage eyebrow="Legal" title="Terms of Use" updated="July 17, 2026">
       <Block title="What this site is">
         <p>
-          This website describes the Potri service — AI phone and operations agents for
+          This website describes the Topri service — AI phone and operations agents for
           real estate investors and wholesalers — and lets you book a scoping call. It is
           informational. Using the site does not create a service agreement; that happens
           in writing, after a scoping call.
@@ -33,7 +33,7 @@ export default function TermsPage() {
 
       <Block title="What we deliberately do not promise">
         <p>
-          Potri answers, qualifies, and follows up. It does not close deals, and we make
+          Topri answers, qualifies, and follows up. It does not close deals, and we make
           no claim about how many deals, appointments, or dollars any client will get.
           The ROI calculator on this site performs arithmetic on numbers you enter — it
           is your model of your business, not a forecast by us. Any figures it shows are
@@ -55,14 +55,14 @@ export default function TermsPage() {
         <p>
           Third-party product names and logos on this site — CRMs, dialers, calendars,
           and other tools — belong to their respective owners. They appear to describe
-          what Potri can be built around, and do not imply certification, partnership,
+          what Topri can be built around, and do not imply certification, partnership,
           or endorsement by those companies.
         </p>
       </Block>
 
       <Block title="Intellectual property">
         <p>
-          The content, design, and branding of this site belong to Potri. Don&apos;t
+          The content, design, and branding of this site belong to Topri. Don&apos;t
           scrape it into your own marketing or pass it off as yours.
         </p>
       </Block>

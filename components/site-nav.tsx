@@ -109,7 +109,7 @@ export function SiteNav() {
       <NavDropdownFx />
       <Container>
         <nav className="flex h-[72px] items-center justify-between gap-6">
-          <Link href="/" aria-label="Potri home" className="shrink-0">
+          <Link href="/" aria-label="Topri home" className="shrink-0">
             <Wordmark />
           </Link>
 

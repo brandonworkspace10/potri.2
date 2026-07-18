@@ -4,7 +4,7 @@ import { useMemo, useState, type CSSProperties } from "react";
 import {
   BOOKING_URL,
   HUMAN_HOURS_PER_WEEK,
-  POTRI_HOURS_PER_WEEK,
+  TOPRI_HOURS_PER_WEEK,
   TEAM_PRICE,
 } from "@/lib/config";
 import { Container, PrimaryButton, SectionHeading } from "./ui";
@@ -100,7 +100,7 @@ export function RoiCalculator() {
 
   const r = useMemo(() => {
     const humanMonthly = callers * costPerCaller;
-    const deltaMonthly = humanMonthly - TEAM_PRICE; // positive = Potri is cheaper
+    const deltaMonthly = humanMonthly - TEAM_PRICE; // positive = Topri is cheaper
     const deltaAnnual = deltaMonthly * 12;
     const humanHours = callers * HUMAN_HOURS_PER_WEEK;
 
@@ -113,13 +113,13 @@ export function RoiCalculator() {
       deltaMonthly,
       deltaAnnual,
       humanHours,
-      potriAnnual: TEAM_PRICE * 12,
+      topriAnnual: TEAM_PRICE * 12,
       missedPerMonth,
       dealsRecoveredPerYear,
       upsideAnnual,
-      // The payroll delta already nets Potri's price against what they spend
+      // The payroll delta already nets Topri's price against what they spend
       // today, so adding the upside to it gives the whole picture. Subtracting
-      // Potri's full cost here instead would bill them for a team they were
+      // Topri's full cost here instead would bill them for a team they were
       // already paying for.
       netAnnual: deltaAnnual + upsideAnnual,
       // how long one extra closed deal pays for the team
@@ -212,7 +212,7 @@ export function RoiCalculator() {
 
             <p className="border-t border-subtle pt-5 text-[12.5px] leading-[1.55] text-dim">
               Wholesalers typically earn $15K–$60K per deal; investors earn a multiple of
-              that through renovations. Potri’s full team is a flat {money(TEAM_PRICE)}/mo —
+              that through renovations. Topri’s full team is a flat {money(TEAM_PRICE)}/mo —
               final pricing is confirmed on a scoping call.
             </p>
           </div>
@@ -236,13 +236,13 @@ export function RoiCalculator() {
               </div>
               <div className="p-6 sm:p-8">
                 <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-brand">
-                  With the Potri team
+                  With the Topri team
                 </p>
                 <p className="mt-3 text-[40px] font-bold tracking-[-0.04em] tabular-nums text-ink">
                   {money(TEAM_PRICE)}
                 </p>
                 <p className="mt-1.5 text-[13px] text-dim">
-                  {POTRI_HOURS_PER_WEEK} hrs/week · outbound + inbound + follow-up
+                  {TOPRI_HOURS_PER_WEEK} hrs/week · outbound + inbound + follow-up
                 </p>
               </div>
             </div>
@@ -278,7 +278,7 @@ export function RoiCalculator() {
                   </>
                 ) : (
                   <>
-                    Potri costs{" "}
+                    Topri costs{" "}
                     <span className="font-semibold text-ink">
                       {money(Math.abs(r.deltaAnnual))}
                     </span>{" "}
@@ -292,7 +292,7 @@ export function RoiCalculator() {
             {/* upside — computed entirely from the visitor's own assumptions */}
             <div className="border-b border-subtle px-6 py-6 sm:px-8 sm:py-7">
               <p className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-dim">
-                If Potri answers what you currently miss
+                If Topri answers what you currently miss
               </p>
               <div className="mt-3 flex flex-wrap items-end gap-x-8 gap-y-4">
                 <div>
@@ -311,9 +311,9 @@ export function RoiCalculator() {
                 <div className="text-dim">−</div>
                 <div>
                   <p className="text-[34px] font-bold leading-none tracking-[-0.04em] tabular-nums text-muted">
-                    {money(r.potriAnnual)}
+                    {money(r.topriAnnual)}
                   </p>
-                  <p className="mt-1.5 text-[12.5px] text-dim">Potri / year</p>
+                  <p className="mt-1.5 text-[12.5px] text-dim">Topri / year</p>
                 </div>
               </div>
 
@@ -323,7 +323,7 @@ export function RoiCalculator() {
                 </span>{" "}
                 Answering {answerRate}% of {inboundCalls} calls leaves{" "}
                 {Math.round(r.missedPerMonth)} missed a month; closing them at {closeRate}%
-                is your number, not ours. Potri answers, qualifies and follows up — it
+                is your number, not ours. Topri answers, qualifies and follows up — it
                 can&apos;t make a seller sell.
               </p>
             </div>
@@ -343,7 +343,7 @@ export function RoiCalculator() {
               </p>
               <p className="mt-2.5 max-w-[640px] text-[13.5px] leading-[1.5] text-muted">
                 Your payroll change ({cheaper ? "−" : "+"}
-                {money(Math.abs(r.deltaAnnual))}/yr) plus the deals above. Potri&apos;s
+                {money(Math.abs(r.deltaAnnual))}/yr) plus the deals above. Topri&apos;s
                 price is already inside that first figure.
               </p>
             </div>
@@ -353,7 +353,7 @@ export function RoiCalculator() {
               <div className="sm:border-b sm:border-subtle lg:border-b-0">
                 <Metric
                   label="Coverage"
-                  value={`${r.humanHours} → ${POTRI_HOURS_PER_WEEK}`}
+                  value={`${r.humanHours} → ${TOPRI_HOURS_PER_WEEK}`}
                   hint="Hours covered per week"
                 />
               </div>

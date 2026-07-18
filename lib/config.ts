@@ -4,17 +4,14 @@
  */
 export const BOOKING_URL = "#book";
 
-export const SITE_NAME = "Potri";
+export const SITE_NAME = "Topri";
 
 /**
  * Canonical origin. Drives metadataBase, sitemap, robots, OG/Twitter URLs and
- * JSON-LD @ids.
- *
- * potri.com is aftermarket (~$3k) and owned by a third party — it must never
- * be the canonical. potri.ai was confirmed available ($160/2yr) on 2026-07-16;
- * buy before deploying, or change this one line if a different domain wins.
+ * JSON-LD @ids. topri.io is the live production domain — change this one line
+ * if the canonical domain ever moves.
  */
-export const SITE_URL = "https://potri.ai";
+export const SITE_URL = "https://topri.io";
 
 /** Flat monthly price for the full three-agent team. */
 export const TEAM_PRICE = 5200;
@@ -35,4 +32,4 @@ export const PROMO = {
 
 /** Hours per week each option covers. */
 export const HUMAN_HOURS_PER_WEEK = 40;
-export const POTRI_HOURS_PER_WEEK = 168;
+export const TOPRI_HOURS_PER_WEEK = 168;

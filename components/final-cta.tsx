@@ -21,7 +21,7 @@ export function FinalCta() {
             <span className="text-brand">another investor</span>.
           </h2>
           <p className="mt-7 max-w-[620px] text-[17px] leading-[1.6] text-muted">
-            While your competitors miss leads after hours, Potri answers every call,
+            While your competitors miss leads after hours, Topri answers every call,
             qualifies every seller, follows up automatically, and books appointments
             while you sleep.
           </p>

@@ -48,7 +48,7 @@ export function Problem() {
               </p>
               <p className="mt-3 text-[15px] leading-[1.6] text-muted">
                 One deal lost to a voicemail costs more than{" "}
-                <span className="font-semibold text-brand">a year of Potri</span>.
+                <span className="font-semibold text-brand">a year of Topri</span>.
               </p>
             </div>
           </div>

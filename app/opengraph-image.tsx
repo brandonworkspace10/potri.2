@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const alt =
-  "Potri — AI employees for real estate investors and wholesalers";
+  "Topri — AI employees for real estate investors and wholesalers";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -29,7 +29,7 @@ export default function OgImage() {
         }}
       >
         <div style={{ display: "flex", fontSize: 44, fontWeight: 700, color: "#f5f6f7" }}>
-          potri<span style={{ color: "#ff8a34" }}>.</span>
+          topri<span style={{ color: "#ff8a34" }}>.</span>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>

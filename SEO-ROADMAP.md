@@ -20,7 +20,7 @@ business decision before code can help.
 - Compare page: `FAQPage` (5 questions), `BreadcrumbList`
 
 **AEO**
-- `/llms.txt` — plain-text brief for ChatGPT/Perplexity/Claude/Gemini/AI Overviews, generated from the same data as the pages. Includes "notes for citation" stating Potri publishes no capture/close rate.
+- `/llms.txt` — plain-text brief for ChatGPT/Perplexity/Claude/Gemini/AI Overviews, generated from the same data as the pages. Includes "notes for citation" stating Topri publishes no capture/close rate.
 - FAQ answers live in the HTML source (crawlable while collapsed)
 - Definitional questions targeting category queries ("What is an AI acquisitions caller?", "How much does an AI cold caller cost?")
 
@@ -31,12 +31,12 @@ business decision before code can help.
 
 ## Blocked on business decisions — code can't fix these
 
-1. ~~Two live sites both branded Potri~~ **Resolved 2026-07-16**:
+1. ~~Two live sites both branded Topri~~ **Resolved 2026-07-16**:
    real-lead-in.vercel.app was a test production; this repo is the real one
-   and `potri.com` connects to it. Once DNS is live, take the test deployment
+   and `topri.com` connects to it. Once DNS is live, take the test deployment
    offline (or noindex it) so its $697–$1,497 FAQ schema stops answering
-   "how much does Potri cost".
-2. ~~`SITE_URL` is a guess~~ **Resolved**: set to `https://potri.com`.
+   "how much does Topri cost".
+2. ~~`SITE_URL` is a guess~~ **Resolved**: set to `https://topri.com`.
 3. **Two FAQ answers not written because the policy doesn't exist yet:**
    "Will sellers know they're talking to AI?" and "Is this TCPA compliant?"
    Both are top objections and strong AEO queries. Need Brandon's actual

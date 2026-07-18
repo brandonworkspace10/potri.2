@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "potri.2",
+      "name": "topri.2",
       "dependencies": {
         "@paper-design/shaders-react": "^0.0.77",
         "next": "16.2.10",

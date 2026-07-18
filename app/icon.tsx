@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-/** Browser-tab favicon: the wordmark's "p." on the brand surface. */
+/** Browser-tab favicon: the wordmark's "t." on the brand surface. */
 export const size = { width: 48, height: 48 };
 export const contentType = "image/png";
 
@@ -25,7 +25,7 @@ export default function Icon() {
           paddingRight: 2,
         }}
       >
-        p<span style={{ color: "#ff8a34" }}>.</span>
+        t<span style={{ color: "#ff8a34" }}>.</span>
       </div>
     ),
     size,

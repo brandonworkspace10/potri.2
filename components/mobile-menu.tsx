@@ -128,7 +128,7 @@ export function MobileMenu() {
             }`}
           >
             <div className="flex h-[72px] shrink-0 items-center justify-between border-b border-subtle px-6">
-              <Link href="/" onClick={close} aria-label="Potri home">
+              <Link href="/" onClick={close} aria-label="Topri home">
                 <Wordmark />
               </Link>
               <button

@@ -40,7 +40,7 @@ export default function ComparePage() {
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Potri", item: SITE_URL },
+          { "@type": "ListItem", position: 1, name: "Topri", item: SITE_URL },
           {
             "@type": "ListItem",
             position: 2,
@@ -126,7 +126,7 @@ export default function ComparePage() {
           <Container>
             <Eyebrow>Side by side</Eyebrow>
             <h2 className="mt-4 text-[23px] font-bold leading-[1.16] tracking-[-0.025em] text-ink sm:text-[34px]">
-              One human caller vs the Potri team
+              One human caller vs the Topri team
             </h2>
 
             {/* desktop table */}
@@ -139,12 +139,12 @@ export default function ComparePage() {
                       One human caller
                     </th>
                     <th className="w-[34%] rounded-t-2xl border-x border-t border-[#5c3a1e] bg-card px-6 py-5 text-[15px] font-semibold text-brand">
-                      Potri team
+                      Topri team
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {ROWS.map(([metric, human, potri], i) => {
+                  {ROWS.map(([metric, human, topri], i) => {
                     const last = i === ROWS.length - 1;
                     return (
                       <tr key={metric}>
@@ -168,7 +168,7 @@ export default function ComparePage() {
                             last ? "rounded-b-2xl border-b border-b-[#5c3a1e]" : "",
                           ].join(" ")}
                         >
-                          {potri}
+                          {topri}
                         </td>
                       </tr>
                     );
@@ -179,7 +179,7 @@ export default function ComparePage() {
 
             {/* mobile cards */}
             <div className="mt-10 flex flex-col gap-3 sm:hidden">
-              {ROWS.map(([metric, human, potri]) => (
+              {ROWS.map(([metric, human, topri]) => (
                 <div key={metric} className="rounded-2xl border border-subtle bg-card p-5">
                   <p className="text-[13px] font-medium text-muted">{metric}</p>
                   <div className="mt-3.5 grid grid-cols-2 gap-4">
@@ -191,10 +191,10 @@ export default function ComparePage() {
                     </div>
                     <div className="border-l border-subtle pl-4">
                       <p className="font-mono text-[9px] font-medium uppercase tracking-[0.2em] text-brand">
-                        Potri team
+                        Topri team
                       </p>
                       <p className="mt-2 text-[13.5px] font-semibold leading-[1.4] text-ink">
-                        {potri}
+                        {topri}
                       </p>
                     </div>
                   </div>
@@ -213,7 +213,7 @@ export default function ComparePage() {
             </h2>
             <p className="mt-5 max-w-[660px] text-[15.5px] leading-[1.7] text-dim">
               Any vendor telling you their AI replaces your whole acquisitions team is
-              selling you something. Potri does one part of the job. Here is the part it
+              selling you something. Topri does one part of the job. Here is the part it
               doesn&apos;t.
             </p>
 
@@ -248,7 +248,7 @@ export default function ComparePage() {
                   across from a seller and agreeing a number is the reverse.
                 </p>
                 <p>
-                  The reason the maths favours Potri isn&apos;t that the agents are better
+                  The reason the maths favours Topri isn&apos;t that the agents are better
                   at calling than a good human. It&apos;s that the same{" "}
                   <span className="font-medium text-muted">
                     ${TEAM_PRICE.toLocaleString("en-US")}

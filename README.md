@@ -1,6 +1,6 @@
-# potri.2
+# topri.2
 
-Marketing site for **Potri** — AI employees for real estate investors & wholesalers.
+Marketing site for **Topri** — AI employees for real estate investors & wholesalers.
 
 Three specialized agents — **Andy** (outbound acquisitions), **Randy** (inbound reception),
 and **Alyssa** (back-office follow-up & ops) — deployed in under six days, for roughly the
@@ -37,7 +37,7 @@ components/
   team.tsx          # Andy / Randy / Alyssa cards
   why.tsx           # 3x2 advantage grid
   roi-calculator.tsx# interactive cost calculator (client component)
-  math.tsx          # one human vs. the Potri team
+  math.tsx          # one human vs. the Topri team
   pricing.tsx       # per-agent table + $5,200 team bundle
   deployment.tsx    # 6-day timeline
   final-cta.tsx
@@ -73,7 +73,7 @@ arithmetic against the flat `TEAM_PRICE`:
 - **One closed deal** — `dealProfit ÷ 5200` = months of team covered by a single extra deal
 - **Break-even** — `(5200 × 12) ÷ dealProfit` = extra deals/year needed to cover the team
 
-It deliberately makes **no claim about how many deals Potri will close**. It states the bar
+It deliberately makes **no claim about how many deals Topri will close**. It states the bar
 the agents have to clear, using the visitor's own numbers.
 
 ## Before launch
@@ -92,6 +92,6 @@ The visual direction was mocked in Figma before implementation:
 ## Content source
 
 All copy derives from the internal positioning & pricing brief
-(`Potri_Positioning_and_Pricing.pdf`). Section headings and connective copy were written
+(`Topri_Positioning_and_Pricing.pdf`). Section headings and connective copy were written
 for the site. There are no testimonials or customer logos, because there are no real ones
 to show yet.

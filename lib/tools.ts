@@ -5,7 +5,7 @@ export type Tool = {
 };
 
 /**
- * The stack this buyer actually runs. Listed as examples of what Potri gets
+ * The stack this buyer actually runs. Listed as examples of what Topri gets
  * built around — not as certified integrations, which we have none to claim.
  *
  * Add a logo by dropping public/logos/<slug>.svg — see public/logos/README.md.

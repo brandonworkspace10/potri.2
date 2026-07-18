@@ -68,7 +68,7 @@ export default async function AgentPage({ params }: Params) {
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Potri", item: SITE_URL },
+          { "@type": "ListItem", position: 1, name: "Topri", item: SITE_URL },
           { "@type": "ListItem", position: 2, name: "The team", item: `${SITE_URL}/#team` },
           { "@type": "ListItem", position: 3, name: a.name, item: `${SITE_URL}/${a.id}` },
         ],

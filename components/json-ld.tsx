@@ -38,7 +38,7 @@ export function JsonLd() {
       {
         "@type": "Service",
         "@id": `${SITE_URL}/#service`,
-        name: "Potri AI acquisitions team",
+        name: "Topri AI acquisitions team",
         serviceType: "AI phone agents for real estate investors and wholesalers",
         provider: { "@id": `${SITE_URL}/#organization` },
         areaServed: "US",
@@ -55,7 +55,7 @@ export function JsonLd() {
         },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
-          name: "Potri AI employees",
+          name: "Topri AI employees",
           itemListElement: AGENTS.map((a) => ({
             "@type": "Offer",
             itemOffered: {

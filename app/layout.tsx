@@ -30,8 +30,8 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${TITLE} | Potri`,
-    template: "%s | Potri",
+    default: `${TITLE} | Topri`,
+    template: "%s | Topri",
   },
   description: DESCRIPTION,
   keywords: [
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: "Potri",
+    siteName: "Topri",
     title: TITLE,
     description:
       "Your next deal shouldn't go to voicemail. Three AI employees that answer, qualify and follow up 24/7 — live in six days, for roughly what one caller costs today.",

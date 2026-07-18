@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     languages: { en: "/", es: "/es" },
   },
   openGraph: {
-    title: `${TITLE} | Potri`,
+    title: `${TITLE} | Topri`,
     description: DESCRIPTION,
     url: `${SITE_URL}/es`,
     locale: "es_US",
@@ -66,8 +66,8 @@ const DIAS = [
 
 const PREGUNTAS = [
   {
-    q: "¿Qué es Potri?",
-    a: "Potri es un equipo de tres empleados de IA para inversionistas y mayoristas de bienes raíces. Andy hace llamadas salientes y califica vendedores. Randy contesta cada llamada entrante, las 24 horas. Alyssa lleva el seguimiento y la operación. Puedes contratar uno o los tres.",
+    q: "¿Qué es Topri?",
+    a: "Topri es un equipo de tres empleados de IA para inversionistas y mayoristas de bienes raíces. Andy hace llamadas salientes y califica vendedores. Randy contesta cada llamada entrante, las 24 horas. Alyssa lleva el seguimiento y la operación. Puedes contratar uno o los tres.",
   },
   {
     q: "¿Los agentes hablan español?",
@@ -78,7 +78,7 @@ const PREGUNTAS = [
     a: "En menos de seis días. El día uno es una llamada de alcance; los días dos y tres son construcción y entrenamiento; los días cuatro y cinco escuchas llamadas de prueba y las apruebas; el día seis los agentes están trabajando.",
   },
   {
-    q: "¿Cuánto cuesta Potri?",
+    q: "¿Cuánto cuesta Topri?",
     a: "Andy cuesta $1,600–$2,500 al mes según volumen y complejidad del guion. Randy cuesta $1,200–$1,800 según volumen entrante e integraciones. Alyssa cuesta $1,500–$6,000 y se define en consulta. El equipo completo cuesta $5,200 al mes, tarifa fija. El precio final se confirma en la llamada de alcance.",
   },
   {
@@ -87,7 +87,7 @@ const PREGUNTAS = [
   },
   {
     q: "¿Tengo que cambiar mi CRM o mis herramientas?",
-    a: "No. Potri se construye alrededor del software que ya usas — tu CRM, tu calendario, tu marcador. En la llamada de alcance mapeamos tu configuración exacta y los agentes se adaptan a ella.",
+    a: "No. Topri se construye alrededor del software que ya usas — tu CRM, tu calendario, tu marcador. En la llamada de alcance mapeamos tu configuración exacta y los agentes se adaptan a ella.",
   },
 ];
 
@@ -98,7 +98,7 @@ export default function EsPage() {
       {
         "@type": "WebPage",
         "@id": `${SITE_URL}/es`,
-        name: `${TITLE} | Potri`,
+        name: `${TITLE} | Topri`,
         inLanguage: "es",
         isPartOf: { "@id": `${SITE_URL}/#website` },
       },
@@ -130,7 +130,7 @@ export default function EsPage() {
       <header className="sticky top-0 z-50 border-b border-subtle bg-base/90 backdrop-blur-sm sm:bg-base/80 sm:backdrop-blur-xl">
         <Container>
           <nav className="flex h-[72px] items-center justify-between gap-6">
-            <Link href="/es" aria-label="Potri inicio">
+            <Link href="/es" aria-label="Topri inicio">
               <Wordmark />
             </Link>
             <div className="flex items-center gap-3 sm:gap-4">
@@ -168,7 +168,7 @@ export default function EsPage() {
                 <span className="text-brand">buzón de voz</span>.
               </h1>
               <p className="mt-5 max-w-[700px] text-[16px] leading-[1.6] text-muted sm:mt-7 sm:text-[18px]">
-                Potri son tres empleados de IA para inversionistas y mayoristas de bienes
+                Topri son tres empleados de IA para inversionistas y mayoristas de bienes
                 raíces. Andy llama y califica a tus vendedores. Randy contesta cada
                 llamada entrante, 24/7. Alyssa se encarga del seguimiento. En vivo en
                 menos de seis días, por más o menos lo que hoy te cuesta un solo
@@ -253,7 +253,7 @@ export default function EsPage() {
                 Las cuentas
               </p>
               <h2 className="max-w-3xl text-[27px] font-bold leading-[1.08] tracking-[-0.03em] text-ink sm:text-[42px]">
-                Un llamador humano vs. el equipo Potri
+                Un llamador humano vs. el equipo Topri
               </h2>
             </div>
             <div className="mx-auto mt-10 flex max-w-[860px] flex-col gap-3">
@@ -269,7 +269,7 @@ export default function EsPage() {
                     </div>
                     <div className="border-l border-subtle pl-4">
                       <p className="font-mono text-[9px] font-medium uppercase tracking-[0.2em] text-brand">
-                        Equipo Potri
+                        Equipo Topri
                       </p>
                       <p className="mt-2 text-[13.5px] font-semibold leading-[1.4] text-ink">
                         {p}
@@ -329,7 +329,7 @@ export default function EsPage() {
               {PREGUNTAS.map((f, i) => (
                 <details
                   key={f.q}
-                  name="potri-faq-es"
+                  name="topri-faq-es"
                   className={`group ${i > 0 ? "border-t border-subtle" : ""}`}
                 >
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-5 transition-colors hover:bg-card sm:gap-6 sm:px-7 sm:py-6 [&::-webkit-details-marker]:hidden">
@@ -391,7 +391,7 @@ export default function EsPage() {
             </div>
           </div>
           <p className="mt-8 border-t border-subtle pt-5 text-[12.5px] text-dim">
-            © {new Date().getFullYear()} Potri. Todos los derechos reservados.
+            © {new Date().getFullYear()} Topri. Todos los derechos reservados.
           </p>
         </Container>
       </footer>

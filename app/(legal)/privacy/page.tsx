@@ -5,9 +5,9 @@ import { Block, LegalPage } from "../legal-layout";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Potri handles information on this website: what we collect, what we don't, and the third parties involved.",
+    "How Topri handles information on this website: what we collect, what we don't, and the third parties involved.",
   alternates: { canonical: "/privacy" },
-  openGraph: { url: `${SITE_URL}/privacy`, title: "Privacy Policy | Potri" },
+  openGraph: { url: `${SITE_URL}/privacy`, title: "Privacy Policy | Topri" },
 };
 
 export default function PrivacyPage() {
@@ -52,9 +52,9 @@ export default function PrivacyPage() {
         </p>
       </Block>
 
-      <Block title="The Potri service itself">
+      <Block title="The Topri service itself">
         <p>
-          If you become a client, the Potri agents handle call data — recordings,
+          If you become a client, the Topri agents handle call data — recordings,
           transcripts, seller details — on your behalf. How that data is processed,
           stored, and integrated with your CRM is defined in your service agreement
           during onboarding, not by this website policy.

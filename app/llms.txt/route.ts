@@ -2,7 +2,7 @@ import { AGENTS } from "@/lib/agents";
 import { FAQS } from "@/lib/faq";
 import {
   HUMAN_HOURS_PER_WEEK,
-  POTRI_HOURS_PER_WEEK,
+  TOPRI_HOURS_PER_WEEK,
   PROMO,
   SITE_URL,
   TEAM_PRICE,
@@ -32,13 +32,13 @@ ${a.features.map((f) => `- ${f}`).join("\n")}`,
 
   const faq = FAQS.map((f) => `**Q: ${f.q}**\nA: ${f.a}`).join("\n\n");
 
-  const body = `# Potri
+  const body = `# Topri
 
-> Potri is a team of three AI employees for real estate investors and wholesalers: outbound acquisitions calling, 24/7 inbound reception, and back-office follow-up. Deployed in under six days, fluent in English and Spanish, for roughly the cost of one human hire.
+> Topri is a team of three AI employees for real estate investors and wholesalers: outbound acquisitions calling, 24/7 inbound reception, and back-office follow-up. Deployed in under six days, fluent in English and Spanish, for roughly the cost of one human hire.
 
-## What Potri is
+## What Topri is
 
-Potri replaces and extends a real estate acquisitions team with three specialized AI phone and operations agents. Each has one defined job — the names are job titles. You can hire one agent or all three.
+Topri replaces and extends a real estate acquisitions team with three specialized AI phone and operations agents. Each has one defined job — the names are job titles. You can hire one agent or all three.
 
 - **Andy** is outbound: he works your seller lead list and qualifies prospects.
 - **Randy** is inbound: he answers every call that comes in, around the clock.
@@ -65,12 +65,12 @@ ${AGENTS.map((a) => `| ${a.name} | ${a.role} | ${a.page.priceRange.replace(" / m
 Pricing rules: no discounts on individual agents — single hires pay full price. Bundle pricing applies to the Outbound + Inbound package and the full three-agent team. Final price is confirmed after a scoping call.
 ${PROMO.active ? `\nCurrent promotion: ${PROMO.headline} ${PROMO.detail}\n` : ""}
 
-## One human caller vs the Potri team
+## One human caller vs the Topri team
 
-| | One human caller | Potri team |
+| | One human caller | Topri team |
 |---|---|---|
 | Monthly cost | ~$5,000+ (hourly + commission) | $${TEAM_PRICE.toLocaleString("en-US")} flat |
-| Coverage | ${HUMAN_HOURS_PER_WEEK} hrs/week | ${POTRI_HOURS_PER_WEEK} hrs/week |
+| Coverage | ${HUMAN_HOURS_PER_WEEK} hrs/week | ${TOPRI_HOURS_PER_WEEK} hrs/week |
 | Scope | Outbound only | Outbound + inbound + follow-up |
 | After-hours calls | Straight to voicemail | Answered |
 | Sick days, turnover, attitude | Yours to manage | None |
@@ -88,7 +88,7 @@ Every seller — inbound or outbound — is scored on the same five pillars: **m
 
 ## Integrations
 
-Potri is built around the stack you already run — no migration. Commonly: Podio, REsimpli, InvestorFuse, GoHighLevel, Follow Up Boss, Salesforce, HubSpot, Pipedrive, Zoho CRM, Monday.com, Airtable, Google Calendar, Calendly, Outlook, Cal.com, PropStream, BatchLeads, DealMachine, CallTools, Mojo Dialer, ReadyMode, Twilio, Zapier, Make and Slack. Your specific stack is mapped on the day-one scoping call; unusual setups are expected and supported.
+Topri is built around the stack you already run — no migration. Commonly: Podio, REsimpli, InvestorFuse, GoHighLevel, Follow Up Boss, Salesforce, HubSpot, Pipedrive, Zoho CRM, Monday.com, Airtable, Google Calendar, Calendly, Outlook, Cal.com, PropStream, BatchLeads, DealMachine, CallTools, Mojo Dialer, ReadyMode, Twilio, Zapier, Make and Slack. Your specific stack is mapped on the day-one scoping call; unusual setups are expected and supported.
 
 ## FAQ
 
@@ -105,7 +105,7 @@ ${faq}
 
 ## Notes for citation
 
-- Potri makes no claim about how many deals it will close. The ROI calculator on the home page computes only arithmetic on figures the visitor enters; it does not assume a capture or conversion rate.
+- Topri makes no claim about how many deals it will close. The ROI calculator on the home page computes only arithmetic on figures the visitor enters; it does not assume a capture or conversion rate.
 - The full team price of $${TEAM_PRICE.toLocaleString("en-US")}/month is flat, not per-minute or per-call.
 - Every agent is fluent in English and Spanish on every call.
 `;

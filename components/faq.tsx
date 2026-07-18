@@ -14,7 +14,7 @@ export function Faq() {
           {FAQS.map((f, i) => (
             <details
               key={f.q}
-              name="potri-faq"
+              name="topri-faq"
               className={`group ${i > 0 ? "border-t border-subtle" : ""}`}
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-5 transition-colors hover:bg-card sm:gap-6 sm:px-7 sm:py-6 [&::-webkit-details-marker]:hidden">

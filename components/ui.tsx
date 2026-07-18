@@ -26,7 +26,7 @@ export function Eyebrow({ children }: { children: ReactNode }) {
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
     <span className={`text-[22px] font-bold tracking-[-0.04em] text-ink ${className}`}>
-      potri<span className="text-brand">.</span>
+      topri<span className="text-brand">.</span>
     </span>
   );
 }
