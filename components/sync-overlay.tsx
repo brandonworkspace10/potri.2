@@ -75,7 +75,7 @@ export function SyncOverlay() {
     push(() => setMorph(true), 1550); // triangle → topri▲ logo (centered)
     push(flyToNav, 2150); // logo flies into the nav slot
     push(() => setLeaving(true), 2700); // background fades as it lands
-    push(() => setSwinging(true), 3150); // triangle swings from nav → badge
+    push(() => setSwinging(true), 3050); // triangle swings from nav → badge
     push(() => setShow(false), 3250); // overlay is gone; swing continues
 
     return () => {
@@ -105,8 +105,6 @@ export function SyncOverlay() {
 
     const s = navTri.getBoundingClientRect();
     const b = badge.getBoundingClientRect();
-    // hide the nav logo's own triangle so THIS one reads as it detaching
-    root.classList.add("intro-swinging");
     const sx = s.left + s.width / 2;
     const sy = s.top + s.height / 2;
     const ex = b.left + b.width / 2;
@@ -130,7 +128,8 @@ export function SyncOverlay() {
         },
         { transform: `${at(ex, ey)} rotate(0deg) scale(${endScale})`, opacity: 1, offset: 1 },
       ],
-      { duration: 620, easing: "cubic-bezier(0.35, 0, 0.2, 1)", fill: "forwards" },
+      // slow, readable drop — it's guiding the eye down to the first line of copy
+      { duration: 1050, easing: "cubic-bezier(0.33, 0, 0.2, 1)", fill: "forwards" },
     );
 
     anim.onfinish = () => {
@@ -203,7 +202,7 @@ export function SyncOverlay() {
             {/* logo — scales in from the triangle's place, then flies to the nav */}
             <div
               ref={logoRef}
-              className="absolute"
+              className="morph-logo absolute"
               style={{
                 transformOrigin: "center center",
                 transform: flyTransform ?? (morph ? "scale(1)" : "scale(1.7)"),

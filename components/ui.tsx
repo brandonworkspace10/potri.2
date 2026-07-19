@@ -32,7 +32,7 @@ export function Wordmark({ className = "" }: { className?: string }) {
         viewBox="0 0 12 11"
         fill="currentColor"
         aria-hidden
-        className="ml-[0.07em] inline-block h-[0.42em] w-[0.46em] align-baseline text-brand"
+        className="wm-tri ml-[0.07em] inline-block h-[0.42em] w-[0.46em] align-baseline text-brand"
       >
         <path d="M6 0 11 10 1 10Z" />
       </svg>

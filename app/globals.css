@@ -428,13 +428,16 @@ html.intro-done .badge-mark {
   transition: opacity 0.15s ease-out;
 }
 
-/* while the logo's triangle is mid-swing, hide the nav logo's own triangle so
-   it reads as the same mark detaching — it fades back once the swing lands. */
-.sync-logo-target svg {
-  transition: opacity 0.28s ease;
-}
-html.intro-swinging .sync-logo-target svg {
+/* The triangle is the eye-guide that lives at the hero badge, so the wordmark
+   reads "topri" everywhere it's a logo (nav, footer, mobile). The svg stays in
+   the DOM at opacity 0 so the intro can still measure its spot; the loading
+   overlay's morph logo re-shows it via .morph-logo so the triangle has a place
+   to peel off from before it flies down to the badge. */
+.wm-tri {
   opacity: 0;
+}
+.morph-logo .wm-tri {
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
