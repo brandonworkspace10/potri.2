@@ -347,89 +347,69 @@ input[type="range"]:focus-visible::-moz-range-thumb {
   }
 }
 
-/* ---- Sync overlay: three agent orbs circling each other ---- */
+/* ---- Sync overlay: three agent dots circling, then locking into a triangle ---- */
 .sync-orbit {
   position: relative;
   height: 112px;
   width: 112px;
   animation: sync-orbit-spin 2.6s linear infinite;
 }
+/* flat, solid dots — no glow */
 .sync-orb {
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 22px;
-  width: 22px;
-  margin: -11px 0 0 -11px;
+  height: 16px;
+  width: 16px;
+  margin: -8px 0 0 -8px;
   border-radius: 999px;
-}
-/* each orb carries its own soft glow that breathes as it travels */
-.sync-orb::after {
-  content: "";
-  position: absolute;
-  inset: -7px;
-  border-radius: 999px;
-  background: inherit;
-  filter: blur(9px);
-  animation: sync-orb-glow 1.8s ease-in-out infinite;
-}
-.sync-orb:nth-child(2)::after {
-  animation-delay: -0.6s;
-}
-.sync-orb:nth-child(3)::after {
-  animation-delay: -1.2s;
 }
 @keyframes sync-orbit-spin {
   to {
     transform: rotate(360deg);
   }
 }
-@keyframes sync-orb-glow {
-  0%,
-  100% {
-    opacity: 0.18;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.38;
-    transform: scale(1.15);
-  }
+
+/* the triangle edges, in each pair's colours — hidden while circling, drawn in
+   on lock. The svg rotates with the orbit so it always meets the dots. */
+.sync-tri {
+  position: absolute;
+  inset: 0;
+  height: 112px;
+  width: 112px;
+  overflow: visible;
+}
+.sync-tri line {
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-dasharray: 63;
+  stroke-dashoffset: 63;
+  opacity: 0;
+  transition:
+    stroke-dashoffset 0.55s ease,
+    opacity 0.25s ease;
 }
 
-/* lock phase: orbs freeze into their triangle, then the whole cluster pulses
-   once and the glows bloom — a beat of "team assembled" before the fade */
+/* lock phase: freeze the triangle in place and draw its edges */
 .sync-orbit.is-locked {
   animation-play-state: paused;
 }
-.sync-orbit-wrap.is-locked {
-  animation: sync-lock-pulse 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+.sync-orbit.is-locked .sync-tri line {
+  stroke-dashoffset: 0;
+  opacity: 0.9;
 }
-.sync-orbit.is-locked .sync-orb::after {
-  animation: sync-orb-flare 0.62s ease-out both;
+.sync-orbit-wrap.is-locked {
+  animation: sync-lock-pulse 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 @keyframes sync-lock-pulse {
   0% {
     transform: scale(1);
   }
-  42% {
-    transform: scale(1.16);
+  45% {
+    transform: scale(1.07);
   }
   100% {
     transform: scale(1);
-  }
-}
-@keyframes sync-orb-flare {
-  0% {
-    opacity: 0.28;
-    transform: scale(1.05);
-  }
-  42% {
-    opacity: 0.5;
-    transform: scale(1.4);
-  }
-  100% {
-    opacity: 0.32;
-    transform: scale(1.25);
   }
 }
 

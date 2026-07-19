@@ -72,6 +72,28 @@ export function SyncOverlay() {
       {/* three agents circling each other, then locking into a triangle */}
       <div className={`sync-orbit-wrap ${locked ? "is-locked" : ""}`}>
         <div className={`sync-orbit ${locked ? "is-locked" : ""}`}>
+          {/* triangle edges (each in its pair's colours), drawn in on lock.
+              Vertices sit on the r=36 ring at 0deg / 120deg / 240deg. */}
+          <svg className="sync-tri" viewBox="0 0 112 112" fill="none" aria-hidden>
+            <defs>
+              <linearGradient id="sync-e0" x1="92" y1="56" x2="38" y2="87.18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="#ff8a34" />
+                <stop offset="1" stopColor="#4d8dff" />
+              </linearGradient>
+              <linearGradient id="sync-e1" x1="38" y1="87.18" x2="38" y2="24.82" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="#4d8dff" />
+                <stop offset="1" stopColor="#35c88a" />
+              </linearGradient>
+              <linearGradient id="sync-e2" x1="38" y1="24.82" x2="92" y2="56" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="#35c88a" />
+                <stop offset="1" stopColor="#ff8a34" />
+              </linearGradient>
+            </defs>
+            <line x1="92" y1="56" x2="38" y2="87.18" stroke="url(#sync-e0)" />
+            <line x1="38" y1="87.18" x2="38" y2="24.82" stroke="url(#sync-e1)" />
+            <line x1="38" y1="24.82" x2="92" y2="56" stroke="url(#sync-e2)" />
+          </svg>
+
           {AGENTS.map((a) => (
             <span
               key={a.role}
