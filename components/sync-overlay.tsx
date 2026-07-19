@@ -24,7 +24,9 @@ export function SyncOverlay() {
   const [revealed, setRevealed] = useState(0);
   const [locked, setLocked] = useState(false);
   const [morph, setMorph] = useState(false);
+  const [flyTransform, setFlyTransform] = useState<string | null>(null);
   const [leaving, setLeaving] = useState(false);
+  const logoRef = useRef<HTMLDivElement>(null);
   const timers = useRef<number[]>([]);
 
   useEffect(() => {
@@ -47,13 +49,27 @@ export function SyncOverlay() {
     const push = (fn: () => void, ms: number) =>
       timers.current.push(window.setTimeout(fn, ms));
 
+    // fly the settled logo onto the real nav logo (measured at runtime)
+    const flyToNav = () => {
+      const el = logoRef.current;
+      const target = document.querySelector(".sync-logo-target");
+      if (!el || !target) return;
+      const s = el.getBoundingClientRect();
+      const t = target.getBoundingClientRect();
+      const dx = t.left + t.width / 2 - (s.left + s.width / 2);
+      const dy = t.top + t.height / 2 - (s.top + s.height / 2);
+      const scale = t.width / s.width;
+      setFlyTransform(`translate(${dx}px, ${dy}px) scale(${scale})`);
+    };
+
     push(() => setRevealed(1), 350);
     push(() => setRevealed(2), 650);
     push(() => setRevealed(3), 950);
     push(() => setLocked(true), 1350); // dots freeze, triangle draws
-    push(() => setMorph(true), 1950); // triangle → topri▲ logo
-    push(() => setLeaving(true), 2800); // fade to the page
-    push(() => setShow(false), 3300);
+    push(() => setMorph(true), 1750); // triangle → topri▲ logo (centered)
+    push(flyToNav, 2400); // logo flies to the top-left nav slot
+    push(() => setLeaving(true), 2980); // background fades as it lands
+    push(() => setShow(false), 3480);
 
     return () => {
       timers.current.forEach(clearTimeout);
@@ -117,11 +133,17 @@ export function SyncOverlay() {
           </div>
         </div>
 
-        {/* logo — scales in from the triangle's place on morph */}
+        {/* logo — scales in from the triangle's place, then flies to the nav */}
         <div
-          className={`absolute transition-all duration-[600ms] ease-out ${
-            morph ? "scale-100 opacity-100" : "scale-[1.7] opacity-0"
-          }`}
+          ref={logoRef}
+          className="absolute"
+          style={{
+            transformOrigin: "center center",
+            transform: flyTransform ?? (morph ? "scale(1)" : "scale(1.7)"),
+            opacity: morph ? 1 : 0,
+            transition:
+              "transform 640ms cubic-bezier(0.5, 0, 0.2, 1), opacity 460ms ease-out",
+          }}
         >
           <Wordmark className="text-[30px]" />
         </div>

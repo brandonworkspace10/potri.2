@@ -110,7 +110,7 @@ export function SiteNav() {
       <Container>
         <nav className="flex h-[72px] items-center justify-between gap-6">
           <Link href="/" aria-label="Topri home" className="shrink-0">
-            <Wordmark />
+            <Wordmark className="sync-logo-target" />
           </Link>
 
           <ul className="hidden items-center gap-8 lg:flex">
