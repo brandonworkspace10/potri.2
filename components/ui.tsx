@@ -26,7 +26,16 @@ export function Eyebrow({ children }: { children: ReactNode }) {
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
     <span className={`text-[22px] font-bold tracking-[-0.04em] text-ink ${className}`}>
-      topri<span className="text-brand">.</span>
+      topri
+      {/* the period, reimagined as the three-agent triangle */}
+      <svg
+        viewBox="0 0 12 11"
+        fill="currentColor"
+        aria-hidden
+        className="ml-[0.07em] inline-block h-[0.42em] w-[0.46em] align-baseline text-brand"
+      >
+        <path d="M6 0 11 10 1 10Z" />
+      </svg>
     </span>
   );
 }
