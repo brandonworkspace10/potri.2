@@ -115,27 +115,29 @@ export function SyncOverlay() {
     const endScale = b.width / TRI_BOX;
     const at = (cx: number, cy: number) =>
       `translate(${cx - TRI_BOX / 2}px, ${cy - TRI_BOX / 2}px)`;
-    // bow the path below both points so it reads as a pendulum swing
+    // gentle curve straight into the badge — the control point stays ABOVE the
+    // destination so it never dips past it toward the headline (no bounce).
     const midX = sx + (ex - sx) * 0.5;
-    const midY = Math.max(sy, ey) + 56;
+    const midY = sy + (ey - sy) * 0.3;
 
     const anim = el.animate(
       [
-        { transform: `${at(sx, sy)} rotate(-8deg) scale(${startScale})`, opacity: 1, offset: 0 },
+        { transform: `${at(sx, sy)} rotate(-14deg) scale(${startScale})`, opacity: 1, offset: 0 },
         {
-          transform: `${at(midX, midY)} rotate(18deg) scale(${(startScale + endScale) / 2})`,
+          transform: `${at(midX, midY)} rotate(-5deg) scale(${(startScale + endScale) / 2})`,
           opacity: 1,
-          offset: 0.55,
+          offset: 0.5,
         },
         { transform: `${at(ex, ey)} rotate(0deg) scale(${endScale})`, opacity: 1, offset: 1 },
       ],
-      { duration: 780, easing: "cubic-bezier(0.4, 0, 0.25, 1)", fill: "forwards" },
+      { duration: 620, easing: "cubic-bezier(0.35, 0, 0.2, 1)", fill: "forwards" },
     );
 
     anim.onfinish = () => {
-      reveal(); // show the real badge triangle in the exact same spot…
-      root.classList.remove("intro-swinging"); // …bring the logo's mark back…
-      window.setTimeout(() => setSwinging(false), 60); // …then drop the flyer
+      // the triangle has relocated to the badge as the eye-guide; leave the nav
+      // mark off (it "took off" from next to topri and didn't come back)
+      reveal();
+      window.setTimeout(() => setSwinging(false), 60);
     };
 
     return () => anim.cancel();
