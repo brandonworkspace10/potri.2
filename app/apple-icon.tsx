@@ -17,15 +17,28 @@ export default function AppleIcon() {
           backgroundColor: "#0a0b0d",
           backgroundImage:
             "radial-gradient(90% 90% at 50% 0%, rgba(255,138,52,0.18), rgba(255,138,52,0) 70%)",
-          color: "#f5f6f7",
-          fontSize: 118,
-          fontWeight: 700,
-          fontFamily: "sans-serif",
-          paddingBottom: 18,
-          paddingRight: 6,
+          paddingRight: 4,
         }}
       >
-        T<span style={{ color: "#ff8a34" }}>.</span>
+        <span
+          style={{
+            color: "#f5f6f7",
+            fontSize: 112,
+            fontWeight: 700,
+            fontFamily: "sans-serif",
+            lineHeight: 1,
+          }}
+        >
+          T
+        </span>
+        <svg
+          width="38"
+          height="34"
+          viewBox="0 0 12 11"
+          style={{ alignSelf: "flex-end", marginLeft: 7, marginBottom: 20 }}
+        >
+          <path d="M6 0 11 10 1 10Z" fill="#ff8a34" />
+        </svg>
       </div>
     ),
     size,
