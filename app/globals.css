@@ -414,8 +414,9 @@ input[type="range"]:focus-visible::-moz-range-thumb {
 }
 
 /* hero badge marker (the triangle left of "AI employees…"). On first load it
-   stays hidden while the intro plays, then drops down into place — the logo's
-   triangle handing off to the badge. Static/visible on repeat visits. */
+   stays hidden while the intro plays; the logo's own triangle swings down and
+   lands here (see sync-overlay), then this real one is revealed. Static/visible
+   on repeat visits. */
 .badge-mark {
   color: var(--color-brand);
 }
@@ -423,20 +424,17 @@ html.intro-playing .badge-mark {
   opacity: 0;
 }
 html.intro-done .badge-mark {
-  animation: badge-drop 0.7s cubic-bezier(0.34, 1.4, 0.5, 1) both;
+  opacity: 1;
+  transition: opacity 0.15s ease-out;
 }
-@keyframes badge-drop {
-  0% {
-    opacity: 0;
-    transform: translateY(-44px) scale(1.7);
-  }
-  55% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+
+/* while the logo's triangle is mid-swing, hide the nav logo's own triangle so
+   it reads as the same mark detaching — it fades back once the swing lands. */
+.sync-logo-target svg {
+  transition: opacity 0.28s ease;
+}
+html.intro-swinging .sync-logo-target svg {
+  opacity: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
