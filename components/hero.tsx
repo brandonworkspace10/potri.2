@@ -21,7 +21,17 @@ export function Hero() {
       <Container className="relative">
         <div className="flex flex-col items-center pb-12 pt-10 text-center sm:pb-20 sm:pt-20 md:pb-28 md:pt-32">
           <div className="inline-flex items-center gap-2.5 rounded-full border border-subtle bg-card px-3 py-2 sm:px-3.5">
-            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+            {/* the brand triangle — drops in from the logo on first load (see globals.css) */}
+            <svg
+              className="badge-mark shrink-0"
+              width="8"
+              height="7"
+              viewBox="0 0 12 11"
+              fill="currentColor"
+              aria-hidden
+            >
+              <path d="M6 0 11 10 1 10Z" />
+            </svg>
             {/* tracking has to relax on narrow screens or this wraps and drags the dot off-centre */}
             <span className="whitespace-nowrap font-mono text-[9px] font-medium uppercase tracking-[0.18em] text-muted sm:text-[11px] sm:tracking-[0.4em]">
               AI employees for real estate investors

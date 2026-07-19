@@ -46,6 +46,9 @@ export function SyncOverlay() {
     }
 
     setShow(true);
+    // signal the hero badge to hold its triangle until the hand-off
+    const root = document.documentElement;
+    root.classList.add("intro-playing");
     const push = (fn: () => void, ms: number) =>
       timers.current.push(window.setTimeout(fn, ms));
 
@@ -69,7 +72,12 @@ export function SyncOverlay() {
     push(() => setMorph(true), 1750); // triangle → topri▲ logo (centered)
     push(flyToNav, 2400); // logo flies to the top-left nav slot
     push(() => setLeaving(true), 2980); // background fades as it lands
-    push(() => setShow(false), 3480);
+    // hand the triangle off to the hero badge — it drops into place
+    push(() => {
+      root.classList.remove("intro-playing");
+      root.classList.add("intro-done");
+    }, 3050);
+    push(() => setShow(false), 3520);
 
     return () => {
       timers.current.forEach(clearTimeout);
