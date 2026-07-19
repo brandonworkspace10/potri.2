@@ -396,6 +396,43 @@ input[type="range"]:focus-visible::-moz-range-thumb {
   }
 }
 
+/* lock phase: orbs freeze into their triangle, then the whole cluster pulses
+   once and the glows bloom — a beat of "team assembled" before the fade */
+.sync-orbit.is-locked {
+  animation-play-state: paused;
+}
+.sync-orbit-wrap.is-locked {
+  animation: sync-lock-pulse 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.sync-orbit.is-locked .sync-orb::after {
+  animation: sync-orb-flare 0.62s ease-out both;
+}
+@keyframes sync-lock-pulse {
+  0% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.16);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes sync-orb-flare {
+  0% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+  42% {
+    opacity: 0.9;
+    transform: scale(1.7);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(1.4);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -21,6 +21,7 @@ const SEEN_KEY = "topri_synced";
 export function SyncOverlay() {
   const [show, setShow] = useState(false);
   const [revealed, setRevealed] = useState(0);
+  const [locked, setLocked] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const timers = useRef<number[]>([]);
 
@@ -47,8 +48,10 @@ export function SyncOverlay() {
     push(() => setRevealed(1), 450);
     push(() => setRevealed(2), 800);
     push(() => setRevealed(3), 1150);
-    push(() => setLeaving(true), 1950);
-    push(() => setShow(false), 2450);
+    // once all three are online, lock the triangle and pulse, then fade
+    push(() => setLocked(true), 1550);
+    push(() => setLeaving(true), 2350);
+    push(() => setShow(false), 2850);
 
     return () => {
       timers.current.forEach(clearTimeout);
@@ -66,18 +69,20 @@ export function SyncOverlay() {
         leaving ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
-      {/* three agents circling each other */}
-      <div className="sync-orbit">
-        {AGENTS.map((a) => (
-          <span
-            key={a.role}
-            className="sync-orb"
-            style={{
-              background: a.color,
-              transform: `rotate(${a.deg}deg) translateX(36px)`,
-            }}
-          />
-        ))}
+      {/* three agents circling each other, then locking into a triangle */}
+      <div className={`sync-orbit-wrap ${locked ? "is-locked" : ""}`}>
+        <div className={`sync-orbit ${locked ? "is-locked" : ""}`}>
+          {AGENTS.map((a) => (
+            <span
+              key={a.role}
+              className="sync-orb"
+              style={{
+                background: a.color,
+                transform: `rotate(${a.deg}deg) translateX(36px)`,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="flex flex-col items-center gap-3.5">
