@@ -1,26 +1,24 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Wordmark } from "./ui";
 
 /**
- * First-impression "System Syncing" overlay. Plays once per browser session
- * (sessionStorage-gated so it never nags on internal navigation), reveals the
- * three agents coming online, then fades out after ~2s. Skipped entirely for
- * prefers-reduced-motion. The real page is already in the DOM underneath — this
- * is a purely visual cover, so it never blocks content or crawlers.
+ * First-impression overlay: the three agents (Andy / Randy / Alyssa) as
+ * coloured orbs circling each other, then their roles come online one by one.
+ * Plays once per browser session (sessionStorage-gated), ~2s, then fades to the
+ * page. Skipped entirely for prefers-reduced-motion. The real page is already
+ * in the DOM underneath — this is a purely visual cover.
  */
-const STEPS = [
-  { label: "[ANDY_SYNCED]", cls: "text-andy" },
-  { label: "[RANDY_ONLINE]", cls: "text-randy" },
-  { label: "[CRM_MAPPED]", cls: "text-alyssa" },
+const AGENTS = [
+  { role: "Outbound", color: "var(--color-andy)", deg: 0 },
+  { role: "Inbound", color: "var(--color-randy)", deg: 120 },
+  { role: "Follow-up", color: "var(--color-alyssa)", deg: 240 },
 ];
 
 const SEEN_KEY = "topri_synced";
 
 export function SyncOverlay() {
-  // Start hidden; an effect decides whether to play. This keeps SSR/first paint
-  // identical and avoids a flash for returning/reduced-motion visitors.
   const [show, setShow] = useState(false);
   const [revealed, setRevealed] = useState(0);
   const [leaving, setLeaving] = useState(false);
@@ -39,18 +37,18 @@ export function SyncOverlay() {
     try {
       sessionStorage.setItem(SEEN_KEY, "1");
     } catch {
-      /* private mode — play this once, don't persist */
+      /* private mode — play once, don't persist */
     }
 
     setShow(true);
     const push = (fn: () => void, ms: number) =>
       timers.current.push(window.setTimeout(fn, ms));
 
-    push(() => setRevealed(1), 350);
-    push(() => setRevealed(2), 750);
+    push(() => setRevealed(1), 450);
+    push(() => setRevealed(2), 800);
     push(() => setRevealed(3), 1150);
-    push(() => setLeaving(true), 1850);
-    push(() => setShow(false), 2300);
+    push(() => setLeaving(true), 1950);
+    push(() => setShow(false), 2450);
 
     return () => {
       timers.current.forEach(clearTimeout);
@@ -64,38 +62,49 @@ export function SyncOverlay() {
     <div
       aria-hidden
       onClick={() => setLeaving(true)}
-      className={`fixed inset-0 z-[200] flex flex-col items-center justify-center gap-8 bg-base transition-opacity duration-500 ease-out ${
+      className={`fixed inset-0 z-[200] flex flex-col items-center justify-center gap-10 bg-base transition-opacity duration-500 ease-out ${
         leaving ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
-      <div className="animate-pulse">
-        <Wordmark className="text-[30px]" />
-      </div>
-
-      <div className="flex w-[220px] flex-col gap-2">
-        {STEPS.map((s, i) => (
-          <div
-            key={s.label}
-            className={`flex items-center justify-between font-mono text-[12px] tracking-[0.04em] transition-all duration-300 ${
-              i < revealed ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
-            }`}
-          >
-            <span className={s.cls}>{s.label}</span>
-            <span className="text-alyssa">{i < revealed ? "✓" : ""}</span>
-          </div>
+      {/* three agents circling each other */}
+      <div className="sync-orbit">
+        {AGENTS.map((a) => (
+          <span
+            key={a.role}
+            className="sync-orb"
+            style={{
+              background: a.color,
+              transform: `rotate(${a.deg}deg) translateX(36px)`,
+            }}
+          />
         ))}
       </div>
 
-      <div className="h-[2px] w-[220px] overflow-hidden rounded-full bg-subtle">
-        <div
-          className="h-full bg-brand transition-[width] duration-[1600ms] ease-out"
-          style={{ width: revealed >= 3 ? "100%" : `${(revealed / 3) * 100}%` }}
-        />
-      </div>
+      <div className="flex flex-col items-center gap-3.5">
+        <Wordmark className="text-[26px]" />
 
-      <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-dim">
-        System syncing
-      </p>
+        {/* roles come online one at a time, each in its agent's colour */}
+        <div className="flex items-center gap-2.5 font-mono text-[11px] font-medium tracking-[0.1em]">
+          {AGENTS.map((a, i) => (
+            <Fragment key={a.role}>
+              {i > 0 ? <span className="text-dim/60">·</span> : null}
+              <span
+                className="transition-all duration-500"
+                style={{
+                  color: i < revealed ? a.color : "var(--color-dim)",
+                  opacity: i < revealed ? 1 : 0.4,
+                }}
+              >
+                {a.role}
+              </span>
+            </Fragment>
+          ))}
+        </div>
+
+        <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.34em] text-dim">
+          Deploying your team
+        </p>
+      </div>
     </div>
   );
 }
