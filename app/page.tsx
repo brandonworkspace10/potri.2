@@ -11,7 +11,6 @@ import { Relief } from "@/components/relief";
 import { ProofStrip } from "@/components/proof-strip";
 import { RoiCalculator } from "@/components/roi-calculator";
 import { SampleCalls } from "@/components/sample-calls";
-import { ScrollGuide } from "@/components/scroll-guide";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteNav } from "@/components/site-nav";
 import { SyncOverlay } from "@/components/sync-overlay";
@@ -23,7 +22,6 @@ export default function Home() {
   return (
     <>
       <SyncOverlay />
-      <ScrollGuide />
       <JsonLd />
       <SiteNav />
       {/* Narrative order: outcomes -> benefits -> cost -> what you need ->
